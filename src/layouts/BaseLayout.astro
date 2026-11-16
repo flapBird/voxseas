@@ -61,7 +61,7 @@ const graph = [
     <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}></script>
     {import.meta.env.PROD && (
       <script is:inline>
-        if (['voxseasgame.com', 'www.voxseasgame.com'].includes(window.location.hostname)) {
+        if (['voxseas.online', 'www.voxseas.online'].includes(window.location.hostname)) {
           const gtmScript = document.createElement('script');
           gtmScript.async = true;
           gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-K66MWK5R';

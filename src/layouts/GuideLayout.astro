@@ -25,8 +25,10 @@ interface Props {
   alternates?: { ptBR?: string; en?: string };
   art?: ImageMetadata;
   artAlt?: string;
+  artCredit?: string;
+  artSource?: string;
 }
-const { guide, headings, lang = 'pt-BR', path, alternates = {}, art, artAlt = '' } = Astro.props;
+const { guide, headings, lang = 'pt-BR', path, alternates = {}, art, artAlt = '', artCredit = '', artSource } = Astro.props;
 const isEn = lang === 'en';
 const canonical = new URL(path, site.url).href;
 const relatedPool = isEn ? [
@@ -66,7 +68,7 @@ const toc = headings.filter((heading) => heading.depth === 2);
       </div>
     </header>
     <div class="quick-answer"><span class="quick-answer-label"><Icon name="sparkles" size={17} />{isEn ? 'QUICK ANSWER' : 'RESPOSTA RÁPIDA'}</span><p>{guide.quickAnswer}</p></div>
-    {art && <figure class="guide-art"><Picture src={art} alt={artAlt} widths={[480, 768, 1200, 1792]} sizes="(max-width: 1180px) calc(100vw - 48px), 1180px" formats={['avif', 'webp']} fallbackFormat="webp" quality={80} loading="lazy" decoding="async" /><figcaption>{isEn ? 'Original guide illustration' : 'Ilustração original do guia'}</figcaption></figure>}
+    {art && <figure class="guide-art"><Picture src={art} alt={artAlt} widths={[480, 768, 1200, 1280]} sizes="(max-width: 1180px) calc(100vw - 48px), 1180px" formats={['avif', 'webp']} fallbackFormat="webp" quality={80} loading="lazy" decoding="async" /><figcaption>{artSource ? <a href={artSource} target="_blank" rel="noopener noreferrer">{artCredit}</a> : artCredit}</figcaption></figure>}
     <div class="guide-layout">
       <article class="guide-article">
         <div class="prose"><slot /></div>

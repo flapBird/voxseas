@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import CodeList from '../components/CodeList.astro';
 import { categories, secondaryGuides, tierRows, site } from '../data/site';
-import heroArt from '../assets/art/hero-v1.png';
+import heroArt from '../assets/art/hero-official-v1.png';
 
 const title = 'Vox Seas Wiki – Códigos, Tier List, Raças e Frutas';
 const description = 'Guia de Vox Seas em português: códigos atualizados, tier list, frutas, raças, armas, chefes, mapa e rotas para evoluir no Roblox.';
@@ -31,7 +31,8 @@ const schema = [
         <p class="hero-note"><Icon name="check" size={15} />Feito para jogadores brasileiros · gratuito e sem cadastro</p>
       </div>
       <div class="hero-visual" aria-label="Rota recomendada para novos jogadores">
-        <Picture src={heroArt} alt="Ilustração original de um veleiro navegando entre ilhas tropicais sob o luar" widths={[480, 720, 1024]} sizes="(max-width: 800px) calc(100vw - 48px), 44vw" formats={['avif', 'webp']} fallbackFormat="webp" quality={82} class="hero-art" loading="eager" fetchpriority="high" decoding="async" />
+        <Picture src={heroArt} alt="Arte oficial de Vox Seas com um pirata, um navio e uma criatura marinha" widths={[480, 768]} sizes="(max-width: 800px) calc(100vw - 48px), 44vw" formats={['avif', 'webp']} fallbackFormat="webp" quality={82} class="hero-art" loading="eager" fetchpriority="high" decoding="async" />
+        <a class="hero-art-credit" href={site.robloxUrl} target="_blank" rel="noopener noreferrer">Arte oficial · Roblox / Vox Seas</a>
         <div class="navigator-card">
           <div class="navigator-top"><span>ROTA DO INICIANTE</span><strong>3 PARADAS</strong></div>
           <h2>Primeiro dia em alto-mar</h2><p>Uma rota simples para não desperdiçar recursos.</p>

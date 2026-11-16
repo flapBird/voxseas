@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://voxseasgame.com',
+  site: 'https://voxseas.online',
   trailingSlash: 'always',
   integrations: [
     sitemap({

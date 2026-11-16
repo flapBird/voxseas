@@ -1,6 +1,6 @@
 export const site = {
   name: 'Vox Seas Brasil',
-  url: 'https://voxseasgame.com',
+  url: 'https://voxseas.online',
   robloxUrl: 'https://www.roblox.com/games/104067066727140',
   updated: '16 de novembro de 2026',
   updatedEn: 'November 16, 2026',
