@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { ImageMetadata } from 'astro';
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import fruitsArt from '../../assets/art/fruits-v1.png';
+import weaponsArt from '../../assets/art/weapons-v1.png';
+import mapArt from '../../assets/art/map-v1.png';
+import bossArt from '../../assets/art/boss-v1.png';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('guides');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const englishAlternates: Record<string, string> = {
+  'tier-list': '/en/tier-list/',
+  discord: '/en/discord/',
+  trello: '/en/trello/',
+};
+const alternates = englishAlternates[entry.id] ? { ptBR: `/${entry.id}/`, en: englishAlternates[entry.id] } : {};
+const artwork: Record<string, { src: ImageMetadata; alt: string }> = {
+  frutas: { src: fruitsArt, alt: 'Ilustração original de frutas mágicas coloridas sobre o convés de um navio' },
+  armas: { src: weaponsArt, alt: 'Ilustração original de espadas piratas e uma pistola antiga sobre uma mesa de capitão' },
+  mapa: { src: mapArt, alt: 'Ilustração original de um arquipélago fantástico com uma rota de navegação entre ilhas' },
+  chefes: { src: bossArt, alt: 'Ilustração original de um aventureiro diante de um guardião gigante em uma arena' },
+};
+const art = artwork[entry.id];
+---
+<GuideLayout guide={entry.data} headings={headings} path={`/${entry.id}/`} alternates={alternates} art={art?.src} artAlt={art?.alt}>
+  <Content />
+</GuideLayout>

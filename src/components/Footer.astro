@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+interface Props { lang?: 'pt-BR' | 'en'; }
+const { lang = 'pt-BR' } = Astro.props;
+const isEn = lang === 'en';
+---
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href={isEn ? '/en/codes/' : '/'}><span class="brand-mark"><Icon name="compass" size={25} /></span><span class="brand-type">VOX SEAS<small>{isEn ? 'PLAYER GUIDE' : 'GUIA BRASILEIRO'}</small></span></a>
+      <p>{isEn ? 'A practical, independent guide to help you enjoy Vox Seas without getting lost at sea.' : 'Um guia prático e independente para você aproveitar Vox Seas sem se perder no mar.'}</p>
+      <a class="footer-roblox" href={site.robloxUrl} target="_blank" rel="noopener noreferrer">Roblox<Icon name="external" size={15} /></a>
+    </div>
+    <div class="footer-column"><h2>{isEn ? 'Popular' : 'Mais acessados'}</h2><a href={isEn ? '/en/codes/' : '/codigos/'}>{isEn ? 'Codes' : 'Códigos'}</a><a href={isEn ? '/en/tier-list/' : '/tier-list/'}>Tier list</a><a href={isEn ? '/en/codes/' : '/frutas/'}>{isEn ? 'More guides' : 'Frutas'}</a><a href={isEn ? '/en/tier-list/' : '/racas/'}>{isEn ? 'Fruit rankings' : 'Raças'}</a></div>
+    <div class="footer-column"><h2>{isEn ? 'Resources' : 'Explore também'}</h2><a href={isEn ? '/en/discord/' : '/mapa/'}>{isEn ? 'Discord' : 'Mapa e ilhas'}</a><a href={isEn ? '/en/trello/' : '/armas/'}>{isEn ? 'Trello' : 'Armas'}</a><a href={isEn ? '/en/codes/' : '/chefes/'}>{isEn ? 'Redeem codes' : 'Chefes'}</a><a href={isEn ? '/en/discord/' : '/como-girar-fruta/'}>{isEn ? 'Community' : 'Como girar frutas'}</a></div>
+    <div class="footer-column"><h2>{isEn ? 'Information' : 'Informações'}</h2><a href={isEn ? '/en/discord/' : '/discord/'}>Discord</a><a href={isEn ? '/en/trello/' : '/trello/'}>Trello</a><a href={isEn ? '/en/codes/' : '/lancamento/'}>{isEn ? 'Latest codes' : 'Lançamento e retorno'}</a><a href={isEn ? '/' : '/en/codes/'}>{isEn ? 'Português' : 'English'}</a></div>
+  </div>
+  <div class="shell footer-bottom">
+    <p>© 2026 Vox Seas {isEn ? 'Guide' : 'Brasil'}.</p>
+    <p>{isEn ? 'Independent fan site. Not affiliated with Roblox Corporation or the Vox Seas developers.' : 'Site independente, sem afiliação à Roblox Corporation nem aos desenvolvedores de Vox Seas.'}</p>
+  </div>
+</footer>

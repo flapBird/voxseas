@@ -1,0 +1,82 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: 'pt-BR' | 'en';
+  path?: string;
+  alternates?: { ptBR?: string; en?: string };
+  schema?: Record<string, unknown>[];
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  lang = 'pt-BR',
+  path = Astro.url.pathname,
+  alternates = {},
+  schema = [],
+  bodyClass = '',
+} = Astro.props;
+const canonical = new URL(path, site.url).href;
+const isEn = lang === 'en';
+const graph = [
+  { '@type': 'Organization', '@id': `${site.url}/#organization`, name: site.name, url: `${site.url}/`, logo: { '@type': 'ImageObject', url: `${site.url}/favicon.svg` } },
+  { '@type': 'WebSite', '@id': `${site.url}/#website`, url: `${site.url}/`, name: site.name, inLanguage: 'pt-BR', publisher: { '@id': `${site.url}/#organization` } },
+  { '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: lang, isPartOf: { '@id': `${site.url}/#website` }, dateModified: site.updatedISO },
+  { '@type': 'VideoGame', '@id': `${site.url}/#game`, name: 'Vox Seas', url: site.robloxUrl, gamePlatform: 'Roblox', genre: ['RPG', 'Adventure'] },
+  ...schema,
+];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+    <meta name="theme-color" content="#081e25" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    {alternates.ptBR && <link rel="alternate" hreflang="pt-BR" href={new URL(alternates.ptBR, site.url).href} />}
+    {alternates.en && <link rel="alternate" hreflang="en" href={new URL(alternates.en, site.url).href} />}
+    {(alternates.ptBR || alternates.en) && <link rel="alternate" hreflang="x-default" href={new URL(alternates.ptBR ?? alternates.en!, site.url).href} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={isEn ? 'en_US' : 'pt_BR'} />
+    <meta property="og:image" content={`${site.url}/og-vox-seas.svg`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}></script>
+    {import.meta.env.PROD && (
+      <script is:inline>
+        if (['voxseasgame.com', 'www.voxseasgame.com'].includes(window.location.hostname)) {
+          const gtmScript = document.createElement('script');
+          gtmScript.async = true;
+          gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-K66MWK5R';
+          document.head.appendChild(gtmScript);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        }
+      </script>
+    )}
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main-content">{isEn ? 'Skip to content' : 'Pular para o conteúdo'}</a>
+    <Header lang={lang} alternate={isEn ? alternates.ptBR : alternates.en} />
+    <main id="main-content"><slot /></main>
+    <Footer lang={lang} />
+  </body>
+</html>

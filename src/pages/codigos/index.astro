@@ -1,0 +1,33 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import CodeList from '../../components/CodeList.astro';
+import { site } from '../../data/site';
+
+const guide = {
+  title: 'Vox Seas Códigos (Novembro 2026): Lista Atualizada',
+  shortTitle: 'Códigos',
+  description: 'Confira os códigos de Vox Seas, suas recompensas e o passo a passo para resgatar XP, ouro e resets no Roblox.',
+  eyebrow: 'CÓDIGOS ATUALIZADOS',
+  icon: 'ticket',
+  updated: site.updated,
+  quickAnswer: 'A lista pública revisada em 16 de novembro de 2026 contém 8 códigos: Release2026, PatchReset, PatchGold, Release, BugFix1, BugFix2, BugFix3 e BugFix4. Resgate em Menu → Configurações → CODES.',
+  related: ['/tier-list/', '/como-girar-fruta/', '/discord/'],
+  faqs: [
+    { question: 'Por que meu código de Vox Seas não funciona?', answer: 'Confira maiúsculas e minúsculas, remova espaços e tente um servidor novo. Se o jogo informar que o código expirou ou já foi usado, ele não poderá ser resgatado novamente na mesma conta.' },
+    { question: 'Como resgatar códigos no Vox Seas?', answer: 'Abra o jogo, entre no menu, selecione o ícone de engrenagem, role Configurações até o campo CODES, digite o código e selecione REDEEM.' },
+    { question: 'Onde saem novos códigos?', answer: 'Novos códigos costumam acompanhar atualizações, correções e marcos da comunidade. Confira os canais oficiais indicados na página do jogo e revise esta lista após cada update.' },
+  ],
+};
+const headings = [
+  { depth: 2, slug: 'codigos-ativos', text: 'Códigos ativos de Vox Seas' },
+  { depth: 2, slug: 'como-resgatar', text: 'Como resgatar códigos' },
+  { depth: 2, slug: 'problemas', text: 'Código não funciona?' },
+  { depth: 2, slug: 'novos-codigos', text: 'Onde encontrar novos códigos' },
+];
+---
+<GuideLayout guide={guide} headings={headings} path="/codigos/" alternates={{ ptBR: '/codigos/', en: '/en/codes/' }}>
+  <section id="codigos-ativos" class="codes-page-panel"><div class="codes-panel-heading"><div><p class="eyebrow">LISTA REVISADA · 16 NOV 2026</p><h2>Códigos ativos de Vox Seas</h2></div><span>8 CÓDIGOS</span></div><CodeList /><p class="code-disclaimer">Os status refletem a consulta a fontes públicas na data indicada. Não houve teste individual em uma conta própria; códigos podem expirar ou atingir limite de uso sem aviso.</p></section>
+  <h2 id="como-resgatar">Como resgatar códigos em Vox Seas</h2><p>O campo de resgate fica dentro das configurações, e não na loja. O processo leva menos de um minuto:</p><ol><li>Abra <a href={site.robloxUrl} target="_blank" rel="noopener noreferrer">Vox Seas no Roblox</a> e entre no jogo.</li><li>Abra o <strong>Menu</strong> e selecione o ícone de engrenagem para acessar <strong>Settings</strong>.</li><li>Role a janela até o final e encontre o campo <strong>CODES</strong>.</li><li>Digite ou cole um código exatamente como aparece na lista.</li><li>Selecione <strong>REDEEM</strong> e confira a mensagem de confirmação.</li></ol><blockquote><p>Copie o código pelo botão para evitar erros de digitação. Não adicione espaço antes ou depois do texto.</p></blockquote>
+  <h2 id="problemas">Código não funciona? Tente isto</h2><h3>Revise a grafia</h3><p>Os códigos usam letras maiúsculas e minúsculas. <code>Release2026</code> não é necessariamente equivalente a <code>release2026</code>. Também evite espaços copiados acidentalmente.</p><h3>Entre em outro servidor</h3><p>Depois de uma atualização, servidores antigos podem demorar a receber a versão mais recente. Saia e abra uma nova sessão antes de tentar novamente.</p><h3>Verifique expiração e uso anterior</h3><p>Códigos promocionais podem ter prazo ou limite de resgates. Em geral, cada código só pode ser usado uma vez por conta. Se a mensagem indicar expiração ou uso anterior, não existe um segundo método legítimo de resgate.</p>
+  <h2 id="novos-codigos">Onde encontrar novos códigos</h2><p>Acompanhe os canais oficiais acessíveis pela página do jogo no Roblox, principalmente após atualizações, correções e marcos de jogadores. Nosso <a href="/discord/">guia de Discord</a> explica como evitar convites falsos. Você também pode organizar sua rotina de consulta com a página sobre <a href="/trello/">Trello e canais de atualização</a>.</p><p>Depois de resgatar boosts de XP, aproveite o tempo extra seguindo a <a href="/mapa/">rota pelas ilhas</a> ou evoluindo a maestria da sua <a href="/armas/">arma principal</a>.</p>
+</GuideLayout>

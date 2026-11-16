@@ -1,0 +1,37 @@
+---
+import Icon from './Icon.astro';
+import { codes } from '../data/site';
+
+interface Props { lang?: 'pt-BR' | 'en'; limit?: number; }
+const { lang = 'pt-BR', limit } = Astro.props;
+const isEn = lang === 'en';
+const visibleCodes = typeof limit === 'number' ? codes.slice(0, limit) : codes;
+---
+<div class="code-list">
+  {visibleCodes.map((item) => (
+    <article class="code-item">
+      <div class="code-status"><span></span>{isEn ? 'LISTED' : 'LISTADO'}</div>
+      <div class="code-main"><code>{item.code}</code><p>{isEn ? item.rewardEn : item.reward}</p></div>
+      <button class="copy-button" type="button" data-copy={item.code} aria-label={`${isEn ? 'Copy code' : 'Copiar código'} ${item.code}`}><Icon name="copy" size={17} /><span data-copy-label>{isEn ? 'Copy' : 'Copiar'}</span></button>
+    </article>
+  ))}
+</div>
+<script>
+  document.addEventListener('click', async (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-copy]');
+    if (!button || !button.dataset.copy) return;
+    const label = button.querySelector<HTMLElement>('[data-copy-label]');
+    const original = label?.textContent || 'Copiar';
+    try {
+      await navigator.clipboard.writeText(button.dataset.copy);
+      button.classList.add('copied');
+      if (label) label.textContent = document.documentElement.lang === 'en' ? 'Copied' : 'Copiado';
+    } catch {
+      if (label) label.textContent = document.documentElement.lang === 'en' ? 'Copy failed' : 'Não foi possível';
+    }
+    window.setTimeout(() => {
+      button.classList.remove('copied');
+      if (label) label.textContent = original;
+    }, 1800);
+  });
+</script>

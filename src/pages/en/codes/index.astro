@@ -1,0 +1,33 @@
+---
+import GuideLayout from '../../../layouts/GuideLayout.astro';
+import CodeList from '../../../components/CodeList.astro';
+import { site } from '../../../data/site';
+
+const guide = {
+  title: 'Vox Seas Codes (November 2026): Updated List',
+  shortTitle: 'Codes',
+  description: 'Check the latest Vox Seas codes, rewards and redemption steps for XP boosts, Gold and stat resets on Roblox.',
+  eyebrow: 'UPDATED CODE LIST',
+  icon: 'ticket',
+  updated: site.updatedEn,
+  quickAnswer: 'The public code list reviewed on November 16, 2026 includes 8 entries: Release2026, PatchReset, PatchGold, Release, BugFix1, BugFix2, BugFix3 and BugFix4. Redeem them in Menu → Settings → CODES.',
+  related: ['/en/tier-list/', '/en/discord/', '/en/trello/'],
+  faqs: [
+    { question: 'Why is my Vox Seas code not working?', answer: 'Check capitalization, remove extra spaces and join a fresh server. If the game reports that the code expired or was already redeemed, it cannot be used again on the same account.' },
+    { question: 'How do I redeem Vox Seas codes?', answer: 'Open the game menu, select the Settings gear, scroll to CODES, enter the code exactly as listed and select REDEEM.' },
+    { question: 'Where are new Vox Seas codes announced?', answer: 'New codes often accompany updates, patches and community milestones. Check the official channels linked from the game page and review this list after updates.' },
+  ],
+};
+const headings = [
+  { depth: 2, slug: 'working-codes', text: 'Working Vox Seas codes' },
+  { depth: 2, slug: 'redeem', text: 'How to redeem codes' },
+  { depth: 2, slug: 'troubleshooting', text: 'Code not working?' },
+  { depth: 2, slug: 'new-codes', text: 'Where to find new codes' },
+];
+---
+<GuideLayout guide={guide} headings={headings} lang="en" path="/en/codes/" alternates={{ ptBR: '/codigos/', en: '/en/codes/' }}>
+  <section id="working-codes" class="codes-page-panel"><div class="codes-panel-heading"><div><p class="eyebrow">REVIEWED · NOV 16, 2026</p><h2>Working Vox Seas codes</h2></div><span>8 CODES</span></div><CodeList lang="en" /><p class="code-disclaimer">Statuses reflect public sources checked on the review date. Each code was not independently tested on our own account; codes can expire or reach a redemption limit without notice.</p></section>
+  <h2 id="redeem">How to redeem Vox Seas codes</h2><p>The redemption field is in Settings, not in the shop. Follow these steps:</p><ol><li>Open <a href={site.robloxUrl} target="_blank" rel="noopener noreferrer">Vox Seas on Roblox</a> and join the game.</li><li>Open the <strong>Menu</strong> and select the gear icon to open <strong>Settings</strong>.</li><li>Scroll to the bottom and find the <strong>CODES</strong> field.</li><li>Type or paste a code exactly as shown above.</li><li>Select <strong>REDEEM</strong> and check the confirmation message.</li></ol><blockquote><p>Use the copy button to avoid capitalization mistakes and accidental spaces.</p></blockquote>
+  <h2 id="troubleshooting">Code not working? Try this</h2><h3>Check the spelling</h3><p>Codes may be case-sensitive. <code>Release2026</code> is not necessarily the same as <code>release2026</code>. Remove any spaces before or after the text.</p><h3>Join a fresh server</h3><p>Older servers may not immediately receive a new patch. Leave the experience and start a fresh session before trying again.</p><h3>Check expiry and previous use</h3><p>Promotional codes can expire or have limited uses. A code is normally redeemable only once per account. There is no legitimate workaround for an expired or previously redeemed code.</p>
+  <h2 id="new-codes">Where to find new codes</h2><p>Follow official channels linked from the Roblox game page, especially around updates, fixes and player milestones. Our <a href="/en/discord/">Discord guide</a> explains how to avoid fake invitations, while the <a href="/en/trello/">Trello and updates guide</a> helps you organize your sources.</p><p>Use XP boosts while following your next quest route or developing your fruit mastery. Compare powers in our <a href="/en/tier-list/">Vox Seas fruit tier list</a>.</p>
+</GuideLayout>

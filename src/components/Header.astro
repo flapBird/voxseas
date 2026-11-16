@@ -1,0 +1,111 @@
+---
+import Icon from './Icon.astro';
+import { primaryNav, searchItems } from '../data/site';
+
+interface Props {
+  lang?: 'pt-BR' | 'en';
+  alternate?: string;
+}
+
+const { lang = 'pt-BR', alternate = '/en/codes/' } = Astro.props;
+const currentPath = Astro.url.pathname;
+const isEn = lang === 'en';
+const nav = isEn ? [
+  { label: 'Codes', href: '/en/codes/' },
+  { label: 'Tier list', href: '/en/tier-list/' },
+  { label: 'Discord', href: '/en/discord/' },
+  { label: 'Trello', href: '/en/trello/' },
+] : primaryNav;
+const homeHref = isEn ? '/en/codes/' : '/';
+const languageHref = isEn ? alternate : alternate;
+const languageLabel = isEn ? 'PT' : 'EN';
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href={homeHref} aria-label={isEn ? 'Vox Seas Guide home' : 'Vox Seas Brasil início'}>
+      <span class="brand-mark"><Icon name="compass" size={25} /></span>
+      <span class="brand-type">VOX SEAS<small>{isEn ? 'PLAYER GUIDE' : 'GUIA BRASILEIRO'}</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label={isEn ? 'Main navigation' : 'Navegação principal'}>
+      {nav.map((item) => <a href={item.href} class:list={[{ active: currentPath === item.href }]}>{item.label}</a>)}
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button search-trigger" type="button" aria-label={isEn ? 'Search guides' : 'Buscar guias'} title={isEn ? 'Search' : 'Buscar'}>
+        <Icon name="search" size={20} />
+      </button>
+      <a class="language-link" href={languageHref} aria-label={isEn ? 'View Portuguese version' : 'View English version'}><Icon name="globe" size={16} />{languageLabel}</a>
+      <a class="button button-small header-play" href={isEn ? '/en/codes/' : '/codigos/'}>{isEn ? 'View codes' : 'Ver códigos'}<Icon name="arrow" size={16} /></a>
+      <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={isEn ? 'Open menu' : 'Abrir menu'}><Icon name="menu" size={22} /></button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav shell" aria-label={isEn ? 'Mobile navigation' : 'Navegação móvel'} hidden>
+    {nav.map((item) => <a href={item.href} class:list={[{ active: currentPath === item.href }]}>{item.label}<Icon name="chevron" size={17} /></a>)}
+    {!isEn && <a href="/discord/">Discord<Icon name="chevron" size={17} /></a>}
+    <a href={languageHref}>{isEn ? 'Português (Brasil)' : 'English version'}<Icon name="globe" size={17} /></a>
+  </nav>
+</header>
+
+<dialog class="search-dialog" aria-label={isEn ? 'Search Vox Seas guides' : 'Buscar nos guias de Vox Seas'}>
+  <div class="search-box">
+    <div class="search-input-row"><Icon name="search" size={22} /><input type="search" class="search-input" placeholder={isEn ? 'Search codes, fruits, islands…' : 'Busque códigos, frutas, ilhas…'} autocomplete="off" /><button class="icon-button search-close" type="button" aria-label={isEn ? 'Close search' : 'Fechar busca'}><Icon name="close" size={20} /></button></div>
+    <div class="search-results" aria-live="polite"></div>
+    <p class="search-hint">{isEn ? 'Type to filter all guides' : 'Digite para filtrar todos os guias'}<kbd>ESC</kbd></p>
+  </div>
+</dialog>
+<script type="application/json" id="site-search-data" set:html={JSON.stringify(searchItems)}></script>
+
+<script>
+  interface SearchItem { title: string; description: string; href: string; lang: string; }
+  const menuButton = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const mobileNav = document.querySelector<HTMLElement>('#mobile-nav');
+  menuButton?.addEventListener('click', () => {
+    const open = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!open));
+    if (mobileNav) mobileNav.hidden = open;
+  });
+
+  const dialog = document.querySelector<HTMLDialogElement>('.search-dialog');
+  const input = document.querySelector<HTMLInputElement>('.search-input');
+  const results = document.querySelector<HTMLElement>('.search-results');
+  const items = JSON.parse(document.querySelector('#site-search-data')?.textContent || '[]') as SearchItem[];
+  const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+  function renderResults(query = '') {
+    if (!results) return;
+    results.replaceChildren();
+    const term = normalize(query.trim());
+    const matches = items.filter((item) => normalize(`${item.title} ${item.description}`).includes(term)).slice(0, 8);
+    if (!matches.length) {
+      const empty = document.createElement('p');
+      empty.className = 'search-empty';
+      empty.textContent = document.documentElement.lang === 'en' ? 'No guides found.' : 'Nenhum guia encontrado.';
+      results.append(empty);
+      return;
+    }
+    matches.forEach((item) => {
+      const link = document.createElement('a');
+      link.className = 'search-result';
+      link.href = item.href;
+      const text = document.createElement('span');
+      const title = document.createElement('strong');
+      title.textContent = item.title;
+      const description = document.createElement('small');
+      description.textContent = item.description;
+      const badge = document.createElement('span');
+      badge.className = 'search-lang';
+      badge.textContent = item.lang;
+      text.append(title, description);
+      link.append(text, badge);
+      results.append(link);
+    });
+  }
+
+  document.querySelectorAll('.search-trigger').forEach((button) => button.addEventListener('click', () => {
+    renderResults();
+    dialog?.showModal();
+    input?.focus();
+  }));
+  document.querySelector('.search-close')?.addEventListener('click', () => dialog?.close());
+  dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  input?.addEventListener('input', () => renderResults(input.value));
+</script>
