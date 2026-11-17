@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://voxseas.online/sitemap.xml
 Sitemap: https://voxseas.online/sitemap-index.xml
