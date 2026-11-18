@@ -1,57 +1,61 @@
-import { englishGuides, guides } from './guides';
-import { references } from './references';
+import { getGuideLinks, routes, type Locale } from './guides';
+import { getReferences } from './references';
 import { codes } from './site';
 import { entryId, normalizeSearch, searchTerms } from '../lib/search-text';
-
-type Locale = 'pt-BR' | 'en';
 
 interface SearchItem {
   title: string;
   description: string;
   href: string;
-  locale: Locale;
   label: string;
   keywords?: string;
 }
 
-const guideItems: SearchItem[] = [
-  ...guides.map((guide) => ({ ...guide, locale: 'pt-BR' as const, label: 'Guia' })),
-  ...englishGuides.map((guide) => ({ ...guide, locale: 'en' as const, label: 'Guide' })),
-];
+function makeIndex(lang: Locale) {
+  const isEn = lang === 'en';
+  const guides = getGuideLinks(lang).map((guide) => ({ ...guide, label: isEn ? 'Guide' : 'Guia' }));
+  const items: SearchItem[] = [
+    ...guides,
+    ...getReferences(lang).flatMap(({ path, kind, columns, rows }) => rows.map(([title, category, ...details]) => ({
+      title,
+      description: [category, ...details].join(' · '),
+      href: `${path}#${entryId(kind, title)}`,
+      label: columns[0],
+      keywords: columns.join(' '),
+    }))),
+    ...codes.map(({ code, reward, rewardEn }) => ({
+      title: code,
+      description: isEn ? rewardEn : reward,
+      href: `${routes.codes[lang]}#${entryId('code', code)}`,
+      label: isEn ? 'Code' : 'Código',
+    })),
+  ];
+  return {
+    suggestions: guides.slice(0, 6),
+    indexed: items.map((item) => ({
+      item,
+      title: normalizeSearch(item.title),
+      text: normalizeSearch(`Vox Seas ${item.title} ${item.description} ${item.label} ${item.keywords ?? ''}`),
+    })),
+  };
+}
 
-const items: SearchItem[] = [
-  ...guideItems,
-  ...Object.values(references).flatMap(({ path, kind, columns, rows }) => rows.map(([title, category, ...details]) => ({
-    title,
-    description: [category, ...details].join(' · '),
-    href: `${path}#${entryId(kind, title)}`,
-    locale: 'pt-BR' as const,
-    label: columns[0],
-    keywords: `${kind} ${columns.join(' ')}`,
-  }))),
-  ...codes.flatMap(({ code, reward, rewardEn }) => [
-    { title: code, description: reward, href: `/codigos/#${entryId('code', code)}`, locale: 'pt-BR' as const, label: 'Código' },
-    { title: code, description: rewardEn, href: `/en/codes/#${entryId('code', code)}`, locale: 'en' as const, label: 'Code' },
-  ]),
-];
+export function createSiteSearch(lang: Locale) {
+  const { suggestions, indexed } = makeIndex(lang);
 
-const indexed = items.map((item) => {
-  const title = normalizeSearch(item.title);
-  return { item, title, text: normalizeSearch(`Vox Seas ${item.title} ${item.description} ${item.label} ${item.keywords ?? ''}`) };
-});
+  return (query: string) => {
+    const terms = searchTerms(query);
+    if (!terms.length) return suggestions;
 
-export function searchSite(query: string, locale: Locale) {
-  const terms = searchTerms(query);
-  if (!terms.length) return guideItems.filter((item) => item.locale === locale).slice(0, 6);
+    const phrase = terms.join(' ');
+    const ranked = indexed.filter(({ text }) => terms.every((term) => text.includes(term))).map(({ item, title }) => {
+      let score = 0;
+      if (title === phrase) score = 30;
+      else if (title.startsWith(phrase)) score = 20;
+      else if (terms.every((term) => title.includes(term))) score = 10;
+      return { item, score };
+    });
 
-  const phrase = terms.join(' ');
-  const ranked = indexed.filter(({ text }) => terms.every((term) => text.includes(term))).map(({ item, title }) => {
-    let score = 0;
-    if (title === phrase) score = 30;
-    else if (title.startsWith(phrase)) score = 20;
-    else if (terms.every((term) => title.includes(term))) score = 10;
-    return { item, score: score + Number(item.locale === locale) };
-  });
-
-  return ranked.sort((a, b) => b.score - a.score).slice(0, 10).map(({ item }) => item);
+    return ranked.sort((a, b) => b.score - a.score).slice(0, 10).map(({ item }) => item);
+  };
 }

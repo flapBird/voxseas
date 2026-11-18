@@ -7,9 +7,9 @@ icon: 'sparkles'
 updated: 'November 16, 2026'
 quickAnswer: 'Poison, Orbit and Eclipse form the Legacy S tier, followed by Volcanic and Mirror in A. These rankings belong to the older version and should not be treated as freshly tested rankings for the current update.'
 related:
-  - /en/codes/
-  - /en/discord/
-  - /en/trello/
+  - /en/fruits/
+  - /en/fruit-gacha/
+  - /en/races/
 faqs:
   - question: 'What is the best fruit in Vox Seas?'
     answer: 'Poison leads the Legacy overall ranking, with Orbit and Eclipse also in S tier. For the current version, the best choice depends on retesting, your build and whether you focus on PvE or PvP.'

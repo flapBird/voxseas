@@ -1,8 +1,10 @@
 ---
 import Icon from './Icon.astro';
+import { routes, type Locale } from '../data/guides';
 
-interface Props { lang: 'pt-BR' | 'en'; }
-const isEn = Astro.props.lang === 'en';
+interface Props { lang: Locale; }
+const { lang } = Astro.props;
+const isEn = lang === 'en';
 const label = isEn ? 'Search the Vox Seas wiki' : 'Buscar na wiki de Vox Seas';
 ---
 <dialog id="site-search" class="search-dialog" aria-label={label}>
@@ -14,23 +16,23 @@ const label = isEn ? 'Search the Vox Seas wiki' : 'Buscar na wiki de Vox Seas';
   <p class="sr-only" role="status" data-search-status></p>
   <ul class="search-results" aria-label={isEn ? 'Search results' : 'Resultados da busca'}></ul>
   <div class="search-hint">
-    <a href={isEn ? '/en/' : '/guias/'}>{isEn ? 'All guides' : 'Todos os guias'} <Icon name="arrow" size={15} /></a>
+    <a href={routes.directory[lang]}>{isEn ? 'All guides' : 'Todos os guias'} <Icon name="arrow" size={15} /></a>
     <kbd>Esc</kbd>
   </div>
 </dialog>
 
 <script>
-  import { searchSite } from '../data/search-index';
+  import { createSiteSearch } from '../data/search-index';
 
   const dialog = document.querySelector<HTMLDialogElement>('#site-search')!;
   const input = dialog.querySelector<HTMLInputElement>('.search-input')!;
   const results = dialog.querySelector<HTMLUListElement>('.search-results')!;
   const status = dialog.querySelector<HTMLElement>('[data-search-status]')!;
-  const locale = document.documentElement.lang === 'en' ? 'en' : 'pt-BR';
-  const isEn = locale === 'en';
+  const isEn = document.documentElement.lang === 'en';
+  const searchSite = createSiteSearch(isEn ? 'en' : 'pt-BR');
 
   function renderResults() {
-    const matches = searchSite(input.value, locale);
+    const matches = searchSite(input.value);
     results.replaceChildren();
     const empty = isEn ? 'No results for this search.' : 'Nenhum resultado para esta busca.';
     status.textContent = matches.length ? (isEn ? `${matches.length} results` : `${matches.length} resultados`) : empty;
@@ -48,8 +50,6 @@ const label = isEn ? 'Search the Vox Seas wiki' : 'Buscar na wiki de Vox Seas';
       const link = document.createElement('a');
       link.className = 'search-result';
       link.href = item.href;
-      link.hreflang = item.locale;
-      link.lang = item.locale;
       const copy = document.createElement('span');
       const title = document.createElement('strong');
       title.textContent = item.title;
@@ -57,7 +57,7 @@ const label = isEn ? 'Search the Vox Seas wiki' : 'Buscar na wiki de Vox Seas';
       detail.textContent = item.description;
       const label = document.createElement('span');
       label.className = 'search-lang';
-      label.textContent = item.locale === locale ? item.label : `${item.label} · ${item.locale.toUpperCase()}`;
+      label.textContent = item.label;
       copy.append(title, detail);
       link.append(copy, label);
       row.append(link);

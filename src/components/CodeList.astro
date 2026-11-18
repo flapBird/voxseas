@@ -8,12 +8,17 @@ const { lang = 'pt-BR', limit } = Astro.props;
 const isEn = lang === 'en';
 const compact = limit !== undefined;
 const visibleCodes = compact ? codes.slice(0, limit) : codes;
+
+function displayReward(item: typeof codes[number]) {
+  if (compact) return isEn ? item.shortRewardEn ?? item.shortReward : item.shortReward;
+  return isEn ? item.rewardEn : item.reward;
+}
 ---
 <div class:list={['code-list', { 'code-list-compact': compact }]}>
   {visibleCodes.map((item) => (
     <article class="code-item" id={entryId('code', item.code)}>
       {!compact && <div class="code-status"><span></span>{isEn ? 'LISTED' : 'LISTADO'}</div>}
-      <div class="code-main"><code>{item.code}</code><p>{isEn ? item.rewardEn : compact ? item.shortReward : item.reward}</p></div>
+      <div class="code-main"><code>{item.code}</code><p>{displayReward(item)}</p></div>
       <button class="copy-button" type="button" data-copy={item.code} aria-label={`${isEn ? 'Copy code' : 'Copiar código'} ${item.code}`} hidden>
         <Icon class="copy-default" name="copy" size={17} /><Icon class="copy-success" name="check" size={17} /><span data-copy-label>{isEn ? 'Copy' : 'Copiar'}</span>
       </button>

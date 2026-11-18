@@ -1,0 +1,63 @@
+---
+import type { Locale } from '../data/guides';
+
+interface Props { lang: Locale; alternate?: string; }
+const { lang, alternate } = Astro.props;
+const isEn = lang === 'en';
+const other = isEn ? 'pt-BR' : 'en';
+---
+{alternate && (
+  <div class="language-suggestion" data-language-suggestion={other} lang={other} hidden>
+    <div class="shell language-suggestion-inner">
+      <p>{isEn ? 'Prefere ler em português?' : 'Prefer to read in English?'}</p>
+      <div class="language-suggestion-actions">
+        <a href={alternate} hreflang={other} data-language-choice={other}>{isEn ? 'Ler em português' : 'Read in English'}</a>
+        <button type="button" data-language-choice={lang}>{isEn ? 'Continuar em inglês' : 'Stay in Portuguese'}</button>
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  const key = 'voxseas-language';
+  const suggestion = document.querySelector<HTMLElement>('[data-language-suggestion]');
+  let chosenLanguage: string | null = null;
+
+  function suggestedLanguage() {
+    try {
+      const stored = localStorage.getItem(key);
+      if (stored === 'en' || stored === 'pt-BR') return stored;
+    } catch {
+      // The language links still work if storage is disabled.
+    }
+    if (chosenLanguage) return chosenLanguage;
+
+    const preferences = navigator.languages?.length ? navigator.languages : [navigator.language];
+    const firstSupported = preferences.map((language) => language.toLowerCase().split('-')[0]).find((language) => language === 'en' || language === 'pt');
+    return firstSupported === 'pt' ? 'pt-BR' : firstSupported;
+  }
+
+  function updateSuggestion() {
+    if (suggestion) suggestion.hidden = suggestedLanguage() !== suggestion.dataset.languageSuggestion;
+  }
+
+  document.addEventListener('click', (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !(event.target instanceof Element)) return;
+    const choice = event.target.closest<HTMLElement>('[data-language-choice]')?.dataset.languageChoice;
+    if (choice !== 'en' && choice !== 'pt-BR') return;
+
+    chosenLanguage = choice;
+    try {
+      localStorage.setItem(key, choice);
+    } catch {
+      // Keep the choice for the current page if storage is disabled.
+    }
+    if (choice === document.documentElement.lang) {
+      updateSuggestion();
+      if (event.detail === 0) document.querySelector<HTMLAnchorElement>('.language-link')?.focus();
+    }
+  });
+
+  updateSuggestion();
+  window.addEventListener('pageshow', updateSuggestion);
+</script>

@@ -1,53 +1,24 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { languageLinks, routes } from '../data/guides';
+import { site } from '../data/site';
 
-const site = 'https://voxseas.online';
-
-const bilingualPairs: Record<string, string> = {
-  'tier-list': '/en/tier-list/',
-  discord: '/en/discord/',
-  trello: '/en/trello/',
-};
-
-function urlEntry(path: string, alternates?: { ptBR: string; en: string }) {
-  const links = alternates
-    ? `<xhtml:link rel="alternate" hreflang="pt-BR" href="${site}${alternates.ptBR}"/><xhtml:link rel="alternate" hreflang="en" href="${site}${alternates.en}"/>`
-    : '';
-  return `<url><loc>${site}${path}</loc>${links}</url>`;
+function urlEntry(path: string) {
+  const links = languageLinks(path, site.url).map(({ lang, url }) => `<xhtml:link rel="alternate" hreflang="${lang}" href="${url}"/>`).join('');
+  return `<url><loc>${new URL(path, site.url).href}</loc>${links}</url>`;
 }
 
 export const GET: APIRoute = async () => {
-  const guides = await getCollection('guides');
-  const enGuides = await getCollection('en');
-  const directory = { ptBR: '/guias/', en: '/en/' };
-  const codes = { ptBR: '/codigos/', en: '/en/codes/' };
-
-  const entries = [
-    urlEntry('/'),
-    urlEntry(directory.ptBR, directory),
-    urlEntry(directory.en, directory),
-    ...guides
-      .map((entry) => `/${entry.id}/`)
-      .sort()
-      .map((path) => {
-        const slug = path.slice(1, -1);
-        const enPath = bilingualPairs[slug];
-        return urlEntry(path, enPath ? { ptBR: path, en: enPath } : undefined);
-      }),
-    urlEntry(codes.ptBR, codes),
-    urlEntry(codes.en, codes),
-    ...enGuides
-      .map((entry) => `/en/${entry.id}/`)
-      .sort()
-      .map((path) => {
-        const ptPath = Object.keys(bilingualPairs).find((key) => bilingualPairs[key] === path);
-        return urlEntry(path, ptPath ? { ptBR: `/${ptPath}/`, en: path } : undefined);
-      }),
-  ];
+  const [guides, englishGuides] = await Promise.all([getCollection('guides'), getCollection('en')]);
+  const paths = [
+    ...[routes.home, routes.directory, routes.codes].flatMap((pair) => Object.values(pair)),
+    ...guides.map(({ id }) => `/${id}/`),
+    ...englishGuides.map(({ id }) => `/en/${id}/`),
+  ].sort();
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${entries.map((entry) => `  ${entry}`).join('\n')}
+${paths.map((path) => `  ${urlEntry(path)}`).join('\n')}
 </urlset>
 `;
 

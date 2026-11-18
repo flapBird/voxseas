@@ -4,7 +4,7 @@ import type { ImageMetadata } from 'astro';
 import BaseLayout from './BaseLayout.astro';
 import GuideLinks from '../components/GuideLinks.astro';
 import Icon from '../components/Icon.astro';
-import { englishGuides, guides } from '../data/guides';
+import { getGuideLinks, routes, type Locale } from '../data/guides';
 import { site } from '../data/site';
 
 interface Heading { depth: number; slug: string; text: string; }
@@ -23,19 +23,18 @@ interface GuideData {
 interface Props {
   guide: GuideData;
   headings: Heading[];
-  lang?: 'pt-BR' | 'en';
+  lang?: Locale;
   path: string;
-  alternates?: { ptBR?: string; en?: string };
   art?: ImageMetadata;
   artAlt?: string;
   artCredit?: string;
   artSource?: string;
 }
-const { guide, headings, lang = 'pt-BR', path, alternates = {}, art, artAlt = '', artCredit = '', artSource } = Astro.props;
+const { guide, headings, lang = 'pt-BR', path, art, artAlt = '', artCredit = '', artSource } = Astro.props;
 const isEn = lang === 'en';
 const canonical = new URL(path, site.url).href;
-const directory = isEn ? '/en/' : '/guias/';
-const relatedPool = isEn ? englishGuides : guides;
+const directory = routes.directory[lang];
+const relatedPool = getGuideLinks(lang);
 const related = guide.related.flatMap((href) => relatedPool.filter((item) => item.href === href)).slice(0, 3);
 const fallbackRelated = relatedPool.filter((item) => item.href !== path && !related.includes(item)).slice(0, 3 - related.length);
 const relatedItems = [...related, ...fallbackRelated];
@@ -46,7 +45,7 @@ const articleSchema: Record<string, unknown> = {
   ...(art ? { image: new URL(art.src, site.url).href } : {}),
 };
 const breadcrumbs = [
-  ...(!isEn ? [{ title: 'Início', href: '/' }] : []),
+  { title: isEn ? 'Home' : 'Início', href: routes.home[lang] },
   { title: isEn ? 'Guides' : 'Guias', href: directory },
 ];
 const breadcrumbSchema = {
@@ -60,7 +59,7 @@ if (guide.faqs.length) schemas.push({ '@type': 'FAQPage', mainEntity: guide.faqs
 const toc = headings.filter((heading) => heading.depth === 2);
 const tocLabel = isEn ? 'On this page' : 'Neste guia';
 ---
-<BaseLayout title={guide.title} description={guide.description} lang={lang} path={path} updatedISO={updatedISO} alternates={alternates} schema={schemas} bodyClass="guide-page">
+<BaseLayout title={guide.title} description={guide.description} lang={lang} path={path} updatedISO={updatedISO} schema={schemas} bodyClass="guide-page">
   <div class="shell guide-shell">
     <nav class="breadcrumbs" aria-label={isEn ? 'Breadcrumb' : 'Trilha de navegação'}>
       {breadcrumbs.map((crumb) => <><a href={crumb.href}>{crumb.title}</a><Icon name="chevron" size={14} /></>)}
