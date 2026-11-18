@@ -1,0 +1,125 @@
+---
+import Icon from './Icon.astro';
+
+interface Props { lang: 'pt-BR' | 'en'; }
+const isEn = Astro.props.lang === 'en';
+const label = isEn ? 'Search the Vox Seas wiki' : 'Buscar na wiki de Vox Seas';
+---
+<dialog id="site-search" class="search-dialog" aria-label={label}>
+  <form class="search-input-row" role="search">
+    <Icon name="search" size={22} />
+    <input type="search" class="search-input" aria-label={label} placeholder={isEn ? 'Try Poison, Hango or Release2026' : 'Busque Poison, Hango ou Release2026'} autocomplete="off" />
+    <button class="icon-button search-close" type="button" aria-label={isEn ? 'Close search' : 'Fechar busca'}><Icon name="close" size={20} /></button>
+  </form>
+  <p class="sr-only" role="status" data-search-status></p>
+  <ul class="search-results" aria-label={isEn ? 'Search results' : 'Resultados da busca'}></ul>
+  <div class="search-hint">
+    <a href={isEn ? '/en/' : '/guias/'}>{isEn ? 'All guides' : 'Todos os guias'} <Icon name="arrow" size={15} /></a>
+    <kbd>Esc</kbd>
+  </div>
+</dialog>
+
+<script>
+  import { searchSite } from '../data/search-index';
+
+  const dialog = document.querySelector<HTMLDialogElement>('#site-search')!;
+  const input = dialog.querySelector<HTMLInputElement>('.search-input')!;
+  const results = dialog.querySelector<HTMLUListElement>('.search-results')!;
+  const status = dialog.querySelector<HTMLElement>('[data-search-status]')!;
+  const locale = document.documentElement.lang === 'en' ? 'en' : 'pt-BR';
+  const isEn = locale === 'en';
+
+  function renderResults() {
+    const matches = searchSite(input.value, locale);
+    results.replaceChildren();
+    const empty = isEn ? 'No results for this search.' : 'Nenhum resultado para esta busca.';
+    status.textContent = matches.length ? (isEn ? `${matches.length} results` : `${matches.length} resultados`) : empty;
+
+    if (!matches.length) {
+      const message = document.createElement('li');
+      message.className = 'search-empty';
+      message.textContent = empty;
+      results.append(message);
+      return;
+    }
+
+    for (const item of matches) {
+      const row = document.createElement('li');
+      const link = document.createElement('a');
+      link.className = 'search-result';
+      link.href = item.href;
+      link.hreflang = item.locale;
+      link.lang = item.locale;
+      const copy = document.createElement('span');
+      const title = document.createElement('strong');
+      title.textContent = item.title;
+      const detail = document.createElement('small');
+      detail.textContent = item.description;
+      const label = document.createElement('span');
+      label.className = 'search-lang';
+      label.textContent = item.locale === locale ? item.label : `${item.label} · ${item.locale.toUpperCase()}`;
+      copy.append(title, detail);
+      link.append(copy, label);
+      row.append(link);
+      results.append(row);
+    }
+  }
+
+  function openSearch() {
+    if (!dialog.open) {
+      input.value = '';
+      renderResults();
+      dialog.showModal();
+    }
+    input.focus();
+  }
+
+  if (typeof dialog.showModal === 'function') {
+    for (const trigger of document.querySelectorAll<HTMLAnchorElement>('[data-open-search]')) {
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.setAttribute('aria-controls', dialog.id);
+      trigger.addEventListener('click', (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        openSearch();
+      });
+    }
+
+    const shortcut = document.querySelector<HTMLElement>('[data-search-shortcut]');
+    if (shortcut && matchMedia('(pointer: fine)').matches) {
+      shortcut.textContent = navigator.platform.startsWith('Mac') ? '⌘ K' : 'Ctrl K';
+      shortcut.hidden = false;
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if ((event.metaKey || event.ctrlKey) && !event.altKey && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        openSearch();
+      }
+    });
+  }
+
+  input.addEventListener('input', renderResults);
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      results.querySelector('a')?.focus();
+    }
+  });
+  dialog.querySelector('form')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    results.querySelector('a')?.click();
+  });
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !event.isComposing) {
+      event.preventDefault();
+      event.stopPropagation();
+      dialog.close();
+    }
+  });
+  dialog.querySelector('.search-close')?.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    const plainClick = !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+    if (event.target === dialog || (plainClick && event.target instanceof Element && event.target.closest('a'))) dialog.close();
+  });
+</script>

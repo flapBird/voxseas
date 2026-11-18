@@ -1,0 +1,45 @@
+---
+import GuideLinks from './GuideLinks.astro';
+import Icon from './Icon.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { englishGuideGroups, englishGuides, guideGroups, guides } from '../data/guides';
+import { site } from '../data/site';
+
+interface Props { lang?: 'pt-BR' | 'en'; }
+const { lang = 'pt-BR' } = Astro.props;
+const isEn = lang === 'en';
+const items = isEn ? englishGuides : guides;
+const groups = isEn ? englishGuideGroups : guideGroups;
+const title = isEn ? 'Vox Seas Guides' : 'Guias de Vox Seas';
+const description = isEn
+  ? 'Find the English Vox Seas guides for codes, fruit rankings and community links.'
+  : 'Todos os guias de Vox Seas em português. Encontre o passo a passo inicial, códigos, frutas, ilhas, armas, raças e chefes.';
+const schema = [{
+  '@type': 'ItemList',
+  name: title,
+  itemListElement: items.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.title, url: new URL(item.href, site.url).href })),
+}];
+---
+<BaseLayout title={title} description={description} lang={lang} alternates={{ ptBR: '/guias/', en: '/en/' }} schema={schema}>
+  <div class="shell directory-shell">
+    {!isEn && (
+      <nav class="breadcrumbs" aria-label="Trilha de navegação">
+        <a href="/">Início</a><Icon name="chevron" size={14} /><span aria-current="page">Guias</span>
+      </nav>
+    )}
+    <header class="directory-header">
+      <h1>{title}</h1>
+      <p>{isEn ? 'Codes, fruit rankings and community resources.' : 'Da primeira missão à próxima Boss Room, encontre o guia da sua etapa no jogo.'}</p>
+    </header>
+    <nav class="directory-jump" aria-label={isEn ? 'Guide topics' : 'Categorias de guias'}>
+      {groups.map((group) => <a href={`#${group.id}`}>{group.title}</a>)}
+    </nav>
+    {groups.map((group) => (
+      <section class="directory-group" aria-labelledby={group.id}>
+        <h2 id={group.id}>{group.title}</h2>
+        <GuideLinks items={items.filter((item) => item.group === group.id)} />
+      </section>
+    ))}
+    {isEn && <a class="text-link" href="/guias/" hreflang="pt-BR">Browse the full Portuguese directory<Icon name="arrow" size={17} /></a>}
+  </div>
+</BaseLayout>

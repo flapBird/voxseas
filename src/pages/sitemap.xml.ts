@@ -19,9 +19,13 @@ function urlEntry(path: string, alternates?: { ptBR: string; en: string }) {
 export const GET: APIRoute = async () => {
   const guides = await getCollection('guides');
   const enGuides = await getCollection('en');
+  const directory = { ptBR: '/guias/', en: '/en/' };
+  const codes = { ptBR: '/codigos/', en: '/en/codes/' };
 
   const entries = [
     urlEntry('/'),
+    urlEntry(directory.ptBR, directory),
+    urlEntry(directory.en, directory),
     ...guides
       .map((entry) => `/${entry.id}/`)
       .sort()
@@ -30,13 +34,12 @@ export const GET: APIRoute = async () => {
         const enPath = bilingualPairs[slug];
         return urlEntry(path, enPath ? { ptBR: path, en: enPath } : undefined);
       }),
-    urlEntry('/codigos/'),
-    urlEntry('/en/codes/'),
+    urlEntry(codes.ptBR, codes),
+    urlEntry(codes.en, codes),
     ...enGuides
       .map((entry) => `/en/${entry.id}/`)
       .sort()
       .map((path) => {
-        const slug = path.slice(4, -1);
         const ptPath = Object.keys(bilingualPairs).find((key) => bilingualPairs[key] === path);
         return urlEntry(path, ptPath ? { ptBR: `/${ptPath}/`, en: path } : undefined);
       }),

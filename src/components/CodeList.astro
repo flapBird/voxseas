@@ -1,37 +1,58 @@
 ---
 import Icon from './Icon.astro';
 import { codes } from '../data/site';
+import { entryId } from '../lib/search-text';
 
 interface Props { lang?: 'pt-BR' | 'en'; limit?: number; }
 const { lang = 'pt-BR', limit } = Astro.props;
 const isEn = lang === 'en';
-const visibleCodes = typeof limit === 'number' ? codes.slice(0, limit) : codes;
+const compact = limit !== undefined;
+const visibleCodes = compact ? codes.slice(0, limit) : codes;
 ---
-<div class="code-list">
+<div class:list={['code-list', { 'code-list-compact': compact }]}>
   {visibleCodes.map((item) => (
-    <article class="code-item">
-      <div class="code-status"><span></span>{isEn ? 'LISTED' : 'LISTADO'}</div>
-      <div class="code-main"><code>{item.code}</code><p>{isEn ? item.rewardEn : item.reward}</p></div>
-      <button class="copy-button" type="button" data-copy={item.code} aria-label={`${isEn ? 'Copy code' : 'Copiar código'} ${item.code}`}><Icon name="copy" size={17} /><span data-copy-label>{isEn ? 'Copy' : 'Copiar'}</span></button>
+    <article class="code-item" id={entryId('code', item.code)}>
+      {!compact && <div class="code-status"><span></span>{isEn ? 'LISTED' : 'LISTADO'}</div>}
+      <div class="code-main"><code>{item.code}</code><p>{isEn ? item.rewardEn : compact ? item.shortReward : item.reward}</p></div>
+      <button class="copy-button" type="button" data-copy={item.code} aria-label={`${isEn ? 'Copy code' : 'Copiar código'} ${item.code}`} hidden>
+        <Icon class="copy-default" name="copy" size={17} /><Icon class="copy-success" name="check" size={17} /><span data-copy-label>{isEn ? 'Copy' : 'Copiar'}</span>
+      </button>
     </article>
   ))}
+  <p class="copy-feedback sr-only" role="status" data-copy-feedback></p>
 </div>
 <script>
-  document.addEventListener('click', async (event) => {
-    const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-copy]');
-    if (!button || !button.dataset.copy) return;
-    const label = button.querySelector<HTMLElement>('[data-copy-label]');
-    const original = label?.textContent || 'Copiar';
-    try {
-      await navigator.clipboard.writeText(button.dataset.copy);
-      button.classList.add('copied');
-      if (label) label.textContent = document.documentElement.lang === 'en' ? 'Copied' : 'Copiado';
-    } catch {
-      if (label) label.textContent = document.documentElement.lang === 'en' ? 'Copy failed' : 'Não foi possível';
-    }
-    window.setTimeout(() => {
-      button.classList.remove('copied');
-      if (label) label.textContent = original;
-    }, 1800);
-  });
+  const isEn = document.documentElement.lang === 'en';
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+    const item = button.closest('.code-item')!;
+    const label = button.querySelector<HTMLElement>('[data-copy-label]')!;
+    const feedback = button.closest('.code-list')!.querySelector<HTMLElement>('[data-copy-feedback]')!;
+    const code = button.dataset.copy!;
+    let timeout: number;
+    button.hidden = false;
+
+    button.addEventListener('click', async () => {
+      window.clearTimeout(timeout);
+      feedback.textContent = '';
+      try {
+        await navigator.clipboard.writeText(code);
+        button.classList.add('copied');
+        label.textContent = isEn ? 'Copied' : 'Copiado';
+        feedback.classList.add('sr-only');
+        feedback.textContent = isEn ? `${code} copied.` : `Código ${code} copiado.`;
+      } catch {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(item.querySelector('code')!);
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        feedback.classList.remove('sr-only');
+        feedback.textContent = isEn ? `Copy ${code} manually from the list.` : `Copie ${code} manualmente na lista.`;
+      }
+      timeout = window.setTimeout(() => {
+        button.classList.remove('copied');
+        label.textContent = isEn ? 'Copy' : 'Copiar';
+      }, 1800);
+    });
+  }
 </script>

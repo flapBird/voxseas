@@ -19,16 +19,6 @@ faqs:
     answer: 'A chance listada para Wyrmborn é 10% por reroll pago com Crystals. Manborn, Wildborn, Tideborn e Angelborn aparecem com 22,5% cada.'
 ---
 
-## Todas as raças de Vox Seas
-
-| Raça | Raridade | Chance por reroll | Bônus e função |
-|---|---|---|---|
-| Manborn | Rara | 22,5% | Sem bônus passivo; base neutra |
-| Wildborn | Épica | 22,5% | Bônus não confirmado na fonte consultada |
-| Tideborn | Épica | 22,5% | Respiração e visão subaquática; nado 25% mais rápido |
-| Angelborn | Épica | 22,5% | +5% de regeneração de vida |
-| Wyrmborn | Lendária | 10% | +5% de dano e +5% de vida máxima |
-
 As porcentagens se referem a **cada reroll pago com Crystals**. Os 67,5% do grupo Epic são divididos igualmente entre Angelborn, Tideborn e Wildborn; não é a chance de obter uma épica específica.
 
 Não preenchemos o bônus de Wildborn com suposições. Se a descrição aparecer no seu jogo, use o texto da interface atual como referência principal.

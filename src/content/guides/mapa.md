@@ -19,24 +19,6 @@ faqs:
     answer: 'Em Harbor Island e dentro do restaurante de Wandering Bastille, um grande navio que você aborda pela lateral.'
 ---
 
-## Todas as ilhas e destinos
-
-| Destino | Tipo | Principal motivo para visitar |
-|---|---|---|
-| Solmar Island | Inicial | Hango, primeiras missões, loja de barcos e armas |
-| Forbidden Island | História | Acampamento de caçadores, Witch House e Veyrn |
-| Circus Town | Cidade | Mayor House, circo e Arms Dealer |
-| Valoria Island | Tesouro | Praia, penhascos e objetivo de The Powder Keg |
-| Harbor Island | Serviços | Old Explorer, hotel, venda de peixes e Vox Gacha |
-| Golden Dunes | Deserto | Cidade, canais e Black Market |
-| Frost Island | Neve | Vila, farol, castelo e Royal Forge |
-| Wandering Bastille | Navio | Restaurante, Vox Gacha, Ignacio e spawn |
-| Skull Island | Treino | Askard e treinamento de Vox |
-| Shark Park | Treino | Nalu, Old Kaito e Ryusui Ken |
-| Rustfall | Treino | Ansel e Electro |
-| Heavenstep Mountain | Montanha | Sete checkpoints e treinamento Heavenstep |
-| Port Island | Loja | Gun Dealer, Musket e Slingshot |
-
 ## Como usar o Navigator’s Map
 
 Equipe o **Navigator's Map** e abra **WORLD**. O marcador verde **YOU** indica sua posição. Compare o nome do destino com a bússola e ajuste a direção do barco.

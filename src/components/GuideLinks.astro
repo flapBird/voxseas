@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+import type { GuideLink } from '../data/guides';
+
+interface Props { items: GuideLink[]; }
+const { items } = Astro.props;
+---
+<ul class="guide-links">
+  {items.map((guide) => (
+    <li>
+      <a class="guide-link" href={guide.href} data-accent={guide.accent}>
+        <span class="guide-link-icon"><Icon name={guide.icon} size={23} /></span>
+        <span class="guide-link-copy">
+          <strong>{guide.title}</strong>
+          <small>{guide.description}</small>
+        </span>
+        <Icon name="chevron" size={17} />
+      </a>
+    </li>
+  ))}
+</ul>

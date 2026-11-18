@@ -1,0 +1,109 @@
+---
+import Icon from './Icon.astro';
+import type { ReferenceCollection } from '../data/references';
+import { entryId } from '../lib/search-text';
+
+interface Props { reference: ReferenceCollection; }
+const { heading, kind, columns, rows, intro, placeholder } = Astro.props.reference;
+const categories = [...new Set(rows.map(([, category]) => category))];
+---
+<section class="reference-table" data-reference>
+  <h2 id={heading.slug}>{heading.text}</h2>
+  {intro && <p>{intro}</p>}
+  <div class="reference-controls" data-reference-controls hidden>
+    <div class="reference-field">
+      <label for={`${kind}-query`}>Buscar na lista</label>
+      <div class="reference-input">
+        <Icon name="search" size={18} />
+        <input id={`${kind}-query`} type="search" placeholder={placeholder} autocomplete="off" data-reference-query />
+      </div>
+    </div>
+    <div class="reference-field">
+      <label for={`${kind}-category`}>{columns[1]}</label>
+      <select id={`${kind}-category`} data-reference-category>
+        <option value="">Todas as opções</option>
+        {categories.map((category) => <option value={category}>{category}</option>)}
+      </select>
+    </div>
+    <button class="reference-clear" type="button" data-reference-clear>Limpar filtros</button>
+  </div>
+  <p class="reference-count" role="status" data-reference-count hidden></p>
+  <p class="reference-empty" data-reference-empty hidden>Tente outro termo ou ajuste o filtro.</p>
+  <div class="reference-results" data-reference-results>
+    <table role="table" aria-labelledby={heading.slug}>
+      <thead role="rowgroup"><tr role="row">{columns.map((column) => <th role="columnheader" scope="col">{column}</th>)}</tr></thead>
+      <tbody role="rowgroup">
+        {rows.map(([name, category, ...details]) => (
+          <tr id={entryId(kind, name)} role="row" data-category={category}>
+            <th role="rowheader" scope="row" data-reference-value>{name}</th>
+            {[category, ...details].map((detail, index) => (
+              <td role="cell">
+                <span class="reference-cell-label" aria-hidden="true">{columns[index + 1]}</span>
+                <span data-reference-value class:list={[{ 'reference-tag': index === 0 }]}>{detail}</span>
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+  import { normalizeSearch, searchTerms } from '../lib/search-text';
+
+  for (const reference of document.querySelectorAll<HTMLElement>('[data-reference]')) {
+    const input = reference.querySelector<HTMLInputElement>('[data-reference-query]')!;
+    const category = reference.querySelector<HTMLSelectElement>('[data-reference-category]')!;
+    const count = reference.querySelector<HTMLElement>('[data-reference-count]')!;
+    const empty = reference.querySelector<HTMLElement>('[data-reference-empty]')!;
+    const results = reference.querySelector<HTMLElement>('[data-reference-results]')!;
+    const rows = [...reference.querySelectorAll<HTMLTableRowElement>('tbody tr')].map((row) => ({
+      row,
+      text: normalizeSearch([...row.querySelectorAll('[data-reference-value]')].map((cell) => cell.textContent).join(' ')),
+    }));
+
+    function filterRows() {
+      const terms = searchTerms(input.value);
+      let visible = 0;
+      for (const { row, text } of rows) {
+        row.hidden = Boolean(category.value && row.dataset.category !== category.value) || !terms.every((term) => text.includes(term));
+        visible += Number(!row.hidden);
+      }
+      count.textContent = `${visible} de ${rows.length} ${rows.length === 1 ? 'entrada' : 'entradas'}`;
+      results.hidden = visible === 0;
+      empty.hidden = visible > 0;
+    }
+
+    function clearFilters() {
+      input.value = '';
+      category.value = '';
+      filterRows();
+    }
+
+    reference.querySelector<HTMLElement>('[data-reference-controls]')!.hidden = false;
+    count.hidden = false;
+    filterRows();
+    input.addEventListener('input', filterRows);
+    category.addEventListener('change', filterRows);
+    reference.querySelector('[data-reference-clear]')?.addEventListener('click', () => {
+      clearFilters();
+      input.focus();
+    });
+
+    function revealTarget() {
+      const match = rows.find(({ row }) => `#${row.id}` === location.hash);
+      if (match?.row.hidden) {
+        clearFilters();
+        match.row.scrollIntoView();
+      }
+    }
+
+    window.addEventListener('hashchange', revealTarget);
+    document.addEventListener('click', (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target instanceof Element && event.target.closest<HTMLAnchorElement>('a[href]');
+      if (link && link.href === location.href) revealTarget();
+    });
+  }
+</script>

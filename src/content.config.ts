@@ -1,5 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const guideSchema = z.object({
   title: z.string(),
@@ -8,6 +9,7 @@ const guideSchema = z.object({
   eyebrow: z.string(),
   icon: z.string(),
   updated: z.string(),
+  updatedISO: z.iso.date().optional(),
   quickAnswer: z.string(),
   related: z.array(z.string()).default([]),
   faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),

@@ -9,6 +9,7 @@ interface Props {
   description: string;
   lang?: 'pt-BR' | 'en';
   path?: string;
+  updatedISO?: string;
   alternates?: { ptBR?: string; en?: string };
   schema?: Record<string, unknown>[];
   bodyClass?: string;
@@ -19,6 +20,7 @@ const {
   description,
   lang = 'pt-BR',
   path = Astro.url.pathname,
+  updatedISO = site.updatedISO,
   alternates = {},
   schema = [],
   bodyClass = '',
@@ -28,7 +30,7 @@ const isEn = lang === 'en';
 const graph = [
   { '@type': 'Organization', '@id': `${site.url}/#organization`, name: site.name, url: `${site.url}/`, logo: { '@type': 'ImageObject', url: `${site.url}/favicon.svg` } },
   { '@type': 'WebSite', '@id': `${site.url}/#website`, url: `${site.url}/`, name: site.name, inLanguage: 'pt-BR', publisher: { '@id': `${site.url}/#organization` } },
-  { '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: lang, isPartOf: { '@id': `${site.url}/#website` }, dateModified: site.updatedISO },
+  { '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: lang, isPartOf: { '@id': `${site.url}/#website` }, dateModified: updatedISO },
   { '@type': 'VideoGame', '@id': `${site.url}/#game`, name: 'Vox Seas', url: site.robloxUrl, gamePlatform: 'Roblox', genre: ['RPG', 'Adventure'] },
   ...schema,
 ];

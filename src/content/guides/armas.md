@@ -19,17 +19,6 @@ faqs:
     answer: 'Slingshot custa 10.000 e oferece disparos rápidos e Prison Shot para prender alvos. Musket custa 25.000 e permite carregar Overcharge Strike para um tiro mais forte.'
 ---
 
-## Armas compradas com ouro
-
-| Arma | Tipo | Preço | Onde conseguir | Habilidade Z |
-|---|---|---|---|---|
-| Katana | Espada | 300 Ouro | Weapon Dealer, área inicial | Air Wave |
-| Flintlock | Arma de fogo | 750 Ouro | Weapon Dealer, área inicial | Multiple Shots |
-| Cutlass | Espada | Grátis na história | Hango ou Arms Dealer | Moon Fang Slash |
-| Dual Katana | Espada dupla | 5.000 Ouro | Arms Dealer, Circus Town | Phantom Slash |
-| Slingshot | Arma de fogo | 10.000 Ouro | Gun Dealer, Port Island | Prison Shot |
-| Musket | Arma de fogo | 25.000 Ouro | Gun Dealer, Port Island | Overcharge Strike |
-
 Os vendedores ficam em destinos diferentes. Consulte o [mapa de ilhas](/mapa/) antes de sair navegando e confira o preço na interface atual antes de confirmar a compra.
 
 ## Melhor arma para o começo

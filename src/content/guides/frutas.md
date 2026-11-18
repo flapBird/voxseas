@@ -19,32 +19,6 @@ faqs:
     answer: 'Fruitdex é o catálogo de descobertas e maestria das frutas. Entradas desbloqueadas podem oferecer uma ação Claim com recompensa; Thorn, por exemplo, aparece com 250 de ouro.'
 ---
 
-## Lista de frutas e poderes
-
-A tabela mantém nomes em inglês para você encontrar cada item no menu do jogo. “Legacy” indica informação ligada à versão anterior; raridade não é uma garantia de desempenho na atualização atual.
-
-| Fruta | Raridade | Poder principal |
-|---|---|---|
-| Thorn | Comum | Espinhos corporais e ataques em área |
-| Weight | Comum | Controle do peso corporal |
-| Boom | Rara | Explosões |
-| Haze | Rara | Transformação em fumaça e empurrões |
-| Protection | Rara | Barreiras, paredes e espinhos |
-| Divide | Épica | Divisões invisíveis |
-| Blaze | Épica | Fogo, dano em área e movimentação |
-| Dust | Épica | Controle de areia |
-| Volcanic | Épica | Lava e dano contínuo |
-| Vulcanic | Épica | Lava e calor intenso |
-| Shine | Lendária | Luz, ataques rápidos e voo |
-| Frozen | Lendária | Gelo e ataques em área |
-| Eclipse | Lendária | Escuridão e puxões |
-| Mirror | Lendária | Reflexos, stuns e viagem |
-| Orbit | Lendária | Gravidade, controle e voo |
-| Zen | Mítica | Transformação divina |
-| Poison | Mítica | Veneno e transformação Venom King |
-| Elastic | Legacy | Elasticidade; opção de PvP inicial |
-| Kilo | Legacy | Fruta básica da versão anterior |
-
 **Volcanic e Vulcanic** aparecem como entradas separadas na fonte consultada. Mantivemos as duas grafias em vez de presumir que são o mesmo item; confira o nome exibido no seu menu.
 
 ## Como conseguir frutas
