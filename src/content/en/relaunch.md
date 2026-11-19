@@ -36,7 +36,7 @@ New players can follow the [beginner route](/en/beginner/) and look up destinati
 
 ## What changed with the relaunch?
 
-Older guides can use different names, prices or balance values. Our [fruit tier list](/en/tier-list/) labels historical rankings as Legacy. The [Fruitdex](/en/fruits/) marks Elastic and Kilo as Legacy entries and lists Volcanic and Vulcanic separately as documented.
+Older guides can use different names, prices or balance values. Our [fruit tier list](/en/tier-list/) labels historical rankings as Legacy. The [Fruitdex](/en/fruits/) follows the Dawn of Legends Trello, which includes Elastic and calls the magma fruit Vulcanic. Poison and Kilo remain in the Legacy archive.
 
 ## Logia in the November balance update
 

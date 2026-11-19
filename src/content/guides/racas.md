@@ -1,11 +1,12 @@
 ---
 title: 'Vox Seas Raças: Bônus, Chances e Como Dar Reroll'
 shortTitle: 'Raças'
-description: 'Compare Manborn, Wildborn, Tideborn, Angelborn e Wyrmborn, veja os bônus de cada raça e aprenda como dar reroll em Vox Seas.'
+description: 'Compare Manborn, Beastborn, Tideborn, Angelborn e Wyrmborn. Veja habilidades passivas, chances e como dar reroll em Vox Seas.'
 eyebrow: 'GUIA DE RAÇAS'
 icon: 'users'
-updated: '16 de novembro de 2026'
-quickAnswer: 'Wyrmborn oferece +5% de dano e +5% de vida máxima; Angelborn dá +5% de regeneração; Tideborn melhora a exploração subaquática. O reroll fica em Character e custa 500 Crystals ou 50 Robux.'
+updated: '20 de novembro de 2026'
+updatedISO: '2026-11-20'
+quickAnswer: 'Wyrmborn aumenta dano e vida máxima em 5%. Beastborn melhora a velocidade de movimento e a regeneração de stamina. O reroll fica no menu Character.'
 related:
   - /tier-list/
   - /frutas/
@@ -16,12 +17,10 @@ faqs:
   - question: 'Quanto custa o reroll de raça?'
     answer: 'O menu consultado mostra 500 Crystals ou 50 Robux por reroll. Confira o valor na tela antes de confirmar, pois preços podem mudar.'
   - question: 'Qual é a chance de Wyrmborn?'
-    answer: 'A chance listada para Wyrmborn é 10% por reroll pago com Crystals. Manborn, Wildborn, Tideborn e Angelborn aparecem com 22,5% cada.'
+    answer: 'A chance documentada para Wyrmborn é 10% por reroll pago com Crystals. As outras quatro raças aparecem com 22,5% cada. Confira as chances exibidas antes de pagar.'
 ---
 
-As porcentagens se referem a **cada reroll pago com Crystals**. Os 67,5% do grupo Epic são divididos igualmente entre Angelborn, Tideborn e Wildborn; não é a chance de obter uma épica específica.
-
-Não preenchemos o bônus de Wildborn com suposições. Se a descrição aparecer no seu jogo, use o texto da interface atual como referência principal.
+As porcentagens vêm de uma tela de reroll pago com Crystals. Naquela tela, os 67,5% do grupo Epic correspondem à soma das chances de Angelborn, Tideborn e Beastborn. Para os efeitos passivos, usamos os cartões de raças do [Trello oficial](https://trello.com/b/qGXeMuSt/vox-seas-official-trello).
 
 ## Como dar reroll de raça
 
@@ -51,9 +50,13 @@ A regeneração de vida **5% maior** ajuda em sequências de combate e reduz a p
 
 Tideborn permite respirar debaixo d'água, melhora a visão e aumenta em **25%** a velocidade de nado subaquático. Para rotas com travessias e investigação aquática, essa utilidade pode ser mais valiosa do que um pequeno aumento de dano.
 
-### Manborn e Wildborn
+### Beastborn para percursos terrestres
 
-Manborn não oferece bônus passivo na referência consultada, funcionando como ponto de partida neutro. Wildborn tem chance e raridade confirmadas, mas seu efeito precisa ser conferido na interface atual.
+[Beastborn](/racas/beastborn/) aumenta a velocidade de movimento em **10%** e a regeneração de stamina em **5%**. Compare o tempo entre inimigos e o tempo de recuperação em uma rota que você repete.
+
+### Manborn
+
+Manborn é a opção de referência sem bônus passivo no quadro do jogo.
 
 ## Raça, fruta e build precisam trabalhar juntas
 

@@ -4,7 +4,8 @@ shortTitle: 'How to roll fruits'
 description: 'Find the Vox Gacha in Vox Seas, check the price and cooldown, and compare rolling with buying a fruit from the shop.'
 eyebrow: 'VOX GACHA'
 icon: 'compass'
-updated: 'November 16, 2026'
+updated: 'November 20, 2026'
+updatedISO: '2026-11-20'
 quickAnswer: 'Talk to the Vox Gacha on Harbor Island or in the Wandering Bastille restaurant. Choose Spin the roulette, check the price and select Roll. You receive a random fruit and can roll again after two hours.'
 related:
   - /en/fruits/
@@ -16,14 +17,14 @@ faqs:
   - question: 'How long is the Vox Gacha cooldown?'
     answer: 'The documented cooldown is two hours. Check the timer shown by the NPC before planning another roll.'
   - question: 'Does Roblox Premium discount the gacha?'
-    answer: 'In the documented example, an active Premium subscription reduced a quote of 5,000 Gold by 25% to 3,750 Gold.'
+    answer: 'An earlier screen showed a 25% discount for an active Premium subscription. The current card documents base pricing. Check the NPC quote for any discount.'
 ---
 
 ## Where to roll fruits
 
 | Location | How to get there |
 |---|---|
-| Harbor Island | Find the Vox Gacha NPC on the island |
+| [Harbor Island](/en/map/harbor-island/) | Find the Vox Gacha NPC on the island |
 | Wandering Bastille | Enter the restaurant through the ground-floor double doors |
 
 Wandering Bastille is a restaurant ship. Approach by boat, board from the side and head inside. Use the [island directory](/en/map/#islands-and-destinations) to look up services at both locations.
@@ -40,7 +41,7 @@ Each attempt gives a random fruit. The NPC applies a **two-hour cooldown** after
 
 ## How much does a roll cost?
 
-Check the quote in the dialogue. In one documented example, a roll cost **5,000 Gold**, or **3,750 Gold** with an active Roblox Premium subscription and the displayed **25% discount**. Use the amount shown in your server before confirming.
+The [official Vox Gacha card](https://trello.com/c/NnwXCuLr) gives a base price of **30 Gold per character level**, with a **3,000 Gold minimum**. That is 3,000 Gold through level 100, 6,000 at level 200 and 15,000 at level 500. Use the NPC’s quote to check the final price.
 
 ## When to use the shop
 

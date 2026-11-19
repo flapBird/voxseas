@@ -23,6 +23,8 @@ faqs:
 
 Esta tabela organiza o ranking público da **versão Legacy**. Ela não é apresentada como um ranking testado da atualização de novembro de 2026. Essa distinção importa: uma fruta que dominava o PvP antes pode ter mudado após ajustes de dano, energia ou cooldown.
 
+Para as habilidades de Dawn of Legends, consulte as fichas atuais de [Orbit](/frutas/orbit/) e [Vulcanic](/frutas/vulcanic/). O nome Volcanic da tabela é a grafia da referência Legacy.
+
 | Tier | Frutas | Leitura do ranking |
 |---|---|---|
 | S | Poison, Orbit, Eclipse | Opções mais completas, com dano em área e controle |

@@ -1,0 +1,34 @@
+---
+import CodeList from './CodeList.astro';
+import { archivedCodes, archivedCodesUrl, codes, codesReviewedISO, formatCodesReview, officialCodesUrl, reportedCodesUrl } from '../data/codes';
+import type { Locale } from '../data/guides';
+import { entryId } from '../lib/search-text';
+
+interface Props { lang?: Locale; }
+const { lang = 'pt-BR' } = Astro.props;
+const isEn = lang === 'en';
+---
+<section id={isEn ? 'working-codes' : 'codigos-ativos'} class="codes-page-panel">
+  <div class="codes-panel-heading">
+    <div>
+      <p class="eyebrow">{isEn ? 'Reviewed on' : 'Revisado em'} <time datetime={codesReviewedISO}>{formatCodesReview(lang)}</time></p>
+      <h2>{isEn ? 'Codes to try' : 'Códigos para resgatar'}</h2>
+    </div>
+    <span>{codes.length} {isEn ? 'CODES' : 'CÓDIGOS'}</span>
+  </div>
+  <CodeList lang={lang} />
+  <p class="code-disclaimer">
+    {isEn
+      ? 'We checked public sources. Live redemption and the current status of PatchGold are pending confirmation.'
+      : 'A revisão foi feita em fontes públicas. O resgate no jogo e o status atual de PatchGold aguardam confirmação.'}
+  </p>
+  <p class="code-disclaimer code-sources">
+    <a href={officialCodesUrl}>{isEn ? 'Official Trello code card' : 'Cartão de códigos no Trello oficial'}</a>
+    <a href={reportedCodesUrl}>{isEn ? 'Recent code reports' : 'Relatos de códigos recentes'}</a>
+  </p>
+</section>
+<h2 id={isEn ? 'archived-codes' : 'codigos-antigos'}>{isEn ? 'Archived codes' : 'Códigos antigos'}</h2>
+<p>{isEn ? 'These codes date back to the 2025 release and are listed as inactive.' : 'Estes códigos são da versão de 2025 e constam como inativos.'} <a href={archivedCodesUrl}>{isEn ? 'Archive source' : 'Fonte do arquivo'}</a></p>
+<ul>
+  {archivedCodes.map((code) => <li id={entryId('code', code)}><code>{code}</code></li>)}
+</ul>

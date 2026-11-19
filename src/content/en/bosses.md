@@ -21,7 +21,7 @@ faqs:
 
 ## How Boss Rooms work
 
-The **Rovan** and **Veyrn** challenge rooms accept **1 to 8 players**. To open a Normal room, each player needs **level 100** and the host needs a **Normal Key**.
+The [Rovan](/en/bosses/rovan/) and [Veyrn](/en/bosses/veyrn/) challenge rooms accept **1 to 8 players**. To open a Normal room, each player needs **level 100** and the host needs a **Normal Key**.
 
 Meet at the **Room Keeper** and follow these steps.
 
@@ -38,18 +38,6 @@ The host’s entry item is consumed. Players defeated during the encounter wait 
 On Normal difficulty, the **Outlaw’s Skull Pendant**, **Belt** and **Warboots** recipes each have a listed **16.48%** drop chance.
 
 Take these recipes to the **Forge** to craft the accessories. Check the materials you still need before repeating the room. For Veyrn and other bosses, use the reward screen to check what your current room can drop.
-
-## Story and world bosses
-
-| Boss | Documented encounter health | Notes |
-|---|---|---|
-| Giant Boar | 6,468 HP | World encounter with variable health |
-| Ice Golem | 6,351 HP | Leads to the Royal Chest Key on Frost Island |
-| Yeti | 6,351 HP | The story lets you collect a blood sample after the fight |
-| Ice King | 5,959 HP | Part of the Frost Island storyline |
-| Soul Flame | 5,744 HP | Documented world encounter |
-
-Difficulty, scaling and patches can change the health shown in your encounter.
 
 ## Frost Island story rewards
 

@@ -5,7 +5,8 @@ import Icon from './Icon.astro';
 import CodeList from './CodeList.astro';
 import GuideLinks from './GuideLinks.astro';
 import { getGuideLinks, routes, type Locale } from '../data/guides';
-import { codes, site } from '../data/site';
+import { site } from '../data/site';
+import { codes, codesReviewedISO, formatCodesReview } from '../data/codes';
 import heroArt from '../assets/art/hero-official-v1.png';
 import mapArt from '../assets/art/world-map-gameplay-v1.webp';
 
@@ -83,7 +84,7 @@ const schema = [
     <section class="home-codes" id={isEn ? 'codes' : 'codigos'} aria-labelledby="home-codes-title">
       <div class="home-codes-heading">
         <span class="guide-link-icon"><Icon name="ticket" size={22} /></span>
-        <div><h2 id="home-codes-title">{isEn ? 'Vox Seas codes' : 'Códigos de Vox Seas'}</h2><p>{isEn ? 'List reviewed on' : 'Lista revisada em'} <time datetime={site.updatedISO}>{isEn ? site.updatedEn : site.updated}</time></p></div>
+        <div><h2 id="home-codes-title">{isEn ? 'Vox Seas codes' : 'Códigos de Vox Seas'}</h2><p>{isEn ? 'List reviewed on' : 'Lista revisada em'} <time datetime={codesReviewedISO}>{formatCodesReview(lang)}</time></p></div>
       </div>
       <CodeList lang={lang} limit={3} />
       <div class="home-codes-links">
@@ -97,7 +98,7 @@ const schema = [
     <div class="shell start-guide">
       <figure class="start-art">
         <Picture src={mapArt} alt={isEn ? 'World map showing Solmar and nearby islands' : 'Mapa-múndi do jogo com Solmar e as ilhas próximas'} widths={[480, 768]} sizes="(max-width: 800px) calc(100vw - 30px), 45vw" formats={['avif', 'webp']} fallbackFormat="webp" quality={80} loading="lazy" decoding="async" />
-        <figcaption><a href="https://vox-seas-wiki.wiki/islands/" target="_blank" rel="noopener noreferrer">{isEn ? 'Gameplay screenshot · Vox Seas Wiki' : 'Captura de gameplay · Vox Seas Wiki'} <Icon name="external" size={13} /></a></figcaption>
+        <figcaption>{isEn ? 'Gameplay screenshot · Vox Seas Wiki' : 'Captura de gameplay · Vox Seas Wiki'}</figcaption>
       </figure>
       <div>
         <h2 id="start-title">{isEn ? 'Your first voyage' : 'Sua primeira viagem'}</h2>

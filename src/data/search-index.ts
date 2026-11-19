@@ -1,6 +1,6 @@
 import { getGuideLinks, routes, type Locale } from './guides';
 import { getReferences } from './references';
-import { codes } from './site';
+import { codes } from './codes';
 import { entryId, normalizeSearch, searchTerms } from '../lib/search-text';
 
 interface SearchItem {
@@ -16,16 +16,16 @@ function makeIndex(lang: Locale) {
   const guides = getGuideLinks(lang).map((guide) => ({ ...guide, label: isEn ? 'Guide' : 'Guia' }));
   const items: SearchItem[] = [
     ...guides,
-    ...getReferences(lang).flatMap(({ path, kind, columns, rows }) => rows.map(([title, category, ...details]) => ({
-      title,
+    ...getReferences(lang).flatMap(({ path, kind, columns, rows }) => rows.map(({ name, category, details, href, aliases }) => ({
+      title: name,
       description: [category, ...details].join(' · '),
-      href: `${path}#${entryId(kind, title)}`,
+      href: href ?? `${path}#${entryId(kind, name)}`,
       label: columns[0],
-      keywords: columns.join(' '),
+      keywords: [...columns, ...aliases].join(' '),
     }))),
-    ...codes.map(({ code, reward, rewardEn }) => ({
+    ...codes.map(({ code, reward }) => ({
       title: code,
-      description: isEn ? rewardEn : reward,
+      description: reward[lang],
       href: `${routes.codes[lang]}#${entryId('code', code)}`,
       label: isEn ? 'Code' : 'Código',
     })),

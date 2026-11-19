@@ -1,10 +1,11 @@
 ---
 title: 'Vox Seas Races – Bonuses, Odds and How to Reroll'
 shortTitle: 'Races'
-description: 'Compare the abilities and reroll odds of Manborn, Wildborn, Tideborn, Angelborn and Wyrmborn in Vox Seas.'
+description: 'Compare the abilities and reroll odds of Manborn, Beastborn, Tideborn, Angelborn and Wyrmborn in Vox Seas.'
 eyebrow: 'RACE GUIDE'
 icon: 'users'
-updated: 'November 16, 2026'
+updated: 'November 20, 2026'
+updatedISO: '2026-11-20'
 quickAnswer: 'Wyrmborn gives +5% damage and +5% maximum health. Angelborn improves health regeneration by 5%, and Tideborn helps underwater exploration. Reroll in Character for 500 Crystals or 50 Robux.'
 related:
   - /en/tier-list/
@@ -16,10 +17,10 @@ faqs:
   - question: 'How much does a race reroll cost?'
     answer: 'The documented menu shows 500 Crystals or 50 Robux per reroll. Check the current price before confirming.'
   - question: 'What are the odds of Wyrmborn?'
-    answer: 'The listed chance is 10% per Crystal reroll. Manborn, Wildborn, Tideborn and Angelborn each have a listed 22.5% chance.'
+    answer: 'The documented Crystal reroll screen lists a 10% chance for Wyrmborn and 22.5% for each of the other four races. Check the odds displayed in your game before paying.'
 ---
 
-The percentages refer to **each reroll paid for with Crystals**. The **67.5%** total for Epic is split equally between Wildborn, Tideborn and Angelborn. Look for Wildborn’s passive in the in-game description if it becomes available.
+The percentages come from a documented Crystal reroll screen. The total for the Epic group was **67.5%**, split equally across Beastborn, Tideborn, and Angelborn. The passive effects are from the race cards on the [official Trello](https://trello.com/b/qGXeMuSt/vox-seas-official-trello).
 
 ## How to reroll your race
 
@@ -45,9 +46,13 @@ Each reroll is random. For early quests, you can make progress with your current
 
 **Tideborn** allows underwater breathing, improves underwater vision and increases underwater swimming speed by **25%**. The passive is useful on diving and exploration routes.
 
-### Manborn and Wildborn
+### Beastborn for moving between objectives
 
-**Manborn** has no passive bonus in the documented menu. **Wildborn** has a listed rarity and reroll chance. Check the in-game description for details on the bonus.
+[Beastborn](/en/races/beastborn/) gives **10% faster movement** and **5% faster stamina regeneration**. Time a route you run regularly to see how much travel and recovery the passive saves.
+
+### Manborn
+
+The game’s board lists Manborn without a passive bonus.
 
 ## How race fits into a build
 

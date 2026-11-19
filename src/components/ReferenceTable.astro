@@ -8,7 +8,7 @@ interface Props { reference: ReferenceCollection; lang: Locale; }
 const { reference, lang } = Astro.props;
 const { heading, kind, columns, rows, intro, placeholder } = reference;
 const isEn = lang === 'en';
-const categories = [...new Set(rows.map(([, category]) => category))];
+const categories = [...new Set(rows.map(({ category }) => category))];
 ---
 <section class="reference-table" data-reference>
   <h2 id={heading.slug}>{heading.text}</h2>
@@ -36,9 +36,12 @@ const categories = [...new Set(rows.map(([, category]) => category))];
     <table role="table" aria-labelledby={heading.slug}>
       <thead role="rowgroup"><tr role="row">{columns.map((column) => <th role="columnheader" scope="col">{column}</th>)}</tr></thead>
       <tbody role="rowgroup">
-        {rows.map(([name, category, ...details]) => (
-          <tr id={entryId(kind, name)} role="row" data-category={category}>
-            <th role="rowheader" scope="row" data-reference-value>{name}</th>
+        {rows.map(({ name, category, details, href, aliases }) => (
+          <tr id={entryId(kind, name)} role="row" data-category={category} data-aliases={aliases.join(' ')}>
+            <th role="rowheader" scope="row" data-reference-value>
+              {aliases.map((alias) => <span id={entryId(kind, alias)}></span>)}
+              {href ? <a href={href}>{name}</a> : name}
+            </th>
             {[category, ...details].map((detail, index) => (
               <td role="cell">
                 <span class="reference-cell-label" aria-hidden="true">{columns[index + 1]}</span>
@@ -62,10 +65,10 @@ const categories = [...new Set(rows.map(([, category]) => category))];
     const count = reference.querySelector<HTMLElement>('[data-reference-count]')!;
     const empty = reference.querySelector<HTMLElement>('[data-reference-empty]')!;
     const results = reference.querySelector<HTMLElement>('[data-reference-results]')!;
-    const rows = [...reference.querySelectorAll<HTMLTableRowElement>('tbody tr')].map((row) => ({
-      row,
-      text: normalizeSearch([...row.querySelectorAll('[data-reference-value]')].map((cell) => cell.textContent).join(' ')),
-    }));
+    const rows = Array.from(reference.querySelectorAll<HTMLTableRowElement>('tbody tr'), (row) => {
+      const values = Array.from(row.querySelectorAll('[data-reference-value]'), (cell) => cell.textContent);
+      return { row, text: normalizeSearch([row.dataset.aliases, ...values].join(' ')) };
+    });
 
     function filterRows() {
       const terms = searchTerms(input.value);
@@ -96,10 +99,10 @@ const categories = [...new Set(rows.map(([, category]) => category))];
     });
 
     function revealTarget() {
-      const match = rows.find(({ row }) => `#${row.id}` === location.hash);
-      if (match?.row.hidden) {
+      const target = document.getElementById(location.hash.slice(1))?.closest('tr');
+      if (target?.hidden && reference.contains(target)) {
         clearFilters();
-        match.row.scrollIntoView();
+        target.scrollIntoView();
       }
     }
 

@@ -10,6 +10,7 @@ const guideSchema = z.object({
   icon: z.string(),
   updated: z.string(),
   updatedISO: z.iso.date().optional(),
+  art: z.object({ alt: z.string(), source: z.url() }).optional(),
   quickAnswer: z.string(),
   related: z.array(z.string()).default([]),
   faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),

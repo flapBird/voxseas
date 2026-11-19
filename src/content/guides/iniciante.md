@@ -47,4 +47,4 @@ Use **Sword** se o Cutlass for sua principal fonte de dano. Ao passar a lutar co
 
 Use o Cutlass nas primeiras missões para ganhar maestria. Antes de gastar ouro em outra espada, compare os [preços e marcos de habilidade](/armas/#como-evoluir-a-maestria). A história leva de volta a Hango e segue para Circus Town. Quando for encarar uma sala em grupo, confira antes os [requisitos do chefe](/chefes/#como-funcionam-as-boss-rooms).
 
-Consulte a [página oficial do jogo no Roblox](https://www.roblox.com/games/104067066727140) e as [capturas da rota de missões](https://vox-seas-wiki.wiki/quests/) para comparar os nomes que aparecem na interface.
+Consulte a [página oficial do jogo no Roblox](https://www.roblox.com/games/104067066727140) e o [mapa de ilhas](/mapa/) para planejar a próxima viagem.

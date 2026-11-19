@@ -44,7 +44,7 @@ O principal cuidado para quem consulta guias é a **versão**. Conteúdos public
 
 A [tier list](/tier-list/) deste site mantém a etiqueta Legacy porque o ranking de Poison, Orbit, Eclipse e demais frutas pertence àquela referência. Não o apresentamos como um teste da versão atual.
 
-Já o [Fruitdex](/frutas/) separa entradas atuais de Elastic e Kilo, identificadas como Legacy. Também mantemos Volcanic e Vulcanic como grafias separadas até que a interface confirme a relação entre elas.
+O [Fruitdex](/frutas/) usa os nomes do Trello de Dawn of Legends. Elastic consta no catálogo atual, a fruta de magma aparece como Vulcanic e os registros de Poison e Kilo estão marcados como Legacy.
 
 ## Exemplo de mecânica atualizada: Logia
 

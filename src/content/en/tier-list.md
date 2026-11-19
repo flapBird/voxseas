@@ -23,6 +23,8 @@ faqs:
 
 This table preserves the **Legacy** ranking as a historical reference. It is not labeled as a hands-on ranking for the November 2026 release. That distinction matters whenever balance patches change damage, energy costs or cooldowns.
 
+For Dawn of Legends moves, see the current [Orbit](/en/fruits/orbit/) and [Vulcanic](/en/fruits/vulcanic/) guides. The Legacy table uses the older spelling Volcanic.
+
 | Tier | Fruits | Practical role |
 |---|---|---|
 | S | Poison, Orbit, Eclipse | Strong overall area damage and control |

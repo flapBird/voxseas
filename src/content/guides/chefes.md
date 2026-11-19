@@ -21,7 +21,7 @@ faqs:
 
 ## Como funcionam as Boss Rooms
 
-As salas de desafio de **Rovan** e **Veyrn** aceitam grupos de **1 a 8 jogadores**. Para abrir uma sala no Normal, todos os participantes precisam estar no **nível 100** e o anfitrião deve ter a **Normal Key**.
+As salas de desafio de [Rovan](/chefes/rovan/) e [Veyrn](/chefes/veyrn/) aceitam grupos de **1 a 8 jogadores**. Para abrir uma sala no Normal, todos os participantes precisam estar no **nível 100** e o anfitrião deve ter a **Normal Key**.
 
 Reúna o grupo perto do **Room Keeper** e siga este caminho:
 
@@ -40,18 +40,6 @@ Na dificuldade Normal, Rovan oferece as receitas de **Outlaw's Skull Pendant**, 
 Essas recompensas ensinam receitas da **Forge**; não são os acessórios prontos. Antes de repetir a sala, verifique se você já aprendeu a receita e quais materiais ainda precisa para fabricar o item.
 
 Para Veyrn e outros chefes, não publicamos chances de drop sem confirmação. Use a tela de recompensas da sala como referência para a versão atual.
-
-## Chefes encontrados na história e no mundo
-
-| Chefe | Vida no encontro documentado | Observação |
-|---|---|---|
-| Giant Boar | 6.468 HP | Encontro de mundo; valores podem variar |
-| Ice Golem | 6.351 HP | Relacionado à Royal Chest Key na rota de Frost Island |
-| Yeti | 6.351 HP | Após a luta, a história permite coletar uma amostra de sangue |
-| Ice King | 5.959 HP | Parte da sequência de Frost Island |
-| Soul Flame | 5.744 HP | Encontro catalogado na versão consultada |
-
-HP de encontro não é uma regra fixa para todas as dificuldades. Salas, escalonamento e atualizações podem alterar os valores.
 
 ## Drops ligados à história de Frost Island
 

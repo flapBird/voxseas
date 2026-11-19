@@ -35,7 +35,7 @@ Comece com Hango na **Elder's House** e avance os preparativos do festival. A in
 
 ### 2. Forbidden Island
 
-A área reúne o acampamento de Darius, a Witch House de Morgana e confrontos da história, incluindo Veyrn. Defina spawn no acampamento antes de fazer viagens repetidas entre os objetivos.
+[Forbidden Island](/mapa/forbidden-island/) reúne o acampamento de Darius, a Witch House de Morgana e confrontos da história, incluindo Veyrn. Defina spawn no acampamento antes de fazer viagens repetidas entre os objetivos.
 
 ### 3. Circus Town e Port Island
 
@@ -43,7 +43,7 @@ Em Circus Town, o Arms Dealer vende Dual Katana e Cutlass. Em Port Island, suba 
 
 ### 4. Harbor Island e Wandering Bastille
 
-Os dois destinos oferecem Vox Gacha. Harbor também tem Old Explorer e venda de peixes; Wandering Bastille é um navio-restaurante com spawn e NPCs no deck. O [tutorial de frutas](/como-girar-fruta/) explica o caminho e o cooldown.
+Os dois destinos oferecem Vox Gacha. [Harbor Island](/mapa/harbor-island/) também tem um Weapons Dealer, Old Explorer e venda de peixes. Wandering Bastille é um navio-restaurante com spawn e NPCs no deck. O [tutorial de frutas](/como-girar-fruta/) explica o caminho e o cooldown.
 
 ## Destinos de treinamento
 

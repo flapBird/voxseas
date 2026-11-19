@@ -47,4 +47,4 @@ Use **Sword** when the Cutlass is your main source of damage. Use **Vox Fruit** 
 
 Use the Cutlass in early quests to build mastery. Before spending Gold on another sword, compare [weapon prices and mastery milestones](/en/weapons/#how-to-build-weapon-mastery). The story returns to Hango before continuing to Circus Town. When you are ready for a group encounter, check the [Boss Room requirements](/en/bosses/#how-boss-rooms-work).
 
-Check the [official Roblox game page](https://www.roblox.com/games/104067066727140) and the [quest walkthrough screenshots](https://vox-seas-wiki.wiki/quests/) to match the names shown in the interface.
+Use the [official Roblox game page](https://www.roblox.com/games/104067066727140) and the [island map](/en/map/) to plan your next voyage.

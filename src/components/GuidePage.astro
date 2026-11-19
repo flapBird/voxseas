@@ -1,8 +1,9 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
+import type { ImageMetadata } from 'astro';
 import GuideLayout from '../layouts/GuideLayout.astro';
 import ReferenceTable from './ReferenceTable.astro';
-import { routes, type Locale } from '../data/guides';
+import { entityRoute, routes, type Locale } from '../data/guides';
 import { getReferences } from '../data/references';
 import fruitsArt from '../assets/art/fruitdex-gameplay-v1.webp';
 import weaponsArt from '../assets/art/cutlass-gameplay-v1.webp';
@@ -24,7 +25,6 @@ const artwork = [
       'pt-BR': 'Interface do Fruitdex com a fruta Thorn e o progresso de descoberta em Vox Seas',
       en: 'The Fruitdex showing Thorn and discovery progress in Vox Seas',
     },
-    source: 'https://vox-seas-wiki.wiki/fruit-mechanics/',
   },
   {
     route: routes.weapons,
@@ -33,7 +33,6 @@ const artwork = [
       'pt-BR': 'Hango oferece a opção Take the Cutlass durante o diálogo em Vox Seas',
       en: 'Hango offers the Take the Cutlass dialogue option in Vox Seas',
     },
-    source: 'https://vox-seas-wiki.wiki/early-weapons/',
   },
   {
     route: routes.map,
@@ -42,7 +41,6 @@ const artwork = [
       'pt-BR': 'Mapa-múndi de Vox Seas com Solmar Island, Harbor Island e Shark Park',
       en: 'Vox Seas world map showing Solmar Island, Harbor Island and Shark Park',
     },
-    source: 'https://vox-seas-wiki.wiki/islands/',
   },
   {
     route: routes.bosses,
@@ -51,13 +49,18 @@ const artwork = [
       'pt-BR': 'Batalha contra Captain Jester em uma arena com interface de combate de Vox Seas',
       en: 'An arena battle against Captain Jester in Vox Seas',
     },
-    source: 'https://vox-seas-wiki.wiki/bosses/',
   },
 ];
-const art = artwork.find(({ route }) => route[lang] === path);
-const credit = lang === 'en' ? 'Gameplay screenshot · Vox Seas Wiki' : 'Captura de gameplay · Vox Seas Wiki';
+const guideArt = artwork.find(({ route }) => route[lang] === path);
+const entity = entityRoute(path);
+const profileImages = import.meta.glob<ImageMetadata>('../assets/entities/*.webp', { eager: true, import: 'default' });
+const profileImage = entity && profileImages[`../assets/entities/${entity.slug}.webp`];
+const source = entry.data.art?.source;
+const credit = source
+  ? (lang === 'en' ? 'Image from the official Vox Seas Trello' : 'Imagem do Trello oficial de Vox Seas')
+  : (lang === 'en' ? 'Gameplay screenshot · Vox Seas Wiki' : 'Captura de gameplay · Vox Seas Wiki');
 ---
-<GuideLayout guide={entry.data} headings={sections} lang={lang} path={path} art={art?.src} artAlt={art?.alt[lang]} artCredit={credit} artSource={art?.source}>
+<GuideLayout guide={entry.data} headings={sections} lang={lang} path={path} art={profileImage ?? guideArt?.src} artAlt={entry.data.art?.alt ?? guideArt?.alt[lang]} artCredit={credit} artSource={source}>
   <Fragment slot="reference">{reference && <ReferenceTable reference={reference} lang={lang} />}</Fragment>
   <Content />
 </GuideLayout>

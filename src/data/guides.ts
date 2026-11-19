@@ -17,8 +17,26 @@ export const routes = {
   trello: { 'pt-BR': '/trello/', en: '/en/trello/' },
 };
 
+const entityParents = ['fruits', 'map', 'bosses', 'races'] as const;
+
+export function entityRoute(path: string) {
+  for (const parent of entityParents) {
+    const prefix = Object.values(routes[parent]).find((base) => path.startsWith(base));
+    if (!prefix) continue;
+    const match = path.slice(prefix.length).match(/^([a-z0-9]+(?:-[a-z0-9]+)*)\/$/);
+    if (match) return { parent, slug: match[1] };
+  }
+}
+
 export function localizedRoutes(path: string) {
-  return Object.values(routes).find((pair) => pair['pt-BR'] === path || pair.en === path);
+  const guide = Object.values(routes).find((pair) => pair['pt-BR'] === path || pair.en === path);
+  if (guide) return guide;
+
+  const entity = entityRoute(path);
+  if (entity) {
+    const pair = routes[entity.parent];
+    return { 'pt-BR': `${pair['pt-BR']}${entity.slug}/`, en: `${pair.en}${entity.slug}/` };
+  }
 }
 
 export function languageLinks(path: string, origin: string) {

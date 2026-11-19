@@ -35,7 +35,7 @@ Start with Hango at the **Elder’s House** and complete the festival preparatio
 
 ### 2. Forbidden Island
 
-You will find Darius’s camp, Morgana’s Witch House and story encounters such as Veyrn. Set your spawn at the camp before making repeated trips between objectives.
+[Forbidden Island](/en/map/forbidden-island/) has Darius’s camp, Morgana’s Witch House and story encounters such as Veyrn. Set your spawn at the camp before making repeated trips between objectives.
 
 ### 3. Circus Town and Port Island
 
@@ -43,7 +43,7 @@ The Arms Dealer in Circus Town sells the Dual Katana and Cutlass. On Port Island
 
 ### 4. Harbor Island and Wandering Bastille
 
-Both locations have Vox Gacha. Harbor Island also has the Old Explorer and a place to sell fish. Wandering Bastille is a restaurant ship with a spawn point and NPCs on deck. See directions and cooldown details in the [fruit rolling guide](/en/fruit-gacha/).
+Both locations have Vox Gacha. [Harbor Island](/en/map/harbor-island/) also has a Weapons Dealer, the Old Explorer and a place to sell fish. Wandering Bastille is a restaurant ship with a spawn point and NPCs on deck. See directions and cooldown details in the [fruit rolling guide](/en/fruit-gacha/).
 
 ## Training locations
 

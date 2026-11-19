@@ -4,22 +4,23 @@ shortTitle: 'Frutas'
 description: 'Consulte as frutas de Vox Seas, suas raridades e poderes, e aprenda como conseguir, equipar e evoluir cada habilidade.'
 eyebrow: 'FRUITDEX COMPLETO'
 icon: 'fruit'
-updated: '16 de novembro de 2026'
-quickAnswer: 'O diretório reúne 19 entradas atuais e Legacy. Para conseguir uma fruta, avance na história de Hango, compre uma oferta na loja ou use o Vox Gacha em Harbor Island ou Wandering Bastille.'
+updated: '20 de novembro de 2026'
+updatedISO: '2026-11-20'
+quickAnswer: 'Consulte as 16 frutas documentadas em Dawn of Legends e duas entradas Legacy. As rotas de obtenção incluem a história de Hango, ofertas da loja e o Vox Gacha.'
 related:
   - /tier-list/
   - /como-girar-fruta/
   - /chefes/
 faqs:
   - question: 'Quantas frutas existem em Vox Seas?'
-    answer: 'O diretório consultado reúne 19 entradas, incluindo Elastic e Kilo como registros Legacy. A quantidade disponível na sua loja pode variar conforme a versão do jogo.'
+    answer: 'O Trello oficial documenta 16 frutas para Dawn of Legends, incluindo Elastic e Vulcanic. Poison e Kilo aparecem no arquivo Legacy deste diretório.'
   - question: 'Como equipar uma fruta em Vox Seas?'
     answer: 'Depois de adquirir a fruta, selecione-a no inventário ou na opção Equip do card correspondente. Ao comprar outra fruta temporária, leia o aviso de substituição antes de confirmar.'
   - question: 'O que é Fruitdex?'
     answer: 'Fruitdex é o catálogo de descobertas e maestria das frutas. Entradas desbloqueadas podem oferecer uma ação Claim com recompensa; Thorn, por exemplo, aparece com 250 de ouro.'
 ---
 
-**Volcanic e Vulcanic** aparecem como entradas separadas na fonte consultada. Mantivemos as duas grafias em vez de presumir que são o mesmo item; confira o nome exibido no seu menu.
+A fruta de magma aparece como [Vulcanic](/frutas/vulcanic/) no [Trello oficial de Vox Seas](https://trello.com/b/qGXeMuSt/vox-seas-official-trello). Use esse nome ao consultar a lista atual. Em rankings antigos, você também pode encontrar a grafia **Volcanic**.
 
 ## Como conseguir frutas
 
@@ -35,15 +36,15 @@ As versões permanentes aparecem em **Perm Fruits** e usam Robux. Um card perman
 
 ### Use o Vox Gacha
 
-O NPC fica em **Harbor Island** e dentro do restaurante de **Wandering Bastille**. O resultado é aleatório e existe um cooldown de duas horas entre giros. O [guia para girar frutas](/como-girar-fruta/) detalha custo, localização e a diferença entre gacha e loja.
+O NPC fica em [Harbor Island](/mapa/harbor-island/) e dentro do restaurante de **Wandering Bastille**. O resultado é aleatório e existe um cooldown de duas horas entre giros. O [guia para girar frutas](/como-girar-fruta/) detalha custo, localização e a diferença entre gacha e loja.
 
 ## Como usar e evoluir uma fruta
 
-Depois de equipar, coloque a habilidade na barra e use os comandos indicados no jogo. Em Thorn, por exemplo, **Z** ativa Thorn Slash; **Thorn Rain** aparece com maestria 10 e **Thorn Bullet** com maestria 15.
+Depois de equipar, coloque a habilidade na barra e use os comandos indicados no jogo. Consulte [as quatro habilidades de Thorn](/frutas/thorn/) para ver um exemplo completo de progressão de maestria.
 
 Ataque inimigos com a fruta para desenvolver sua maestria. Em grupos, reúna os alvos antes de gastar as habilidades e mude de posição enquanto os cooldowns recarregam.
 
-Abra o **Fruitdex** pela barra lateral para acompanhar descobertas e maestria. A ação **Claim** em uma entrada desbloqueada entrega a recompensa indicada; o exemplo público de Thorn mostra 250 de ouro.
+Abra o **Fruitdex** pela barra lateral para acompanhar descobertas e maestria. Use **Claim** em uma entrada desbloqueada para recolher a recompensa exibida. Uma captura de Thorn mostra 250 de ouro.
 
 ## Como funciona a proteção Logia
 
