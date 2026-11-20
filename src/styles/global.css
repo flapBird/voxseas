@@ -64,12 +64,13 @@ a:hover .text-link svg, .text-link:hover svg { transform: translateX(4px); }
 .brand-mark { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 11px; background: var(--lime); color: var(--ink); }
 .brand-type { font-family: var(--display); font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; line-height: 1.05; }
 .brand-type small { display: block; margin-top: 5px; color: #8ea9ad; font-family: var(--body); font-size: 0.52rem; font-weight: 700; letter-spacing: 0.16em; }
-.desktop-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
-.desktop-nav a { position: relative; padding: 27px 13px 25px; color: #b7c8ca; font-size: 0.78rem; font-weight: 700; }
-.desktop-nav a::after { position: absolute; right: 13px; bottom: -1px; left: 13px; height: 2px; background: var(--lime); content: ''; opacity: 0; }
+.desktop-nav { --nav-link-padding: 13px; display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.desktop-nav a { position: relative; padding: 27px var(--nav-link-padding) 25px; color: #b7c8ca; font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
+.desktop-nav a::after { position: absolute; inset-inline: var(--nav-link-padding); bottom: -1px; height: 2px; background: var(--lime); content: ''; opacity: 0; }
 .desktop-nav a:hover, .desktop-nav a[aria-current] { color: var(--white); }
 .desktop-nav a[aria-current]::after { opacity: 1; }
 .header-actions { display: flex; align-items: center; gap: 9px; }
+.header-play { white-space: nowrap; }
 .language-link { display: inline-flex; align-items: center; gap: 5px; height: 38px; padding: 0 9px; color: #c1d0d2; font-size: 0.72rem; font-weight: 800; }
 .language-link:hover { color: var(--lime); }
 .language-code { display: none; }
@@ -327,6 +328,10 @@ td { padding: 17px 18px; border-bottom: 1px solid var(--line); vertical-align: t
 .reference-cell-label { display: none; }
 .reference-tag { display: inline-block; padding: 2px 8px; border-radius: 5px; background: #e8efdf; color: #325443; font-size: 0.76rem; font-weight: 800; }
 [data-category='Legacy'] .reference-tag { background: #ede6dc; color: #675638; }
+
+@media (max-width: 1150px) {
+  .desktop-nav { --nav-link-padding: 9px; }
+}
 
 @media (max-width: 1050px) {
   .desktop-nav, .header-play { display: none; }

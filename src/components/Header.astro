@@ -18,19 +18,23 @@ const other = isEn ? 'pt-BR' : 'en';
 const languageHref = alternate ?? routes.home[other];
 const languageName = isEn ? 'Português' : 'English';
 const languageLabel = isEn ? 'Ler em português' : 'Read in English';
-const nav = [
+const mainNav = [
   { title: isEn ? 'Guides' : 'Guias', href: guidesHref },
   { title: isEn ? 'Codes' : 'Códigos', href: routes.codes[lang] },
   { title: isEn ? 'Fruits' : 'Frutas', href: routes.fruits[lang] },
   { title: isEn ? 'Map' : 'Mapa', href: routes.map[lang] },
   { title: isEn ? 'Bosses' : 'Chefes', href: routes.bosses[lang] },
 ];
-const mobileNav = [
-  ...nav,
-  { title: isEn ? 'Beginner guide' : 'Guia para iniciantes', href: routes.beginner[lang] },
+const hubNav = [
   { title: 'Tier list', href: routes.tiers[lang] },
   { title: isEn ? 'Weapons' : 'Armas', href: routes.weapons[lang] },
   { title: isEn ? 'Races' : 'Raças', href: routes.races[lang] },
+];
+const desktopNav = [...mainNav, ...hubNav];
+const mobileNav = [
+  ...mainNav,
+  { title: isEn ? 'Beginner guide' : 'Guia para iniciantes', href: routes.beginner[lang] },
+  ...hubNav,
 ];
 const searchLabel = isEn ? 'Search the wiki' : 'Buscar na wiki';
 const menuLabel = isEn ? 'Site menu' : 'Menu do site';
@@ -42,7 +46,7 @@ const menuLabel = isEn ? 'Site menu' : 'Menu do site';
       <span class="brand-type">VOX SEAS<small>{isEn ? 'PLAYER GUIDE' : 'GUIA BRASILEIRO'}</small></span>
     </a>
     <nav class="desktop-nav" aria-label={isEn ? 'Main navigation' : 'Navegação principal'}>
-      {nav.map((item) => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.title}</a>)}
+      {desktopNav.map((item) => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.title}</a>)}
     </nav>
     <div class="header-actions">
       <a class="icon-button search-trigger" href={guidesHref} data-open-search aria-label={searchLabel} title={searchLabel}>
