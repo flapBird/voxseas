@@ -2,8 +2,8 @@ import type { Locale } from './guides';
 
 export const codeReviews = [
   {
-    checkedAt: '2026-11-21T02:45-03:00',
-    note: { 'pt-BR': 'Lista conferida. Nenhum código novo encontrado.', en: 'List checked. No new codes found.' },
+    checkedAt: '2026-11-21T08:47-03:00',
+    note: { 'pt-BR': 'Adicionado 175KLIKES: 1 token de reset de atributos.', en: 'Added 175KLIKES for 1 Stat Reset Token.' },
   },
 ];
 export const codesReviewedISO = codeReviews[0].checkedAt;
@@ -26,6 +26,7 @@ export function formatCodesReview(lang: Locale, includeDay = true) {
 }
 
 export const codes = [
+  { code: '175KLIKES', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token' }, source: 'reported' },
   { code: 'THX200K', reward: { 'pt-BR': '2× XP por 30 minutos', en: 'Double XP for 30 minutes' }, source: 'reported' },
   { code: 'Patch2Reset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token' }, source: 'reported' },
   { code: 'Release2026', reward: { 'pt-BR': '2× XP por 1 hora', en: 'Double XP for 1 hour' }, compactReward: { 'pt-BR': '2× XP', en: '2× XP' }, source: 'trello' },
