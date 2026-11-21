@@ -1,7 +1,6 @@
 ---
 import Icon from './Icon.astro';
 import { getGuideLinks, routes, type Locale } from '../data/guides';
-import { site } from '../data/site';
 
 interface Props { lang?: Locale; alternate?: string; }
 const { lang = 'pt-BR', alternate } = Astro.props;
@@ -19,7 +18,6 @@ const columns = [
     <div class="footer-brand">
       <a class="brand" href={routes.home[lang]}><span class="brand-mark"><Icon name="compass" size={25} /></span><span class="brand-type">VOX SEAS<small>{isEn ? 'PLAYER GUIDE' : 'GUIA BRASILEIRO'}</small></span></a>
       <p>{isEn ? 'A practical, independent guide to help you enjoy Vox Seas without getting lost at sea.' : 'Um guia prático e independente para você aproveitar Vox Seas sem se perder no mar.'}</p>
-      <a class="footer-roblox" href={site.robloxUrl} target="_blank" rel="noopener noreferrer">Roblox<Icon name="external" size={15} /></a>
     </div>
     {columns.map((column) => (
       <div class="footer-column">

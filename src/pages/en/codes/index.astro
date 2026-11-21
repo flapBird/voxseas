@@ -2,7 +2,6 @@
 import GuideLayout from '../../../layouts/GuideLayout.astro';
 import CodeSections from '../../../components/CodeSections.astro';
 import { codesReviewedISO, formatCodesReview } from '../../../data/codes';
-import { site } from '../../../data/site';
 
 const guide = {
   title: `Vox Seas Codes (${formatCodesReview('en', false)})`,
@@ -12,7 +11,6 @@ const guide = {
   icon: 'ticket',
   updated: formatCodesReview('en'),
   updatedISO: codesReviewedISO,
-  quickAnswer: 'Redeem codes in Menu → Settings → CODES. The official Trello lists XP, Gold and stat reset rewards. Recent reports also list THX200K and Patch2Reset.',
   related: ['/en/beginner/', '/en/tier-list/', '/en/discord/'],
   faqs: [
     { question: 'Why is my Vox Seas code not working?', answer: 'Check capitalization, remove extra spaces and join a fresh server. If the game reports that the code expired or was already redeemed, it cannot be used again on the same account.' },
@@ -22,15 +20,18 @@ const guide = {
 };
 const headings = [
   { depth: 2, slug: 'working-codes', text: 'Codes to try' },
-  { depth: 2, slug: 'archived-codes', text: 'Archived codes' },
+  { depth: 2, slug: 'code-history', text: 'Update log' },
+  { depth: 2, slug: 'archived-codes', text: 'Expired codes' },
   { depth: 2, slug: 'redeem', text: 'How to redeem codes' },
   { depth: 2, slug: 'troubleshooting', text: 'Code not working?' },
   { depth: 2, slug: 'new-codes', text: 'Where to find new codes' },
+  { depth: 2, slug: 'after-redeeming', text: 'After redeeming a code' },
 ];
 ---
 <GuideLayout guide={guide} headings={headings} lang="en" path="/en/codes/">
   <CodeSections lang="en" />
-  <h2 id="redeem">How to redeem Vox Seas codes</h2><p>The redemption field is in Settings, not in the shop. Follow these steps:</p><ol><li>Open <a href={site.robloxUrl} target="_blank" rel="noopener noreferrer">Vox Seas on Roblox</a> and join the game.</li><li>Open the <strong>Menu</strong> and select the gear icon to open <strong>Settings</strong>.</li><li>Scroll to the bottom and find the <strong>CODES</strong> field.</li><li>Type or paste a code exactly as shown above.</li><li>Select <strong>REDEEM</strong> and check the confirmation message.</li></ol><blockquote><p>Use the copy button to avoid capitalization mistakes and accidental spaces.</p></blockquote>
+  <h2 id="redeem">How to redeem Vox Seas codes</h2><p>The redemption field is in Settings, not in the shop. Follow these steps:</p><ol><li>Open Vox Seas on Roblox and join the game.</li><li>Open the <strong>Menu</strong> and select the gear icon to open <strong>Settings</strong>.</li><li>Scroll to the bottom and find the <strong>CODES</strong> field.</li><li>Type or paste a code exactly as shown above.</li><li>Select <strong>REDEEM</strong> and check the confirmation message.</li></ol><blockquote><p>Use the copy button to avoid capitalization mistakes and accidental spaces.</p></blockquote>
   <h2 id="troubleshooting">Code not working? Try this</h2><h3>Check the spelling</h3><p>Codes may be case-sensitive. <code>Release2026</code> is not necessarily the same as <code>release2026</code>. Remove any spaces before or after the text.</p><h3>Join a fresh server</h3><p>Older servers may not immediately receive a new patch. Leave the experience and start a fresh session before trying again.</p><h3>Check expiry and previous use</h3><p>Promotional codes can expire or have limited uses. A code is normally redeemable only once per account. There is no legitimate workaround for an expired or previously redeemed code.</p>
-  <h2 id="new-codes">Where to find new codes</h2><p>Follow official channels linked from the Roblox game page, especially around updates, fixes and player milestones. Our <a href="/en/discord/">Discord guide</a> explains how to avoid fake invitations, while the <a href="/en/trello/">Trello and updates guide</a> helps you organize your sources.</p><p>Use XP boosts while following your next quest route or developing your fruit mastery. Compare powers in our <a href="/en/tier-list/">Vox Seas fruit tier list</a>.</p>
+  <h2 id="new-codes">Where to find new codes</h2><p>Follow official channels linked from the Roblox game page, especially around updates, fixes and player milestones. Our <a href="/en/discord/">Discord guide</a> explains how to avoid fake invitations, while the <a href="/en/trello/">Trello and updates guide</a> helps you organize your sources.</p>
+  <h2 id="after-redeeming">After redeeming a code</h2><p>Use XP boosts while following your next quest route or developing your fruit mastery. Compare powers in our <a href="/en/tier-list/">Vox Seas fruit tier list</a>.</p>
 </GuideLayout>

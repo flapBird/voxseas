@@ -1,6 +1,6 @@
 import { getGuideLinks, routes, type Locale } from './guides';
 import { getReferences } from './references';
-import { codes } from './codes';
+import { codes, pendingCodes } from './codes';
 import { entryId, normalizeSearch, searchTerms } from '../lib/search-text';
 
 interface SearchItem {
@@ -23,7 +23,7 @@ function makeIndex(lang: Locale) {
       label: columns[0],
       keywords: [...columns, ...aliases].join(' '),
     }))),
-    ...codes.map(({ code, reward }) => ({
+    ...[...codes, ...pendingCodes].map(({ code, reward }) => ({
       title: code,
       description: reward[lang],
       href: `${routes.codes[lang]}#${entryId('code', code)}`,

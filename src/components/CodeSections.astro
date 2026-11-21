@@ -1,6 +1,6 @@
 ---
 import CodeList from './CodeList.astro';
-import { archivedCodes, archivedCodesUrl, codes, codesReviewedISO, formatCodesReview, officialCodesUrl, reportedCodesUrl } from '../data/codes';
+import { archivedCodes, codeReviews, codesReviewedISO, formatReviewStamp, pendingCodes } from '../data/codes';
 import type { Locale } from '../data/guides';
 import { entryId } from '../lib/search-text';
 
@@ -10,25 +10,23 @@ const isEn = lang === 'en';
 ---
 <section id={isEn ? 'working-codes' : 'codigos-ativos'} class="codes-page-panel">
   <div class="codes-panel-heading">
-    <div>
-      <p class="eyebrow">{isEn ? 'Reviewed on' : 'Revisado em'} <time datetime={codesReviewedISO}>{formatCodesReview(lang)}</time></p>
-      <h2>{isEn ? 'Codes to try' : 'Códigos para resgatar'}</h2>
-    </div>
-    <span>{codes.length} {isEn ? 'CODES' : 'CÓDIGOS'}</span>
+    <h2>{isEn ? 'Codes to try' : 'Códigos para resgatar'}</h2>
+    <time datetime={codesReviewedISO}>
+      {isEn ? 'Checked on' : 'Verificado em'} {formatReviewStamp(codesReviewedISO, lang, true)} BRT
+    </time>
   </div>
   <CodeList lang={lang} />
-  <p class="code-disclaimer">
-    {isEn
-      ? 'We checked public sources. Live redemption and the current status of PatchGold are pending confirmation.'
-      : 'A revisão foi feita em fontes públicas. O resgate no jogo e o status atual de PatchGold aguardam confirmação.'}
-  </p>
-  <p class="code-disclaimer code-sources">
-    <a href={officialCodesUrl}>{isEn ? 'Official Trello code card' : 'Cartão de códigos no Trello oficial'}</a>
-    <a href={reportedCodesUrl}>{isEn ? 'Recent code reports' : 'Relatos de códigos recentes'}</a>
-  </p>
+  <p class="code-disclaimer">{isEn ? 'Status checked against public reports.' : 'Status conferido em fontes públicas.'}</p>
+  {pendingCodes.length > 0 && <>
+    <h3>{isEn ? 'Awaiting confirmation' : 'Aguardando confirmação'}</h3>
+    <CodeList lang={lang} pending />
+  </>}
 </section>
-<h2 id={isEn ? 'archived-codes' : 'codigos-antigos'}>{isEn ? 'Archived codes' : 'Códigos antigos'}</h2>
-<p>{isEn ? 'These codes date back to the 2025 release and are listed as inactive.' : 'Estes códigos são da versão de 2025 e constam como inativos.'} <a href={archivedCodesUrl}>{isEn ? 'Archive source' : 'Fonte do arquivo'}</a></p>
+<h2 id={isEn ? 'code-history' : 'historico'}>{isEn ? 'Update log' : 'Histórico de atualizações'}</h2>
 <ul>
-  {archivedCodes.map((code) => <li id={entryId('code', code)}><code>{code}</code></li>)}
+  {codeReviews.map(({ checkedAt, note }) => <li><time datetime={checkedAt}>{formatReviewStamp(checkedAt, lang)}</time> — {note[lang]}</li>)}
+</ul>
+<h2 id={isEn ? 'archived-codes' : 'codigos-antigos'}>{isEn ? 'Expired codes' : 'Códigos expirados'}</h2>
+<ul>
+  {archivedCodes.map((code) => <li id={entryId('code', code)}><code>{code}</code> — {isEn ? 'Expired' : 'Expirado'}</li>)}
 </ul>

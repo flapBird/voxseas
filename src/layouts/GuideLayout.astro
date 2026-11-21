@@ -16,7 +16,7 @@ interface GuideData {
   icon: string;
   updated: string;
   updatedISO?: string;
-  quickAnswer: string;
+  quickAnswer?: string;
   related: string[];
   faqs: { question: string; answer: string }[];
 }
@@ -33,6 +33,7 @@ interface Props {
 const { guide, headings, lang = 'pt-BR', path, art, artAlt = '', artCredit = '', artSource } = Astro.props;
 const isEn = lang === 'en';
 const canonical = new URL(path, site.url).href;
+const codesPage = path === routes.codes[lang];
 const directory = routes.directory[lang];
 const relatedPool = getGuideLinks(lang);
 const related = guide.related.flatMap((href) => relatedPool.filter((item) => item.href === href)).slice(0, 3);
@@ -68,7 +69,7 @@ const tocLabel = isEn ? 'On this page' : 'Neste guia';
       {breadcrumbs.map((crumb) => <><a href={crumb.href}>{crumb.title}</a><Icon name="chevron" size={14} /></>)}
       <span aria-current="page">{guide.shortTitle}</span>
     </nav>
-    <header class="guide-hero">
+    {codesPage ? <header class="codes-hero"><h1>{guide.title}</h1></header> : <header class="guide-hero">
       <div class="guide-hero-icon"><Icon name={guide.icon} size={32} /></div>
       <div class="guide-hero-copy">
         <p class="eyebrow">{guide.eyebrow}</p>
@@ -76,9 +77,9 @@ const tocLabel = isEn ? 'On this page' : 'Neste guia';
         <p class="guide-description">{guide.description}</p>
         <div class="guide-meta"><Icon name="clock" size={16} />{isEn ? 'Updated' : 'Atualizado em'} <time datetime={updatedISO}>{guide.updated}</time></div>
       </div>
-    </header>
-    <div class="quick-answer"><span class="quick-answer-label"><Icon name="sparkles" size={17} />{isEn ? 'QUICK ANSWER' : 'RESPOSTA RÁPIDA'}</span><p>{guide.quickAnswer}</p></div>
-    {toc.length > 0 && (
+    </header>}
+    {guide.quickAnswer && <div class="quick-answer"><span class="quick-answer-label"><Icon name="sparkles" size={17} />{isEn ? 'QUICK ANSWER' : 'RESPOSTA RÁPIDA'}</span><p>{guide.quickAnswer}</p></div>}
+    {!codesPage && toc.length > 0 && (
       <details class="mobile-toc toc-card">
         <summary>{tocLabel}<Icon name="chevron" size={17} /></summary>
         <nav aria-label={tocLabel}>{toc.map((heading) => <a href={`#${heading.slug}`}>{heading.text}</a>)}</nav>
@@ -101,7 +102,7 @@ const tocLabel = isEn ? 'On this page' : 'Neste guia';
       </article>
       <aside class="guide-sidebar">
         {toc.length > 0 && <nav class="desktop-toc toc-card" aria-label={tocLabel}><h2>{tocLabel}</h2>{toc.map((heading) => <a href={`#${heading.slug}`}>{heading.text}</a>)}</nav>}
-        <div class="sidebar-cta"><span class="sidebar-cta-icon"><Icon name="ticket" size={22} /></span><h2>{isEn ? 'Before you sail' : 'Antes de zarpar'}</h2><p>{isEn ? 'Check the latest codes and claim your free rewards.' : 'Confira os códigos mais recentes e garanta suas recompensas grátis.'}</p><a href={isEn ? '/en/codes/' : '/codigos/'}>{isEn ? 'View Vox Seas codes' : 'Ver códigos de Vox Seas'}<Icon name="arrow" size={16} /></a></div>
+        {!codesPage && <div class="sidebar-cta"><span class="sidebar-cta-icon"><Icon name="ticket" size={22} /></span><h2>{isEn ? 'Before you sail' : 'Antes de zarpar'}</h2><p>{isEn ? 'Check the latest codes and claim your free rewards.' : 'Confira os códigos mais recentes e garanta suas recompensas grátis.'}</p><a href={isEn ? '/en/codes/' : '/codigos/'}>{isEn ? 'View Vox Seas codes' : 'Ver códigos de Vox Seas'}<Icon name="arrow" size={16} /></a></div>}
         <a class="wiki-home-link" href={directory}><Icon name="compass" size={19} />{isEn ? 'All guides' : 'Todos os guias'}<Icon name="arrow" size={16} /></a>
       </aside>
     </div>

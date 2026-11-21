@@ -2,7 +2,6 @@
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import CodeSections from '../../components/CodeSections.astro';
 import { codesReviewedISO, formatCodesReview } from '../../data/codes';
-import { site } from '../../data/site';
 
 const guide = {
   title: `Códigos de Vox Seas (${formatCodesReview('pt-BR', false)})`,
@@ -12,7 +11,6 @@ const guide = {
   icon: 'ticket',
   updated: formatCodesReview('pt-BR'),
   updatedISO: codesReviewedISO,
-  quickAnswer: 'Abra Menu → Configurações → CODES para resgatar. O Trello oficial lista recompensas de XP, ouro e reset de atributos. Relatos recentes também trazem THX200K e Patch2Reset.',
   related: ['/tier-list/', '/como-girar-fruta/', '/discord/'],
   faqs: [
     { question: 'Por que meu código de Vox Seas não funciona?', answer: 'Confira maiúsculas e minúsculas, remova espaços e tente um servidor novo. Se o jogo informar que o código expirou ou já foi usado, ele não poderá ser resgatado novamente na mesma conta.' },
@@ -22,15 +20,18 @@ const guide = {
 };
 const headings = [
   { depth: 2, slug: 'codigos-ativos', text: 'Códigos para resgatar' },
-  { depth: 2, slug: 'codigos-antigos', text: 'Códigos antigos' },
+  { depth: 2, slug: 'historico', text: 'Histórico de atualizações' },
+  { depth: 2, slug: 'codigos-antigos', text: 'Códigos expirados' },
   { depth: 2, slug: 'como-resgatar', text: 'Como resgatar códigos' },
   { depth: 2, slug: 'problemas', text: 'Código não funciona?' },
   { depth: 2, slug: 'novos-codigos', text: 'Onde encontrar novos códigos' },
+  { depth: 2, slug: 'apos-resgatar', text: 'Após o resgate' },
 ];
 ---
 <GuideLayout guide={guide} headings={headings} path="/codigos/">
   <CodeSections />
-  <h2 id="como-resgatar">Como resgatar códigos em Vox Seas</h2><p>O campo de resgate fica dentro das configurações, e não na loja. O processo leva menos de um minuto:</p><ol><li>Abra <a href={site.robloxUrl} target="_blank" rel="noopener noreferrer">Vox Seas no Roblox</a> e entre no jogo.</li><li>Abra o <strong>Menu</strong> e selecione o ícone de engrenagem para acessar <strong>Settings</strong>.</li><li>Role a janela até o final e encontre o campo <strong>CODES</strong>.</li><li>Digite ou cole um código exatamente como aparece na lista.</li><li>Selecione <strong>REDEEM</strong> e confira a mensagem de confirmação.</li></ol><blockquote><p>Copie o código pelo botão para evitar erros de digitação. Não adicione espaço antes ou depois do texto.</p></blockquote>
+  <h2 id="como-resgatar">Como resgatar códigos em Vox Seas</h2><p>O campo de resgate fica dentro das configurações, e não na loja. O processo leva menos de um minuto:</p><ol><li>Abra Vox Seas no Roblox e entre no jogo.</li><li>Abra o <strong>Menu</strong> e selecione o ícone de engrenagem para acessar <strong>Settings</strong>.</li><li>Role a janela até o final e encontre o campo <strong>CODES</strong>.</li><li>Digite ou cole um código exatamente como aparece na lista.</li><li>Selecione <strong>REDEEM</strong> e confira a mensagem de confirmação.</li></ol><blockquote><p>Copie o código pelo botão para evitar erros de digitação. Não adicione espaço antes ou depois do texto.</p></blockquote>
   <h2 id="problemas">Código não funciona? Tente isto</h2><h3>Revise a grafia</h3><p>Os códigos usam letras maiúsculas e minúsculas. <code>Release2026</code> não é necessariamente equivalente a <code>release2026</code>. Também evite espaços copiados acidentalmente.</p><h3>Entre em outro servidor</h3><p>Depois de uma atualização, servidores antigos podem demorar a receber a versão mais recente. Saia e abra uma nova sessão antes de tentar novamente.</p><h3>Verifique expiração e uso anterior</h3><p>Códigos promocionais podem ter prazo ou limite de resgates. Em geral, cada código só pode ser usado uma vez por conta. Se a mensagem indicar expiração ou uso anterior, não existe um segundo método legítimo de resgate.</p>
-  <h2 id="novos-codigos">Onde encontrar novos códigos</h2><p>Acompanhe os canais oficiais acessíveis pela página do jogo no Roblox, principalmente após atualizações, correções e marcos de jogadores. Nosso <a href="/discord/">guia de Discord</a> explica como evitar convites falsos. Você também pode organizar sua rotina de consulta com a página sobre <a href="/trello/">Trello e canais de atualização</a>.</p><p>Depois de resgatar boosts de XP, aproveite o tempo extra seguindo a <a href="/mapa/">rota pelas ilhas</a> ou evoluindo a maestria da sua <a href="/armas/">arma principal</a>.</p>
+  <h2 id="novos-codigos">Onde encontrar novos códigos</h2><p>Acompanhe os canais oficiais acessíveis pela página do jogo no Roblox, principalmente após atualizações, correções e marcos de jogadores. Nosso <a href="/discord/">guia de Discord</a> explica como evitar convites falsos. Você também pode organizar sua rotina de consulta com a página sobre <a href="/trello/">Trello e canais de atualização</a>.</p>
+  <h2 id="apos-resgatar">O que fazer após o resgate</h2><p>Depois de resgatar boosts de XP, aproveite o tempo extra seguindo a <a href="/mapa/">rota pelas ilhas</a> ou evoluindo a maestria da sua <a href="/armas/">arma principal</a>.</p>
 </GuideLayout>
