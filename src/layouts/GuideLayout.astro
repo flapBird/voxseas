@@ -17,6 +17,7 @@ interface GuideData {
   updated: string;
   updatedISO?: string;
   quickAnswer?: string;
+  quickAnswerLink?: { href: string; label: string };
   related: string[];
   faqs: { question: string; answer: string }[];
 }
@@ -69,7 +70,7 @@ const tocLabel = isEn ? 'On this page' : 'Neste guia';
       {breadcrumbs.map((crumb) => <><a href={crumb.href}>{crumb.title}</a><Icon name="chevron" size={14} /></>)}
       <span aria-current="page">{guide.shortTitle}</span>
     </nav>
-    {codesPage ? <header class="codes-hero"><h1>{guide.title}</h1></header> : <header class="guide-hero">
+    {codesPage ? <header class="codes-hero"><h1>{guide.title}</h1></header> : <header class:list={['guide-hero', { 'guide-hero-fruitdex': path === routes.fruits['pt-BR'] }]}>
       <div class="guide-hero-icon"><Icon name={guide.icon} size={32} /></div>
       <div class="guide-hero-copy">
         <p class="eyebrow">{guide.eyebrow}</p>
@@ -78,7 +79,12 @@ const tocLabel = isEn ? 'On this page' : 'Neste guia';
         <div class="guide-meta"><Icon name="clock" size={16} />{isEn ? 'Updated' : 'Atualizado em'} <time datetime={updatedISO}>{guide.updated}</time></div>
       </div>
     </header>}
-    {guide.quickAnswer && <div class="quick-answer"><span class="quick-answer-label"><Icon name="sparkles" size={17} />{isEn ? 'QUICK ANSWER' : 'RESPOSTA RÁPIDA'}</span><p>{guide.quickAnswer}</p></div>}
+    {guide.quickAnswer && (
+      <div class="quick-answer">
+        <span class="quick-answer-label"><Icon name="sparkles" size={17} />{isEn ? 'QUICK ANSWER' : 'RESPOSTA RÁPIDA'}</span>
+        <p>{guide.quickAnswer}{guide.quickAnswerLink && <> <a href={guide.quickAnswerLink.href}>{guide.quickAnswerLink.label}</a></>}</p>
+      </div>
+    )}
     {!codesPage && toc.length > 0 && (
       <details class="mobile-toc toc-card">
         <summary>{tocLabel}<Icon name="chevron" size={17} /></summary>

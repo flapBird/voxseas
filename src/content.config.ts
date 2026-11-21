@@ -12,6 +12,7 @@ const guideSchema = z.object({
   updatedISO: z.iso.date().optional(),
   art: z.object({ alt: z.string(), source: z.url() }).optional(),
   quickAnswer: z.string(),
+  quickAnswerLink: z.object({ href: z.string(), label: z.string() }).optional(),
   related: z.array(z.string()).default([]),
   faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
 });

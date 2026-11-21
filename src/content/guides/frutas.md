@@ -1,12 +1,15 @@
 ---
-title: 'Vox Seas Frutas: Fruitdex, Raridades e Poderes'
+title: 'Frutas de Vox Seas: como conseguir, onde girar e lista completa'
 shortTitle: 'Frutas'
-description: 'Consulte as frutas de Vox Seas, suas raridades e poderes, e aprenda como conseguir, equipar e evoluir cada habilidade.'
+description: 'Veja como conseguir a fruta de Hango, onde encontrar o Vox Gacha e como comprar frutas na loja. Consulte a lista de frutas por raridade e poder.'
 eyebrow: 'FRUITDEX COMPLETO'
 icon: 'fruit'
-updated: '20 de novembro de 2026'
-updatedISO: '2026-11-20'
-quickAnswer: 'Consulte as 16 frutas documentadas em Dawn of Legends e duas entradas Legacy. As rotas de obtenção incluem a história de Hango, ofertas da loja e o Vox Gacha.'
+updated: '21 de novembro de 2026'
+updatedISO: '2026-11-21'
+quickAnswer: 'Ganhe uma fruta na missão de Hango ou compre uma com ouro em Shop → Temp Fruits. Para girar, fale com o Vox Gacha em Harbor Island ou no restaurante de Wandering Bastille.'
+quickAnswerLink:
+  href: /como-girar-fruta/
+  label: 'Veja como girar e quanto custa.'
 related:
   - /tier-list/
   - /como-girar-fruta/
