@@ -35,6 +35,7 @@ const definitions: ReferenceDefinition[] = [
     placeholder: ['Ex.: Poison ou veneno', 'Try Poison or venom'],
     intro: ['O Trello do jogo documenta 16 frutas de Dawn of Legends. Legacy reúne registros da versão anterior.', 'The game’s Trello documents 16 Dawn of Legends fruits. Legacy entries come from earlier versions.'],
     profiles: {
+      Eclipse: { slug: 'eclipse' },
       Thorn: { slug: 'thorn' },
       Vulcanic: { slug: 'vulcanic', aliases: ['Volcanic', 'Magma'] },
       Orbit: { slug: 'orbit' },
@@ -84,7 +85,7 @@ const definitions: ReferenceDefinition[] = [
       ['Shark Park', training, ['Nalu, Old Kaito e Ryusui Ken', 'Nalu, Old Kaito and Ryusui Ken']],
       ['Rustfall', training, ['Ansel e Electro', 'Ansel and Electro']],
       ['Heavenstep Mountain', ['Montanha', 'Mountain'], ['Sete checkpoints e treinamento Heavenstep', 'Seven checkpoints and Heavenstep training']],
-      ['Port Island', ['Loja', 'Shop'], ['Gun Dealer, Musket e Slingshot', 'Gun Dealer, Musket and Slingshot']],
+      ['Port Island', ['Loja', 'Shop'], ['Gun Dealer em guias anteriores', 'Gun Dealer in earlier guides']],
     ],
   },
   {
@@ -115,14 +116,14 @@ const definitions: ReferenceDefinition[] = [
     headingSlug: ['armas-compradas-com-ouro', 'weapons-you-can-buy-with-gold'],
     headingTitle: ['Armas compradas com ouro', 'Weapons you can buy with Gold'],
     columns: [['Arma', 'Weapon'], type, ['Preço', 'Price'], ['Onde conseguir', 'Where to get it'], ['Habilidade Z', 'Z ability']],
-    placeholder: ['Ex.: Cutlass ou Port Island', 'Try Cutlass or Port Island'],
+    placeholder: ['Ex.: Cutlass ou Circus Town', 'Try Cutlass or Circus Town'],
     rows: [
-      ['Katana', sword, ['300 Ouro', '300 Gold'], ['Weapon Dealer, área inicial', 'Weapon Dealer, starting area'], 'Air Wave'],
-      ['Flintlock', gun, ['750 Ouro', '750 Gold'], ['Weapon Dealer, área inicial', 'Weapon Dealer, starting area'], 'Multiple Shots'],
-      ['Cutlass', sword, ['Grátis na história', 'Free in the story'], ['Hango ou Arms Dealer', 'Hango or Arms Dealer'], 'Moon Fang Slash'],
-      ['Dual Katana', ['Espada dupla', 'Dual swords'], ['5.000 Ouro', '5,000 Gold'], 'Arms Dealer, Circus Town', 'Phantom Slash'],
-      ['Slingshot', gun, ['10.000 Ouro', '10,000 Gold'], 'Gun Dealer, Port Island', 'Prison Shot'],
-      ['Musket', gun, ['25.000 Ouro', '25,000 Gold'], 'Gun Dealer, Port Island', 'Overcharge Strike'],
+      ['Katana', sword, ['300 Ouro', '300 Gold'], 'Weapons Dealer, Harbor Island', 'Air Wave'],
+      ['Flintlock', gun, ['750 Ouro', '750 Gold'], 'Weapons Dealer, Harbor Island', 'Multiple Shots'],
+      ['Cutlass', sword, ['Grátis na história ou 300 Ouro', 'Free in the story or 300 Gold'], ['Hango ou vendedor em Circus Town', 'Hango or the dealer in Circus Town'], 'Moon Fang Slash'],
+      ['Dual Katana', ['Espada dupla', 'Dual swords'], ['1.000 Ouro', '1,000 Gold'], 'Weapons Dealer, Circus Town', 'Phantom Slash'],
+      ['Slingshot', gun, ['2.000 Ouro', '2,000 Gold'], 'Weapons Dealer, Solmar Island', 'Prison Shot'],
+      ['Musket', gun, ['5.000 Ouro', '5,000 Gold'], 'Weapons Dealer, Solmar Island', 'Overcharge Strike'],
     ],
   },
   {

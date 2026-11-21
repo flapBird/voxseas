@@ -4,7 +4,8 @@ shortTitle: 'Map and islands'
 description: 'Find 13 Vox Seas destinations, key NPCs, shops and training spots, from Solmar Island to Wandering Bastille.'
 eyebrow: 'SAILING AND ISLANDS'
 icon: 'map'
-updated: 'November 16, 2026'
+updated: 'November 21, 2026'
+updatedISO: '2026-11-21'
 quickAnswer: 'Equip the Navigator’s Map and open WORLD to find the green YOU marker. Start on Solmar, look for Vox Gacha on Harbor Island or Wandering Bastille, and visit Skull Island, Rustfall or Shark Park for training.'
 related:
   - /en/fruit-gacha/
@@ -14,7 +15,7 @@ faqs:
   - question: 'How do I open the map in Vox Seas?'
     answer: 'Equip the Navigator’s Map from the starting quests and open WORLD. Use the green YOU marker and the compass to work out which direction to sail.'
   - question: 'Where can I buy guns?'
-    answer: 'Find the Gun Dealer up the stairs on Port Island. The Weapon Dealer in the starting area also sells the Flintlock.'
+    answer: 'Look for the Flintlock on Harbor Island. The dealer on Solmar Island sells the Slingshot and Musket.'
   - question: 'Where is the Vox Gacha?'
     answer: 'Find it on Harbor Island and inside the restaurant on Wandering Bastille, a large ship you can board from the side.'
 ---
@@ -37,9 +38,11 @@ Start with Hango at the **Elder’s House** and complete the festival preparatio
 
 [Forbidden Island](/en/map/forbidden-island/) has Darius’s camp, Morgana’s Witch House and story encounters such as Veyrn. Set your spawn at the camp before making repeated trips between objectives.
 
-### 3. Circus Town and Port Island
+<span id="3-circus-town-and-port-island"></span>
 
-The Arms Dealer in Circus Town sells the Dual Katana and Cutlass. On Port Island, head up the stairs to the Gun Dealer for the Slingshot and Musket. See prices and abilities in the [weapon guide](/en/weapons/).
+### 3. Weapons in Circus Town and Solmar
+
+The Arms Dealer in Circus Town sells the Dual Katana and Cutlass. Visit the dealer on Solmar Island for the Slingshot and Musket. See prices and abilities in the [weapon guide](/en/weapons/).
 
 ### 4. Harbor Island and Wandering Bastille
 

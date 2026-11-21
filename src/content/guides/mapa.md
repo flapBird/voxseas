@@ -4,7 +4,8 @@ shortTitle: 'Mapa e ilhas'
 description: 'Explore o mapa de Vox Seas com 13 destinos, NPCs, lojas e treinamentos. Encontre Solmar, Harbor Island, Frost Island e Wandering Bastille.'
 eyebrow: 'NAVEGAÇÃO E ILHAS'
 icon: 'map'
-updated: '16 de novembro de 2026'
+updated: '21 de novembro de 2026'
+updatedISO: '2026-11-21'
 quickAnswer: 'Abra WORLD com o Navigator’s Map e use o marcador verde YOU para se localizar. Solmar é o ponto inicial; Harbor Island e Wandering Bastille têm Vox Gacha; Skull Island, Rustfall e Shark Park são destinos de treinamento.'
 related:
   - /como-girar-fruta/
@@ -14,7 +15,7 @@ faqs:
   - question: 'Como abrir o mapa em Vox Seas?'
     answer: 'Equipe o Navigator’s Map obtido na rota inicial e abra WORLD. O marcador verde YOU mostra sua posição; compare os nomes das ilhas e a bússola para definir a direção.'
   - question: 'Onde comprar armas de fogo?'
-    answer: 'O Gun Dealer fica em Port Island, subindo as escadas. Flintlock também aparece com o Weapon Dealer da área inicial.'
+    answer: 'Procure Flintlock em Harbor Island. Slingshot e Musket são vendidos em Solmar Island.'
   - question: 'Onde encontrar o Vox Gacha?'
     answer: 'Em Harbor Island e dentro do restaurante de Wandering Bastille, um grande navio que você aborda pela lateral.'
 ---
@@ -37,9 +38,11 @@ Comece com Hango na **Elder's House** e avance os preparativos do festival. A in
 
 [Forbidden Island](/mapa/forbidden-island/) reúne o acampamento de Darius, a Witch House de Morgana e confrontos da história, incluindo Veyrn. Defina spawn no acampamento antes de fazer viagens repetidas entre os objetivos.
 
-### 3. Circus Town e Port Island
+<span id="3-circus-town-e-port-island"></span>
 
-Em Circus Town, o Arms Dealer vende Dual Katana e Cutlass. Em Port Island, suba as escadas para encontrar o Gun Dealer e comparar Slingshot com Musket. Veja preços e habilidades no [guia de armas](/armas/).
+### 3. Armas em Circus Town e Solmar
+
+Em Circus Town, o Arms Dealer vende Dual Katana e Cutlass. Em Solmar Island, o vendedor oferece Slingshot e Musket. Veja preços e habilidades no [guia de armas](/armas/).
 
 ### 4. Harbor Island e Wandering Bastille
 

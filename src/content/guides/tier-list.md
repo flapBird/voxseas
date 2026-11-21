@@ -4,7 +4,8 @@ shortTitle: 'Tier List'
 description: 'Veja a tier list de frutas de Vox Seas, compare Poison, Orbit, Eclipse, Mirror e Blaze e entenda o que ainda vale na versão Legacy.'
 eyebrow: 'RANKING DE FRUTAS'
 icon: 'sparkles'
-updated: '16 de novembro de 2026'
+updated: '21 de novembro de 2026'
+updatedISO: '2026-11-21'
 quickAnswer: 'Na versão Legacy, Poison, Orbit e Eclipse ocupam o tier S; Volcanic e Mirror ficam no A. Para a versão atual, trate esse ranking como referência histórica até que cada habilidade seja testada novamente.'
 related:
   - /frutas/
@@ -27,9 +28,9 @@ Para as habilidades de Dawn of Legends, consulte as fichas atuais de [Orbit](/fr
 
 | Tier | Frutas | Leitura do ranking |
 |---|---|---|
-| S | Poison, Orbit, Eclipse | Opções mais completas, com dano em área e controle |
-| A | Volcanic, Mirror | Dano contínuo ou velocidade e atordoamento |
-| B | Blaze, Shine, Frozen, Zen | Boas funções específicas, sem a mesma prioridade geral |
+| S | [Poison](/frutas/#fruta-poison), [Orbit](/frutas/orbit/), [Eclipse](/frutas/eclipse/) | Opções mais completas, com dano em área e controle |
+| A | [Volcanic](/frutas/vulcanic/), [Mirror](/frutas/#fruta-mirror) | Dano contínuo ou velocidade e atordoamento |
+| B | [Blaze](/frutas/#fruta-blaze), Shine, Frozen, Zen | Boas funções específicas, sem a mesma prioridade geral |
 | C | Boom, Dust, Elastic | Escolhas situacionais para o início |
 | D | Divide, Kilo | Baixa prioridade; substitua quando possível |
 
@@ -68,5 +69,7 @@ Consulte o [Fruitdex com todas as frutas](/frutas/) para comparar raridade e pod
 ## O que muda entre uma boa fruta e uma boa build
 
 Uma fruta forte não corrige atributos distribuídos para outro estilo de combate. Combine Vox Fruit com as habilidades da fruta, acrescente Endurance para vida e stamina e avalie os bônus do equipamento como um conjunto.
+
+Se você investiu em **Sword**, consulte o [ranking de espadas](/armas/#ranking-de-espadas) para escolher entre o Cutlass da história, a Katana de Harbor Island e a Dual Katana de Circus Town.
 
 Sua [raça](/racas/) também altera a experiência: Wyrmborn reforça dano e vida máxima, Angelborn melhora a recuperação e Tideborn facilita trechos subaquáticos. O melhor resultado vem da combinação, não apenas da raridade da fruta.
