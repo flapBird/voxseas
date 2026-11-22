@@ -2,10 +2,9 @@
 layout: ../../layouts/ThaiLayout.astro
 title: ผลไม้ Vox Seas และวิธีใช้ Fruitdex
 description: ดูพลังของผลไม้ทั้ง 16 ชนิดใน Dawn of Legends แยกตามระดับความหายาก พร้อมวิธีรับผลแรกจาก Hango และหาจุดสุ่ม Vox Gacha
+quickAnswer: รับผลแรกจากภารกิจของ Hango เลือกซื้อจากร้าน หรือสุ่มที่ Vox Gacha แล้วเปิด Fruitdex เพื่อติดตาม Mastery
 updatedISO: '2026-11-22'
 ---
-
-![หน้าจอ Fruitdex ภายในเกม](../../assets/art/fruitdex-gameplay-v1.webp)
 
 ## วิธีรับผลไม้
 

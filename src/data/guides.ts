@@ -155,7 +155,25 @@ const guideDefinitions: GuideDefinition[] = [
 
 export type GuideLink = GuideText & Pick<GuideDefinition, 'route' | 'icon' | 'accent' | 'group'> & { href: string };
 
-export function getGuideLinks(lang: Locale): GuideLink[] {
+export type SiteLocale = Locale | 'th';
+
+export function directoryPath(lang: SiteLocale) {
+  return lang === 'th' ? '/th/#guides' : routes.directory[lang];
+}
+
+const thaiGuideCopy = {
+  codes: { description: 'โค้ดแลกโบนัส XP และโทเคนรีเซ็ตค่าสถานะ', keywords: 'rewards redeem' },
+  fruits: { description: 'เทียบความหายากและพลังของผลไม้ใน Fruitdex', keywords: 'Thorn Orbit Vulcanic Hango Gacha' },
+  map: { description: 'ค้นหาเกาะ NPC และสถานที่ฝึกวิชา', keywords: 'Solmar Harbor Forbidden Askard Hango' },
+  tiers: { description: 'อันดับผลไม้ Legacy สำหรับฟาร์มและ PvP', keywords: 'Poison Eclipse Mirror Blaze tier list' },
+};
+
+export function getGuideLinks(lang: SiteLocale): GuideLink[] {
+  if (lang === 'th') return guideDefinitions.flatMap(({ route, icon, accent, group }) => {
+    const page = thaiPages.find(item => item.route === route);
+    if (!page || page.route === 'home') return [];
+    return [{ ...thaiGuideCopy[page.route], title: page.title, route, icon, accent, group, href: page.path }];
+  });
   return guideDefinitions.map(({ route, icon, accent, group, ...copy }) => ({
     ...copy[lang], route, icon, accent, group, href: routes[route][lang],
   }));

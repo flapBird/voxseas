@@ -1,37 +1,20 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import Icon from '../components/Icon.astro';
-import { routes, thaiPages, thaiPageFor } from '../data/guides';
-import { infoPages } from '../data/info-pages';
-const { title, description, updatedISO } = Astro.props.frontmatter;
+import GuideLayout from './GuideLayout.astro';
+import { getGuideLinks } from '../data/guides';
+import mapArt from '../assets/art/world-map-gameplay-v1.webp';
+import fruitArt from '../assets/art/fruitdex-gameplay-v1.webp';
+
+const { frontmatter, headings = [] } = Astro.props;
 const path = Astro.url.pathname;
-const page = thaiPageFor(path);
-if (!page) throw new Error(`Unknown Thai route: ${path}`);
-const translations = routes[page.route];
+const entry = getGuideLinks('th').find(item => item.href === path);
+if (!entry) throw new Error(`Unknown Thai guide: ${path}`);
+const { title, description, updatedISO } = frontmatter;
+const guide = {
+  title, description, updatedISO,
+  shortTitle: entry.title, icon: entry.icon, eyebrow: entry.title,
+  updated: new Intl.DateTimeFormat('th', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(updatedISO)),
+  quickAnswer: frontmatter.quickAnswer, related: [], faqs: frontmatter.faqs ?? [],
+};
+const art = entry.route === 'map' ? mapArt : entry.route === 'fruits' ? fruitArt : undefined;
 ---
-<BaseLayout {title} {description} {path} {updatedISO} lang="th">
-  <header slot="header" class="thai-header">
-    <div class="shell thai-bar">
-      <a class="brand" href="/th/"><span class="brand-mark"><Icon name="compass" size={25} /></span><span class="brand-type">VOX SEAS<small>คู่มือผู้เล่น</small></span></a>
-      <nav aria-label="คู่มือเกม">{thaiPages.slice(1).map(item => <a href={item.path} aria-current={item.path === path ? 'page' : undefined}>{item.title}</a>)}</nav>
-      <nav aria-label="เลือกภาษา"><a lang="pt-BR" hreflang="pt-BR" data-language-choice="pt-BR" href={translations['pt-BR']}>Português</a><a lang="en" hreflang="en" data-language-choice="en" href={translations.en}>English</a></nav>
-    </div>
-  </header>
-  <article class="shell prose thai-page"><h1>{title}</h1><slot /></article>
-  <footer slot="footer" class="site-footer"><div class="shell thai-bar">
-    <span>© 2026 Vox Seas · คู่มืออิสระสำหรับผู้เล่น</span>
-    <nav aria-label="ข้อมูลเว็บไซต์ภาษาอังกฤษ" lang="en">{infoPages.map(item => <a href={item.paths.en} hreflang="en">{item.titles.en}</a>)}</nav>
-  </div></footer>
-</BaseLayout>
-<style>
-  .thai-header { background: var(--ink); color: white; }
-  .thai-bar, nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem 1.4rem; }
-  .thai-bar { justify-content: space-between; padding-block: 1.25rem; }
-  nav { font-size: 0.9rem; }
-  nav a:hover, nav [aria-current] { color: var(--lime); }
-  .site-footer { color: #a9bfc2; }
-  .thai-page { margin-block: 2rem; max-width: 900px; }
-  .thai-page :global(img) { border-radius: 12px; height: auto; }
-  .thai-page :global(table) { display: table; white-space: normal; }
-  .thai-page :global(h1), .thai-page :global(h2) { letter-spacing: normal; line-height: 1.45; }
-</style>
+<GuideLayout {guide} {path} {headings} {art} artAlt={title} artCredit="ภาพจากเกม · Vox Seas Wiki" lang="th"><slot /></GuideLayout>

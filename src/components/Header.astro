@@ -1,53 +1,54 @@
 ---
 import Icon from './Icon.astro';
 import SearchDialog from './SearchDialog.astro';
-import { routes, thaiPageFor, type Locale } from '../data/guides';
+import { routes, directoryPath, getGuideLinks, thaiPageFor, type SiteLocale } from '../data/guides';
 import { site } from '../data/site';
 
 interface Props {
-  lang?: Locale;
+  lang?: SiteLocale;
   alternate?: string;
 }
 
 const { lang = 'pt-BR', alternate } = Astro.props;
 const currentPath = Astro.url.pathname;
 const thai = thaiPageFor(currentPath);
-const showPlayLink = currentPath !== routes.codes[lang];
+const showPlayLink = currentPath !== (lang === 'th' ? '/th/codes/' : routes.codes[lang]);
 const isEn = lang === 'en';
-const homeHref = routes.home[lang];
-const guidesHref = routes.directory[lang];
+const isTh = lang === 'th';
+const homeHref = isTh ? '/th/' : routes.home[lang];
+const guidesHref = directoryPath(lang);
 const other = isEn ? 'pt-BR' : 'en';
-const languageHref = alternate ?? routes.home[other];
+const languageHref = isTh && thai ? routes[thai.route].en : alternate ?? routes.home[other];
 const languageName = isEn ? 'Português' : 'English';
 const languageLabel = isEn ? 'Ler em português' : 'Read in English';
-const mainNav = [
+const mainNav = isTh ? getGuideLinks(lang) : [
   { title: isEn ? 'Guides' : 'Guias', href: guidesHref },
   { title: isEn ? 'Codes' : 'Códigos', href: routes.codes[lang] },
   { title: isEn ? 'Fruits' : 'Frutas', href: routes.fruits[lang] },
   { title: isEn ? 'Map' : 'Mapa', href: routes.map[lang] },
   { title: isEn ? 'Bosses' : 'Chefes', href: routes.bosses[lang] },
 ];
-const hubNav = [
+const hubNav = isTh ? [] : [
   { title: 'Tier list', href: routes.tiers[lang] },
   { title: isEn ? 'Weapons' : 'Armas', href: routes.weapons[lang] },
   { title: isEn ? 'Races' : 'Raças', href: routes.races[lang] },
 ];
 const desktopNav = [...mainNav, ...hubNav];
-const mobileNav = [
+const mobileNav = isTh ? mainNav : [
   ...mainNav,
   { title: isEn ? 'Beginner guide' : 'Guia para iniciantes', href: routes.beginner[lang] },
   ...hubNav,
 ];
-const searchLabel = isEn ? 'Search the wiki' : 'Buscar na wiki';
-const menuLabel = isEn ? 'Site menu' : 'Menu do site';
+const searchLabel = isTh ? 'ค้นหาวิกิ' : isEn ? 'Search the wiki' : 'Buscar na wiki';
+const menuLabel = isTh ? 'เมนูเว็บไซต์' : isEn ? 'Site menu' : 'Menu do site';
 ---
 <header class="site-header">
   <div class="shell header-inner">
-    <a class="brand" href={homeHref} aria-label={isEn ? 'Vox Seas Guide home' : 'Vox Seas Brasil, início'}>
+    <a class="brand" href={homeHref} aria-label={isTh ? 'หน้าแรก Vox Seas' : isEn ? 'Vox Seas Guide home' : 'Vox Seas Brasil, início'}>
       <span class="brand-mark"><Icon name="compass" size={25} /></span>
-      <span class="brand-type">VOX SEAS<small>{isEn ? 'PLAYER GUIDE' : 'GUIA BRASILEIRO'}</small></span>
+      <span class="brand-type">VOX SEAS<small>{isTh ? 'คู่มือผู้เล่น' : isEn ? 'PLAYER GUIDE' : 'GUIA BRASILEIRO'}</small></span>
     </a>
-    <nav class="desktop-nav" aria-label={isEn ? 'Main navigation' : 'Navegação principal'}>
+    <nav class="desktop-nav" aria-label={isTh ? 'เมนูหลัก' : isEn ? 'Main navigation' : 'Navegação principal'}>
       {desktopNav.map((item) => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.title}</a>)}
     </nav>
     <div class="header-actions">
@@ -55,22 +56,22 @@ const menuLabel = isEn ? 'Site menu' : 'Menu do site';
         <Icon name="search" size={20} />
       </a>
       {thai ? <details class="language-picker">
-        <summary class="language-link"><Icon name="globe" size={16} />{isEn ? 'EN' : 'PT'} ▾</summary>
+        <summary class="language-link"><Icon name="globe" size={16} />{isTh ? 'TH' : isEn ? 'EN' : 'PT'} ▾</summary>
         <div>
           <a href={languageHref} lang={other} hreflang={other} data-language-choice={other}>{languageName}</a>
-          <a href={thai.path} lang="th" hreflang="th" data-language-choice="th">ไทย</a>
+          {isTh ? <a href={routes[thai.route]['pt-BR']} lang="pt-BR" hreflang="pt-BR" data-language-choice="pt-BR">Português</a> : <a href={thai.path} lang="th" hreflang="th" data-language-choice="th">ไทย</a>}
         </div>
       </details> : (<a class="language-link" href={languageHref} lang={other} hreflang={other} aria-label={languageLabel} data-language-choice={other}>
         <Icon name="globe" size={16} /><span class="language-name">{languageName}</span><span class="language-code" aria-hidden="true">{isEn ? 'PT' : 'EN'}</span>
       </a>)}
-      {showPlayLink && <a class="button button-small header-play" href={site.robloxUrl} target="_blank" rel="noopener noreferrer">{isEn ? 'Play on Roblox' : 'Jogar no Roblox'}<Icon name="external" size={15} /></a>}
+      {showPlayLink && <a class="button button-small header-play" href={site.robloxUrl} target="_blank" rel="noopener noreferrer">{isTh ? 'เล่นบน Roblox' : isEn ? 'Play on Roblox' : 'Jogar no Roblox'}<Icon name="external" size={15} /></a>}
       <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={menuLabel} hidden><Icon name="menu" size={22} /></button>
     </div>
   </div>
-  <nav id="mobile-nav" class="mobile-nav shell" aria-label={isEn ? 'Mobile navigation' : 'Navegação móvel'} hidden>
+  <nav id="mobile-nav" class="mobile-nav shell" aria-label={isTh ? 'เมนูมือถือ' : isEn ? 'Mobile navigation' : 'Navegação móvel'} hidden>
     {mobileNav.map((item) => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.title}<Icon name="chevron" size={17} /></a>)}
     <a href={languageHref} lang={other} hreflang={other} data-language-choice={other}>{languageName}<Icon name="globe" size={17} /></a>
-    {showPlayLink && <a href={site.robloxUrl} target="_blank" rel="noopener noreferrer">{isEn ? 'Play on Roblox' : 'Jogar no Roblox'}<Icon name="external" size={16} /></a>}
+    {showPlayLink && <a href={site.robloxUrl} target="_blank" rel="noopener noreferrer">{isTh ? 'เล่นบน Roblox' : isEn ? 'Play on Roblox' : 'Jogar no Roblox'}<Icon name="external" size={16} /></a>}
   </nav>
 </header>
 

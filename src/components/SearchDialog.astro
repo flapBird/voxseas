@@ -1,22 +1,23 @@
 ---
 import Icon from './Icon.astro';
-import { routes, type Locale } from '../data/guides';
+import { directoryPath, type SiteLocale } from '../data/guides';
 
-interface Props { lang: Locale; }
+interface Props { lang: SiteLocale; }
 const { lang } = Astro.props;
 const isEn = lang === 'en';
-const label = isEn ? 'Search the Vox Seas wiki' : 'Buscar na wiki de Vox Seas';
+const isTh = lang === 'th';
+const label = isTh ? 'ค้นหาในวิกิ Vox Seas' : isEn ? 'Search the Vox Seas wiki' : 'Buscar na wiki de Vox Seas';
 ---
 <dialog id="site-search" class="search-dialog" aria-label={label}>
   <form class="search-input-row" role="search">
     <Icon name="search" size={22} />
-    <input type="search" class="search-input" aria-label={label} placeholder={isEn ? 'Try Poison, Hango or Release2026' : 'Busque Poison, Hango ou Release2026'} autocomplete="off" />
-    <button class="icon-button search-close" type="button" aria-label={isEn ? 'Close search' : 'Fechar busca'}><Icon name="close" size={20} /></button>
+    <input type="search" class="search-input" aria-label={label} placeholder={isTh ? 'ลองค้นหา Poison, Hango หรือ Release2026' : isEn ? 'Try Poison, Hango or Release2026' : 'Busque Poison, Hango ou Release2026'} autocomplete="off" />
+    <button class="icon-button search-close" type="button" aria-label={isTh ? 'ปิดการค้นหา' : isEn ? 'Close search' : 'Fechar busca'}><Icon name="close" size={20} /></button>
   </form>
   <p class="sr-only" role="status" data-search-status></p>
-  <ul class="search-results" aria-label={isEn ? 'Search results' : 'Resultados da busca'}></ul>
+  <ul class="search-results" aria-label={isTh ? 'ผลการค้นหา' : isEn ? 'Search results' : 'Resultados da busca'}></ul>
   <div class="search-hint">
-    <a href={routes.directory[lang]}>{isEn ? 'All guides' : 'Todos os guias'} <Icon name="arrow" size={15} /></a>
+    <a href={directoryPath(lang)}>{isTh ? 'คู่มือทั้งหมด' : isEn ? 'All guides' : 'Todos os guias'} <Icon name="arrow" size={15} /></a>
     <kbd>Esc</kbd>
   </div>
 </dialog>
@@ -29,13 +30,14 @@ const label = isEn ? 'Search the Vox Seas wiki' : 'Buscar na wiki de Vox Seas';
   const results = dialog.querySelector<HTMLUListElement>('.search-results')!;
   const status = dialog.querySelector<HTMLElement>('[data-search-status]')!;
   const isEn = document.documentElement.lang === 'en';
-  const searchSite = createSiteSearch(isEn ? 'en' : 'pt-BR');
+  const isTh = document.documentElement.lang === 'th';
+  const searchSite = createSiteSearch(isTh ? 'th' : isEn ? 'en' : 'pt-BR');
 
   function renderResults() {
     const matches = searchSite(input.value);
     results.replaceChildren();
-    const empty = isEn ? 'No results for this search.' : 'Nenhum resultado para esta busca.';
-    status.textContent = matches.length ? (isEn ? `${matches.length} results` : `${matches.length} resultados`) : empty;
+    const empty = isTh ? 'ไม่พบผลการค้นหา' : isEn ? 'No results for this search.' : 'Nenhum resultado para esta busca.';
+    status.textContent = matches.length ? (isTh ? `พบ ${matches.length} รายการ` : isEn ? `${matches.length} results` : `${matches.length} resultados`) : empty;
 
     if (!matches.length) {
       const message = document.createElement('li');

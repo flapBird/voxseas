@@ -4,27 +4,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from './Icon.astro';
 import CodeList from './CodeList.astro';
 import GuideLinks from './GuideLinks.astro';
-import { getGuideLinks, routes, type Locale } from '../data/guides';
+import { getGuideLinks, directoryPath, routes, type SiteLocale } from '../data/guides';
 import { site } from '../data/site';
 import { codes, codesReviewedISO, formatCodesReview } from '../data/codes';
 import heroArt from '../assets/art/hero-official-v1.png';
 import mapArt from '../assets/art/world-map-gameplay-v1.webp';
 
-interface Props { lang?: Locale; }
+interface Props { lang?: SiteLocale; }
 const { lang = 'pt-BR' } = Astro.props;
 const isEn = lang === 'en';
-const title = isEn ? 'Vox Seas Wiki – Codes, Fruits, Map and Guides' : 'Vox Seas Wiki – Códigos, Frutas, Mapa e Guias';
-const description = isEn
+const isTh = lang === 'th';
+const title = isTh ? 'Vox Seas Wiki – คู่มือ โค้ด ผลไม้ และแผนที่' : isEn ? 'Vox Seas Wiki – Codes, Fruits, Map and Guides' : 'Vox Seas Wiki – Códigos, Frutas, Mapa e Guias';
+const description = isTh ? 'คู่มือ Vox Seas บน Roblox รวมโค้ดล่าสุด ผลไม้ แผนที่เกาะ และอันดับผลไม้สำหรับผู้เล่นไทย' : isEn
   ? 'Vox Seas wiki for Roblox. Copy codes, follow the beginner route and look up fruits, weapons, races, bosses and islands.'
   : 'Wiki brasileira de Vox Seas no Roblox. Copie códigos, siga o guia para iniciantes e consulte frutas, armas, raças, chefes e ilhas.';
 const guides = getGuideLinks(lang);
 const featuredRoutes = ['fruits', 'map', 'tiers', 'weapons', 'bosses', 'races'];
 const featuredGuides = featuredRoutes.flatMap((key) => guides.filter((guide) => guide.route === key));
 const communityGuides = guides.filter((guide) => guide.group === 'community');
-const beginnerHref = routes.beginner[lang];
-const codesHref = routes.codes[lang];
-const directoryHref = routes.directory[lang];
-const firstSteps = isEn ? [
+const beginnerHref = isTh ? '/th/#start-title' : routes.beginner[lang];
+const codesHref = isTh ? '/th/codes/' : routes.codes[lang];
+const directoryHref = directoryPath(lang);
+const firstSteps = isTh ? [
+  { title: 'เริ่มต้นที่ Solmar', description: 'ไปหา Hango ที่ Elder’s House แล้วทำภารกิจเพื่อรับดาบ Cutlass', anchor: '', href: '/th/map/' },
+  { title: 'เตรียมเรือลำแรก', description: 'รับเรือ ค้อนซ่อมเรือ และแผนที่จากร้านด้านหลัง Hale ก่อนออกทะเล', anchor: '', href: '/th/map/' },
+  { title: 'รับผลไม้ผลแรก', description: 'นำ Sacred Flower ไปส่งให้ Beatriz แล้วกลับไปหา Hango', anchor: '', href: '/th/fruits/' },
+] : isEn ? [
   { title: 'Start on Solmar', description: 'Talk to Hango and investigate the Marines to earn your Cutlass.', anchor: 'start-on-solmar' },
   { title: 'Prepare your first boat', description: 'Claim the boat, hammer and map before setting sail.', anchor: 'prepare-your-first-boat' },
   { title: 'Get your first fruit', description: 'Return from Forbidden Island with the Sacred Flower and find Hango.', anchor: 'get-your-first-fruit' },
@@ -33,7 +38,11 @@ const firstSteps = isEn ? [
   { title: 'Prepare o primeiro barco', description: 'Reivindique o barco, o martelo e o mapa antes de atravessar.', anchor: 'prepare-o-primeiro-barco' },
   { title: 'Consiga sua primeira fruta', description: 'Volte de Forbidden Island com a Sacred Flower e procure Hango.', anchor: 'consiga-sua-primeira-fruta' },
 ];
-const homeFaqs = isEn ? [
+const homeFaqs = isTh ? [
+  { question: 'แลกโค้ดได้ที่ไหน?', answer: 'เปิด Menu แล้วไปที่ Settings เลื่อนลงไปที่ CODES วางโค้ดแล้วกด REDEEM' },
+  { question: 'หาผลไม้ผลแรกได้อย่างไร?', answer: 'ทำภารกิจของ Hango ซื้อจากร้าน หรือสุ่มที่ Vox Gacha บน Harbor Island และ Wandering Bastille' },
+  { question: 'อันดับ Legacy หมายถึงอะไร?', answer: 'เป็นอันดับผลไม้จากเกมเวอร์ชันก่อน สมดุลของสกิลใน Dawn of Legends อาจเปลี่ยนไป' },
+] : isEn ? [
   { question: 'What is Vox Seas?', answer: 'Vox Seas is a pirate adventure RPG on Roblox. Sail between islands, follow story quests and use weapons, fruits and fighting styles to take on enemies and bosses.' },
   { question: 'Where do I redeem Vox Seas codes?', answer: 'Open Menu in the game and select the Settings gear. Scroll to CODES, paste a code from the list and select REDEEM.' },
   { question: 'How do I get my first fruit?', answer: 'Progress through Hango’s story to earn a fruit, buy one from the shop, or visit the Vox Gacha on Harbor Island or Wandering Bastille.' },
@@ -46,7 +55,7 @@ const homeFaqs = isEn ? [
 ];
 const schema = [
   { '@type': 'FAQPage', mainEntity: homeFaqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
-  { '@type': 'ItemList', name: isEn ? 'Vox Seas guides' : 'Guias de Vox Seas', itemListElement: guides.map((guide, index) => ({ '@type': 'ListItem', position: index + 1, name: guide.title, url: new URL(guide.href, site.url).href })) },
+  { '@type': 'ItemList', name: isTh ? 'คู่มือ Vox Seas' : isEn ? 'Vox Seas guides' : 'Guias de Vox Seas', itemListElement: guides.map((guide, index) => ({ '@type': 'ListItem', position: index + 1, name: guide.title, url: new URL(guide.href, site.url).href })) },
 ];
 ---
 <BaseLayout title={title} description={description} lang={lang} schema={schema}>
@@ -55,41 +64,41 @@ const schema = [
       <div class="hero-copy">
         <p class="hero-kicker">Dawn of Legends</p>
         <h1 id="home-title">Vox Seas <span>Wiki</span></h1>
-        <p class="hero-subtitle">{isEn ? 'Copy codes, find your first fruit and plan your next quest with Vox Seas guides in English.' : 'Copie códigos, encontre sua primeira fruta e planeje a próxima missão com guias de Vox Seas em português.'}</p>
+        <p class="hero-subtitle">{isTh ? 'คัดลอกโค้ด หาผลไม้ผลแรก และวางแผนภารกิจต่อไปด้วยคู่มือ Vox Seas ภาษาไทย' : isEn ? 'Copy codes, find your first fruit and plan your next quest with Vox Seas guides in English.' : 'Copie códigos, encontre sua primeira fruta e planeje a próxima missão com guias de Vox Seas em português.'}</p>
         <div class="hero-actions">
-          <a class="button" href={beginnerHref}>{isEn ? 'Beginner guide' : 'Guia para iniciantes'}<Icon name="arrow" size={18} /></a>
-          <a class="button button-secondary" href={codesHref}><Icon name="ticket" size={18} />{isEn ? 'View codes' : 'Ver códigos'}</a>
+          <a class="button" href={beginnerHref}>{isTh ? 'คู่มือเริ่มต้น' : isEn ? 'Beginner guide' : 'Guia para iniciantes'}<Icon name="arrow" size={18} /></a>
+          <a class="button button-secondary" href={codesHref}><Icon name="ticket" size={18} />{isTh ? 'ดูโค้ด' : isEn ? 'View codes' : 'Ver códigos'}</a>
         </div>
         <a class="hero-search" href={directoryHref} data-open-search>
           <Icon name="search" size={21} />
-          <span>{isEn ? 'Search fruits, islands, NPCs or codes' : 'Buscar frutas, ilhas, NPCs ou códigos'}</span>
+          <span>{isTh ? 'ค้นหาผลไม้ เกาะ NPC หรือโค้ด' : isEn ? 'Search fruits, islands, NPCs or codes' : 'Buscar frutas, ilhas, NPCs ou códigos'}</span>
           <kbd data-search-shortcut hidden>Ctrl K</kbd>
         </a>
       </div>
       <figure class="hero-visual">
-        <Picture src={heroArt} alt={isEn ? 'A pirate on a sea creature beside a ship at sunset' : 'Pirata sobre uma criatura marinha ao lado de um navio ao pôr do sol'} widths={[480, 768]} sizes="(max-width: 620px) calc(100vw - 30px), (max-width: 800px) 625px, (max-width: 1230px) 44vw, 540px" formats={['avif', 'webp']} fallbackFormat="webp" quality={82} loading="eager" fetchpriority="high" decoding="async" />
-        <figcaption><a href={site.robloxUrl} target="_blank" rel="noopener noreferrer">{isEn ? 'Official Vox Seas art' : 'Arte oficial de Vox Seas'} <Icon name="external" size={13} /></a></figcaption>
+        <Picture src={heroArt} alt={isTh ? 'โจรสลัดบนหลังสัตว์ทะเลข้างเรือยามเย็น' : isEn ? 'A pirate on a sea creature beside a ship at sunset' : 'Pirata sobre uma criatura marinha ao lado de um navio ao pôr do sol'} widths={[480, 768]} sizes="(max-width: 620px) calc(100vw - 30px), (max-width: 800px) 625px, (max-width: 1230px) 44vw, 540px" formats={['avif', 'webp']} fallbackFormat="webp" quality={82} loading="eager" fetchpriority="high" decoding="async" />
+        <figcaption><a href={site.robloxUrl} target="_blank" rel="noopener noreferrer">{isTh ? 'ภาพทางการของ Vox Seas' : isEn ? 'Official Vox Seas art' : 'Arte oficial de Vox Seas'} <Icon name="external" size={13} /></a></figcaption>
       </figure>
     </div>
   </section>
 
-  <div class="shell home-overview" id={isEn ? 'gameplay' : 'explorar'}>
+  <div class="shell home-overview" id={isTh ? 'guides' : isEn ? 'gameplay' : 'explorar'}>
     <section aria-labelledby="overview-title">
       <div class="section-heading">
-        <h2 id="overview-title">{isEn ? 'Explore the wiki' : 'Explore a wiki'}</h2>
-        <a class="text-link" href={directoryHref}>{isEn ? 'All guides' : 'Todos os guias'}<Icon name="arrow" size={17} /></a>
+        <h2 id="overview-title">{isTh ? 'สำรวจวิกิ' : isEn ? 'Explore the wiki' : 'Explore a wiki'}</h2>
+        {!isTh && <a class="text-link" href={directoryHref}>{isEn ? 'All guides' : 'Todos os guias'}<Icon name="arrow" size={17} /></a>}
       </div>
       <GuideLinks items={featuredGuides} />
     </section>
     <section class="home-codes" id={isEn ? 'codes' : 'codigos'} aria-labelledby="home-codes-title">
       <div class="home-codes-heading">
         <span class="guide-link-icon"><Icon name="ticket" size={22} /></span>
-        <div><h2 id="home-codes-title">{isEn ? 'Vox Seas codes' : 'Códigos de Vox Seas'}</h2><p>{isEn ? 'List reviewed on' : 'Lista revisada em'} <time datetime={codesReviewedISO}>{formatCodesReview(lang)}</time></p></div>
+        <div><h2 id="home-codes-title">{isTh ? 'โค้ด Vox Seas' : isEn ? 'Vox Seas codes' : 'Códigos de Vox Seas'}</h2><p>{isTh ? 'ตรวจสอบล่าสุด' : isEn ? 'List reviewed on' : 'Lista revisada em'} <time datetime={codesReviewedISO}>{formatCodesReview(lang)}</time></p></div>
       </div>
       <CodeList lang={lang} limit={3} />
       <div class="home-codes-links">
-        <a class="text-link" href={codesHref}>{isEn ? `View all ${codes.length} codes` : `Ver os ${codes.length} códigos`}<Icon name="arrow" size={16} /></a>
-        <a href={`${codesHref}#${isEn ? 'redeem' : 'como-resgatar'}`}>{isEn ? 'How to redeem' : 'Como resgatar'}</a>
+        <a class="text-link" href={codesHref}>{isTh ? `ดูโค้ดทั้งหมด ${codes.length} โค้ด` : isEn ? `View all ${codes.length} codes` : `Ver os ${codes.length} códigos`}<Icon name="arrow" size={16} /></a>
+        <a href={`${codesHref}#${isEn || isTh ? 'redeem' : 'como-resgatar'}`}>{isTh ? 'วิธีแลกโค้ด' : isEn ? 'How to redeem' : 'Como resgatar'}</a>
       </div>
     </section>
   </div>
@@ -97,26 +106,26 @@ const schema = [
   <section class="start-section" aria-labelledby="start-title">
     <div class="shell start-guide">
       <figure class="start-art">
-        <Picture src={mapArt} alt={isEn ? 'World map showing Solmar and nearby islands' : 'Mapa-múndi do jogo com Solmar e as ilhas próximas'} widths={[480, 768]} sizes="(max-width: 800px) calc(100vw - 30px), 45vw" formats={['avif', 'webp']} fallbackFormat="webp" quality={80} loading="lazy" decoding="async" />
-        <figcaption>{isEn ? 'Gameplay screenshot · Vox Seas Wiki' : 'Captura de gameplay · Vox Seas Wiki'}</figcaption>
+        <Picture src={mapArt} alt={isTh ? 'แผนที่ Solmar และเกาะใกล้เคียง' : isEn ? 'World map showing Solmar and nearby islands' : 'Mapa-múndi do jogo com Solmar e as ilhas próximas'} widths={[480, 768]} sizes="(max-width: 800px) calc(100vw - 30px), 45vw" formats={['avif', 'webp']} fallbackFormat="webp" quality={80} loading="lazy" decoding="async" />
+        <figcaption>{isTh ? 'ภาพจากเกม · Vox Seas Wiki' : isEn ? 'Gameplay screenshot · Vox Seas Wiki' : 'Captura de gameplay · Vox Seas Wiki'}</figcaption>
       </figure>
       <div>
-        <h2 id="start-title">{isEn ? 'Your first voyage' : 'Sua primeira viagem'}</h2>
+        <h2 id="start-title">{isTh ? 'ออกเรือครั้งแรก' : isEn ? 'Your first voyage' : 'Sua primeira viagem'}</h2>
         <ol class="start-steps">
-          {firstSteps.map((step) => <li><a href={`${beginnerHref}#${step.anchor}`}><span><strong>{step.title}</strong><small>{step.description}</small></span><Icon name="chevron" size={17} /></a></li>)}
+          {firstSteps.map((step) => <li><a href={'href' in step ? String(step.href) : `${beginnerHref}#${step.anchor}`}><span><strong>{step.title}</strong><small>{step.description}</small></span><Icon name="chevron" size={17} /></a></li>)}
         </ol>
-        <a class="text-link" href={beginnerHref}>{isEn ? 'Read the full route' : 'Ler a rota completa'}<Icon name="arrow" size={17} /></a>
+        <a class="text-link" href={isTh ? '/th/map/' : beginnerHref}>{isTh ? 'ดูแผนที่และเกาะ' : isEn ? 'Read the full route' : 'Ler a rota completa'}<Icon name="arrow" size={17} /></a>
       </div>
     </div>
   </section>
 
-  <section class="shell home-community" id={isEn ? 'community' : undefined} aria-labelledby="community-title">
+  {communityGuides.length > 0 && <section class="shell home-community" id={isEn ? 'community' : undefined} aria-labelledby="community-title">
     <div class="section-heading"><h2 id="community-title">{isEn ? 'Updates and community' : 'Atualizações e comunidade'}</h2></div>
     <GuideLinks items={communityGuides} />
-  </section>
+  </section>}
 
   <section class="shell faq-home" aria-labelledby="faq-title">
-    <div class="section-heading"><h2 id="faq-title">{isEn ? 'Frequently asked questions' : 'Perguntas frequentes'}</h2></div>
+    <div class="section-heading"><h2 id="faq-title">{isTh ? 'คำถามที่พบบ่อย' : isEn ? 'Frequently asked questions' : 'Perguntas frequentes'}</h2></div>
     <div class="faq-list">{homeFaqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div>
   </section>
 </BaseLayout>

@@ -4,7 +4,7 @@ import type { ImageMetadata } from 'astro';
 import BaseLayout from './BaseLayout.astro';
 import GuideLinks from '../components/GuideLinks.astro';
 import Icon from '../components/Icon.astro';
-import { entityRoute, getGuideLinks, routes, type Locale } from '../data/guides';
+import { directoryPath, entityRoute, getGuideLinks, routes, type SiteLocale } from '../data/guides';
 import { site } from '../data/site';
 
 interface Heading { depth: number; slug: string; text: string; }
@@ -24,7 +24,7 @@ interface GuideData {
 interface Props {
   guide: GuideData;
   headings: Heading[];
-  lang?: Locale;
+  lang?: SiteLocale;
   path: string;
   art?: ImageMetadata;
   artAlt?: string;
@@ -33,9 +33,10 @@ interface Props {
 }
 const { guide, headings, lang = 'pt-BR', path, art, artAlt = '', artCredit = '', artSource } = Astro.props;
 const isEn = lang === 'en';
+const isTh = lang === 'th';
 const canonical = new URL(path, site.url).href;
-const codesPage = path === routes.codes[lang];
-const directory = routes.directory[lang];
+const codesPage = path === (isTh ? '/th/codes/' : routes.codes[lang]);
+const directory = directoryPath(lang);
 const relatedPool = getGuideLinks(lang);
 const related = guide.related.flatMap((href) => relatedPool.filter((item) => item.href === href)).slice(0, 3);
 const fallbackRelated = relatedPool.filter((item) => item.href !== path && !related.includes(item)).slice(0, 3 - related.length);
@@ -47,8 +48,8 @@ const articleSchema: Record<string, unknown> = {
   ...(art ? { image: new URL(art.src, site.url).href } : {}),
 };
 const breadcrumbs = [
-  { title: isEn ? 'Home' : 'Início', href: routes.home[lang] },
-  { title: isEn ? 'Guides' : 'Guias', href: directory },
+  { title: isTh ? 'หน้าแรก' : isEn ? 'Home' : 'Início', href: isTh ? '/th/' : routes.home[lang] },
+  { title: isTh ? 'คู่มือ' : isEn ? 'Guides' : 'Guias', href: directory },
 ];
 const parentRoute = entityRoute(path)?.parent;
 const parent = relatedPool.find((item) => item.route === parentRoute);
@@ -62,11 +63,11 @@ const breadcrumbSchema = {
 const schemas: Record<string, unknown>[] = [articleSchema, breadcrumbSchema];
 if (guide.faqs.length) schemas.push({ '@type': 'FAQPage', mainEntity: guide.faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) });
 const toc = headings.filter((heading) => heading.depth === 2);
-const tocLabel = isEn ? 'On this page' : 'Neste guia';
+const tocLabel = isTh ? 'เนื้อหาในหน้านี้' : isEn ? 'On this page' : 'Neste guia';
 ---
 <BaseLayout title={guide.title} description={guide.description} lang={lang} path={path} updatedISO={updatedISO} schema={schemas} bodyClass="guide-page">
   <div class="shell guide-shell">
-    <nav class="breadcrumbs" aria-label={isEn ? 'Breadcrumb' : 'Trilha de navegação'}>
+    <nav class="breadcrumbs" aria-label={isTh ? 'เส้นทางนำทาง' : isEn ? 'Breadcrumb' : 'Trilha de navegação'}>
       {breadcrumbs.map((crumb) => <><a href={crumb.href}>{crumb.title}</a><Icon name="chevron" size={14} /></>)}
       <span aria-current="page">{guide.shortTitle}</span>
     </nav>
@@ -76,12 +77,12 @@ const tocLabel = isEn ? 'On this page' : 'Neste guia';
         <p class="eyebrow">{guide.eyebrow}</p>
         <h1>{guide.title}</h1>
         <p class="guide-description">{guide.description}</p>
-        <div class="guide-meta"><Icon name="clock" size={16} />{isEn ? 'Updated' : 'Atualizado em'} <time datetime={updatedISO}>{guide.updated}</time></div>
+        <div class="guide-meta"><Icon name="clock" size={16} />{isTh ? 'อัปเดต' : isEn ? 'Updated' : 'Atualizado em'} <time datetime={updatedISO}>{guide.updated}</time></div>
       </div>
     </header>}
     {guide.quickAnswer && (
       <div class="quick-answer">
-        <span class="quick-answer-label"><Icon name="sparkles" size={17} />{isEn ? 'QUICK ANSWER' : 'RESPOSTA RÁPIDA'}</span>
+        <span class="quick-answer-label"><Icon name="sparkles" size={17} />{isTh ? 'คำตอบสั้น ๆ' : isEn ? 'QUICK ANSWER' : 'RESPOSTA RÁPIDA'}</span>
         <p>{guide.quickAnswer}{guide.quickAnswerLink && <> <a href={guide.quickAnswerLink.href}>{guide.quickAnswerLink.label}</a></>}</p>
       </div>
     )}
@@ -98,20 +99,20 @@ const tocLabel = isEn ? 'On this page' : 'Neste guia';
             <Picture src={art} alt={artAlt} widths={[480, 768, 1200]} sizes="(max-width: 800px) calc(100vw - 30px), (max-width: 1220px) 70vw, 860px" formats={['avif', 'webp']} fallbackFormat="webp" quality={80} loading="lazy" decoding="async" />
             <figcaption>
               {artSource ? <a href={artSource} target="_blank" rel="noopener noreferrer">{artCredit}</a> : <span>{artCredit}</span>}
-              <a class="art-zoom" href={art.src} target="_blank" rel="noopener noreferrer">{isEn ? 'Enlarge image' : 'Ampliar imagem'}<Icon name="external" size={13} /></a>
+              <a class="art-zoom" href={art.src} target="_blank" rel="noopener noreferrer">{isTh ? 'ขยายภาพ' : isEn ? 'Enlarge image' : 'Ampliar imagem'}<Icon name="external" size={13} /></a>
             </figcaption>
           </figure>
         )}
         <div class="prose"><slot name="reference" /><slot /></div>
-        {guide.faqs.length > 0 && <section class="faq-section"><h2>{isEn ? 'Vox Seas FAQ' : 'Perguntas frequentes sobre Vox Seas'}</h2><div class="faq-list">{guide.faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div></section>}
-        <div class="verification-note"><Icon name="clock" size={19} /><p>{isEn ? 'Game updates can change prices, rewards and mechanics.' : 'Preços, recompensas e mecânicas podem mudar com as atualizações do jogo.'}</p></div>
+        {guide.faqs.length > 0 && <section class="faq-section"><h2>{isTh ? 'คำถามที่พบบ่อย' : isEn ? 'Vox Seas FAQ' : 'Perguntas frequentes sobre Vox Seas'}</h2><div class="faq-list">{guide.faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div></section>}
+        <div class="verification-note"><Icon name="clock" size={19} /><p>{isTh ? 'ราคา รางวัล และกลไกอาจเปลี่ยนแปลงเมื่อเกมอัปเดต' : isEn ? 'Game updates can change prices, rewards and mechanics.' : 'Preços, recompensas e mecânicas podem mudar com as atualizações do jogo.'}</p></div>
       </article>
       <aside class="guide-sidebar">
         {toc.length > 0 && <nav class="desktop-toc toc-card" aria-label={tocLabel}><h2>{tocLabel}</h2>{toc.map((heading) => <a href={`#${heading.slug}`}>{heading.text}</a>)}</nav>}
-        {!codesPage && <div class="sidebar-cta"><span class="sidebar-cta-icon"><Icon name="ticket" size={22} /></span><h2>{isEn ? 'Before you sail' : 'Antes de zarpar'}</h2><p>{isEn ? 'Check the latest codes and claim your free rewards.' : 'Confira os códigos mais recentes e garanta suas recompensas grátis.'}</p><a href={isEn ? '/en/codes/' : '/codigos/'}>{isEn ? 'View Vox Seas codes' : 'Ver códigos de Vox Seas'}<Icon name="arrow" size={16} /></a></div>}
-        <a class="wiki-home-link" href={directory}><Icon name="compass" size={19} />{isEn ? 'All guides' : 'Todos os guias'}<Icon name="arrow" size={16} /></a>
+        {!codesPage && <div class="sidebar-cta"><span class="sidebar-cta-icon"><Icon name="ticket" size={22} /></span><h2>{isTh ? 'ก่อนออกเรือ' : isEn ? 'Before you sail' : 'Antes de zarpar'}</h2><p>{isTh ? 'ตรวจสอบโค้ดล่าสุดเพื่อรับรางวัลฟรี' : isEn ? 'Check the latest codes and claim your free rewards.' : 'Confira os códigos mais recentes e garanta suas recompensas grátis.'}</p><a href={isTh ? '/th/codes/' : isEn ? '/en/codes/' : '/codigos/'}>{isTh ? 'ดูโค้ด Vox Seas' : isEn ? 'View Vox Seas codes' : 'Ver códigos de Vox Seas'}<Icon name="arrow" size={16} /></a></div>}
+        <a class="wiki-home-link" href={directory}><Icon name="compass" size={19} />{isTh ? 'คู่มือทั้งหมด' : isEn ? 'All guides' : 'Todos os guias'}<Icon name="arrow" size={16} /></a>
       </aside>
     </div>
-    <section class="related-section"><div class="section-heading"><h2>{isEn ? 'Related guides' : 'Guias relacionados'}</h2></div><GuideLinks items={relatedItems} /></section>
+    <section class="related-section"><div class="section-heading"><h2>{isTh ? 'คู่มือที่เกี่ยวข้อง' : isEn ? 'Related guides' : 'Guias relacionados'}</h2></div><GuideLinks items={relatedItems} /></section>
   </div>
 </BaseLayout>

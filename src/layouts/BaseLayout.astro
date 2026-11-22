@@ -77,9 +77,9 @@ const graph = [
   </head>
   <body class={bodyClass}>
     <a class="skip-link" href="#main-content">{lang === 'th' ? 'ข้ามไปยังเนื้อหา' : isEn ? 'Skip to content' : 'Pular para o conteúdo'}</a>
-    {lang === 'th' ? <slot name="header" /> : <Header lang={lang} alternate={alternate} />}
+    <Header lang={lang} alternate={alternate} />
     <LanguageSuggestion lang={lang} />
     <main id="main-content"><slot /></main>
-    {lang === 'th' ? <slot name="footer" /> : <Footer lang={lang} alternate={alternate} />}
+    <Footer lang={lang} alternate={alternate} />
   </body>
 </html>

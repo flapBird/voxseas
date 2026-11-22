@@ -1,4 +1,4 @@
-import { getGuideLinks, routes, type Locale } from './guides';
+import { getGuideLinks, routes, type SiteLocale } from './guides';
 import { getReferences } from './references';
 import { codes, pendingCodes } from './codes';
 import { entryId, normalizeSearch, searchTerms } from '../lib/search-text';
@@ -11,12 +11,12 @@ interface SearchItem {
   keywords?: string;
 }
 
-function makeIndex(lang: Locale) {
+function makeIndex(lang: SiteLocale) {
   const isEn = lang === 'en';
-  const guides = getGuideLinks(lang).map((guide) => ({ ...guide, label: isEn ? 'Guide' : 'Guia' }));
+  const guides = getGuideLinks(lang).map((guide) => ({ ...guide, label: lang === 'th' ? 'คู่มือ' : isEn ? 'Guide' : 'Guia' }));
   const items: SearchItem[] = [
     ...guides,
-    ...getReferences(lang).flatMap(({ path, kind, columns, rows }) => rows.map(({ name, category, details, href, aliases }) => ({
+    ...(lang === 'th' ? [] : getReferences(lang)).flatMap(({ path, kind, columns, rows }) => rows.map(({ name, category, details, href, aliases }) => ({
       title: name,
       description: [category, ...details].join(' · '),
       href: href ?? `${path}#${entryId(kind, name)}`,
@@ -26,8 +26,8 @@ function makeIndex(lang: Locale) {
     ...[...codes, ...pendingCodes].map(({ code, reward }) => ({
       title: code,
       description: reward[lang],
-      href: `${routes.codes[lang]}#${entryId('code', code)}`,
-      label: isEn ? 'Code' : 'Código',
+      href: `${lang === 'th' ? '/th/codes/' : routes.codes[lang]}#${entryId('code', code)}`,
+      label: lang === 'th' ? 'โค้ด' : isEn ? 'Code' : 'Código',
     })),
   ];
   return {
@@ -40,7 +40,7 @@ function makeIndex(lang: Locale) {
   };
 }
 
-export function createSiteSearch(lang: Locale) {
+export function createSiteSearch(lang: SiteLocale) {
   const { suggestions, indexed } = makeIndex(lang);
 
   return (query: string) => {

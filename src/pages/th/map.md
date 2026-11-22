@@ -2,10 +2,9 @@
 layout: ../../layouts/ThaiLayout.astro
 title: แผนที่ Vox Seas รวมเกาะและตำแหน่ง NPC
 description: วิธีเปิดแผนที่ หาเกาะ Harbor Island จุดสุ่ม Vox Gacha และ NPC ฝึกวิชาที่ Skull Island, Rustfall และ Shark Park
+quickAnswer: เปิด WORLD ใน Navigator’s Map แล้วดูตำแหน่ง YOU หากต้องการสุ่มผลไม้ ให้ไปที่ Harbor Island หรือเรือ Wandering Bastille
 updatedISO: '2026-11-22'
 ---
-
-![แผนที่โลกในเกม Vox Seas](../../assets/art/world-map-gameplay-v1.webp)
 
 สวมใส่ **Navigator’s Map** แล้วเปิด **WORLD** สัญลักษณ์ **YOU** สีเขียวคือตำแหน่งของคุณ เทียบทิศบนเข็มทิศกับเกาะปลายทางก่อนออกเรือ หากกำลังทำภารกิจเนื้อเรื่อง ให้ตามเครื่องหมายภารกิจด้วย
 

@@ -2,14 +2,19 @@
 import ThaiLayout from '../../layouts/ThaiLayout.astro';
 import CodeList from '../../components/CodeList.astro';
 import { archivedCodes, codesReviewedISO, formatCodesReview, pendingCodes } from '../../data/codes';
+const headings = [
+  { depth: 2, slug: 'working-codes', text: 'โค้ดที่แนะนำให้ลอง' },
+  { depth: 2, slug: 'redeem', text: 'วิธีแลกโค้ดในเกม' },
+  { depth: 2, slug: 'expired-codes', text: 'โค้ดที่หมดอายุแล้ว' },
+];
 ---
-<ThaiLayout frontmatter={{ title: 'โค้ด Vox Seas ล่าสุด', description: 'รวมโค้ดแลกโบนัส XP และโทเคนรีเซ็ตค่าสถานะ พร้อมวิธีแลกโค้ดและรายชื่อโค้ดหมดอายุ', updatedISO: codesReviewedISO }}>
+<ThaiLayout {headings} frontmatter={{ title: 'โค้ด Vox Seas ล่าสุด', description: 'รวมโค้ดแลกโบนัส XP และโทเคนรีเซ็ตค่าสถานะ พร้อมวิธีแลกโค้ดและรายชื่อโค้ดหมดอายุ', updatedISO: codesReviewedISO }}>
   <p>ตรวจสอบจากรายงานสาธารณะล่าสุดเมื่อ <time datetime={codesReviewedISO}>{formatCodesReview('th')}</time> โค้ดอาจหมดอายุได้ ควรแลกโบนัส XP ตอนที่พร้อมเริ่มฟาร์ม</p>
   <section class="codes-page-panel">
-    <h2>โค้ดที่แนะนำให้ลอง</h2><CodeList lang="th" />
+    <h2 id="working-codes">โค้ดที่แนะนำให้ลอง</h2><CodeList lang="th" />
     {pendingCodes.length > 0 && <><h3>รอยืนยันว่าโค้ดยังใช้ได้</h3><CodeList lang="th" pending /></>}
   </section>
-  <h2>วิธีแลกโค้ดในเกม</h2>
+  <h2 id="redeem">วิธีแลกโค้ดในเกม</h2>
   <ol><li>เปิด Menu แล้วกดไอคอนรูปเฟืองเพื่อเข้า Settings</li><li>เลื่อนลงไปที่ช่อง CODES แล้ววางโค้ดให้ตรงทั้งตัวพิมพ์เล็กและตัวพิมพ์ใหญ่</li><li>กด REDEEM แล้วอ่านข้อความยืนยัน หากแลกไม่ได้ ให้ตรวจสอบช่องว่างหรือลองเข้าเซิร์ฟเวอร์ใหม่</li></ol>
-  <h2>โค้ดที่หมดอายุแล้ว</h2><p>{archivedCodes.join(' · ')}</p>
+  <h2 id="expired-codes">โค้ดที่หมดอายุแล้ว</h2><p>{archivedCodes.join(' · ')}</p>
 </ThaiLayout>
