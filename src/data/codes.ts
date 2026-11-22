@@ -2,6 +2,10 @@ import type { Locale } from './guides';
 
 export const codeReviews = [
   {
+    checkedAt: '2026-11-22T03:31-03:00',
+    note: { 'pt-BR': 'Nenhum código novo confirmado. PatchGold continua em verificação após relatos de expiração.', en: 'No new codes confirmed. PatchGold remains under review after expiry reports.' },
+  },
+  {
     checkedAt: '2026-11-21T08:47-03:00',
     note: { 'pt-BR': 'Adicionado 175KLIKES: 1 token de reset de atributos.', en: 'Added 175KLIKES for 1 Stat Reset Token.' },
   },
