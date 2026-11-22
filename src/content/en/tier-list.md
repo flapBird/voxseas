@@ -4,7 +4,8 @@ shortTitle: 'Tier List'
 description: 'Compare Vox Seas fruits by role, with a clearly labeled Legacy tier list for PvE, PvP, farming and mobility.'
 eyebrow: 'FRUIT RANKINGS'
 icon: 'sparkles'
-updated: 'November 16, 2026'
+updated: 'November 21, 2026'
+updatedISO: '2026-11-21'
 quickAnswer: 'Poison, Orbit and Eclipse form the Legacy S tier, followed by Volcanic and Mirror in A. These rankings belong to the older version and should not be treated as freshly tested rankings for the current update.'
 related:
   - /en/fruits/
@@ -14,7 +15,7 @@ faqs:
   - question: 'What is the best fruit in Vox Seas?'
     answer: 'Poison leads the Legacy overall ranking, with Orbit and Eclipse also in S tier. For the current version, the best choice depends on retesting, your build and whether you focus on PvE or PvP.'
   - question: 'What is a good farming fruit?'
-    answer: 'Poison, Orbit and Eclipse combine area damage and control in the Legacy ranking. Blaze is a more accessible area-damage alternative when available in the shop.'
+    answer: 'Poison, Orbit and Eclipse combine area damage and control in the Legacy ranking. Blaze is an accessible alternative for gathering enemies and hitting them together.'
   - question: 'Does the Legacy tier list apply to the current release?'
     answer: 'Not completely. Balance patches can change damage, cooldowns and utility, so check the version label before spending Gold or Robux.'
 ---
@@ -27,13 +28,13 @@ For Dawn of Legends moves, see the current [Orbit](/en/fruits/orbit/) and [Vulca
 
 | Tier | Fruits | Practical role |
 |---|---|---|
-| S | Poison, Orbit, Eclipse | Strong overall area damage and control |
-| A | Volcanic, Mirror | Lingering damage or fast attacks and stuns |
-| B | Blaze, Shine, Frozen, Zen | Useful specialist options |
+| S | [Poison](/en/fruits/#fruta-poison), [Orbit](/en/fruits/orbit/), [Eclipse](/en/fruits/eclipse/) | Strong overall area damage and control |
+| A | [Volcanic](/en/fruits/vulcanic/), [Mirror](/en/fruits/#fruta-mirror) | Lingering damage or fast attacks and stuns |
+| B | [Blaze](/en/fruits/#fruta-blaze), Shine, Frozen, Zen | Useful specialist options |
 | C | Boom, Dust, Elastic | Situational early-game choices |
 | D | Divide, Kilo | Low priority; replace when better options appear |
 
-> Do not spend Robux based on a tier letter alone. Confirm that the ranking applies to your server and current game version first.
+> Do not spend Robux or all your Gold based on a tier letter alone. Confirm that the ranking applies to your server and current game version first.
 
 ## Best PvE and farming choices
 
@@ -49,25 +50,26 @@ For Dawn of Legends moves, see the current [Orbit](/en/fruits/orbit/) and [Vulca
 
 ## Best PvP and mobility choices
 
-**Mirror** trades raw tier position for speed, stuns and utility. Shattered Step supports aggressive movement, while Mirror World helps with island travel.
+**Mirror** trades raw tier position for speed, stuns and utility. Quick attacks and Shattered Step give opponents less time to react, while Mirror World helps with island travel.
 
 **Shine** provides flight and fast movement. Its travel utility can be more valuable than a small damage increase when exploring.
 
-**Orbit** remains relevant in PvP because Gravity Flight and Gravitational Field combine repositioning with control.
+**Orbit** remains relevant in PvP because Gravity Flight and Gravitational Field combine repositioning with control. For a hybrid build, that flexibility can matter more than raw damage.
 
 ## How to choose for your build
 
-Start with your activity, not the rarity label:
+Before switching fruits, consider three questions:
 
-1. **Farming:** prioritize reliable area attacks and comfortable cooldowns.
-2. **Bosses:** look for sustained damage and safe repositioning.
-3. **PvP:** value stuns, pulls and movement that reduce the opponent's reaction time.
-4. **Exploration:** flight and travel skills may save more time than combat power.
+1. Do you spend most of your time questing, farming, fighting bosses or playing PvP?
+2. Which stat have you invested in: Vox Fruit, Sword or Strength?
+3. Would flight, a pull or a stun help you finish your route faster than extra damage?
 
-Match attributes to the damage you actually use: Vox Fruit for fruit abilities, Sword for swords and Strength for fighting styles. Add Endurance when you need more health and stamina.
+Compare rarities and abilities in the [Fruitdex](/en/fruits/). If you still need a fruit, see [how Vox Gacha works](/en/fruit-gacha/) before choosing between a random roll and a specific shop offer.
 
-## A note on current updates
+## How your fruit fits into your build
 
-Our English coverage focuses on version clarity rather than presenting old numbers as new. For the latest announcements, use the official channels explained in our [Discord guide](/en/discord/) and [Trello and updates guide](/en/trello/).
+A powerful fruit still needs stats that support it. Invest in Vox Fruit for its abilities, add Endurance for health and stamina, and consider your equipment bonuses together.
 
-Before starting a long farming session, check the [Vox Seas code list](/en/codes/) for XP boosts and stat resets. Codes can expire, so review their status and redemption date first.
+If you have invested in **Sword**, compare the story Cutlass, the Katana from Harbor Island and the Dual Katana from Circus Town in the [sword ranking (Portuguese)](/armas/#ranking-de-espadas).
+
+Your [race](/en/races/) also matters. Wyrmborn boosts damage and maximum health, Angelborn improves recovery, and Tideborn makes underwater travel easier. Choose a fruit that works with those bonuses and the stats you already use.
