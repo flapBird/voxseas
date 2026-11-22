@@ -17,4 +17,4 @@ When Google ads are displayed, Google and other vendors may use cookies to selec
 
 You may request confirmation of processing, access, corrections and information about sharing. Under the conditions set by law, you may also request portability, anonymization, blocking or deletion. When processing relies on consent, you may ask what happens if you decline, withdraw consent and request deletion, subject to legal retention exceptions.
 
-See the [contact page](/en/contact/) for guidance on making a request. You can also petition Brazil’s data protection authority. See the [ANPD guide to data subject rights (Portuguese)](https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados-1/direito-dos-titulares).
+To exercise your rights, email [support@voxseas.online](mailto:support@voxseas.online). See the [contact page](/en/contact/) for guidance on making a request. You can also petition Brazil’s data protection authority. See the [ANPD guide to data subject rights (Portuguese)](https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados-1/direito-dos-titulares).

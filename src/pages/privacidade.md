@@ -17,4 +17,4 @@ Quando há publicidade do Google, o Google e outros fornecedores podem usar cook
 
 Você pode pedir confirmação e acesso aos dados tratados, correção, informações sobre compartilhamento e, nas condições previstas em lei, portabilidade, anonimização, bloqueio ou eliminação. Quando o tratamento depende de consentimento, você pode saber as consequências de recusá-lo, revogá-lo e pedir a eliminação dos dados, ressalvadas as hipóteses legais de conservação.
 
-Use a página de [contato](/contato/) para orientar seu pedido. Você também pode apresentar uma petição à ANPD. Consulte a [orientação da ANPD sobre os direitos do titular](https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados-1/direito-dos-titulares).
+Para exercer seus direitos, envie seu pedido para [support@voxseas.online](mailto:support@voxseas.online). Use a página de [contato](/contato/) para orientar seu pedido. Você também pode apresentar uma petição à ANPD. Consulte a [orientação da ANPD sobre os direitos do titular](https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados-1/direito-dos-titulares).
