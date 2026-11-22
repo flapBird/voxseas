@@ -1,13 +1,14 @@
 ---
 import { infoPages } from '../data/info-pages';
 import Icon from './Icon.astro';
-import { getGuideLinks, routes, type Locale } from '../data/guides';
+import { getGuideLinks, thaiPageFor, routes, type Locale } from '../data/guides';
 
 interface Props { lang?: Locale; alternate?: string; }
 const { lang = 'pt-BR', alternate } = Astro.props;
 const isEn = lang === 'en';
 const other = isEn ? 'pt-BR' : 'en';
 const guides = getGuideLinks(lang);
+const thai = thaiPageFor(Astro.url.pathname);
 const columns = [
   { title: isEn ? 'Guides' : 'Guias', links: ['beginner', 'codes', 'tiers'], directory: true },
   { title: 'Wiki', links: ['fruits', 'map', 'weapons', 'bosses', 'races'] },
@@ -27,6 +28,7 @@ const columns = [
         {guides.filter((guide) => column.links.includes(guide.route)).map((guide) => (
           <a href={guide.href}>{guide.title}</a>
         ))}
+        {column.language && thai && <a href={thai.path} lang="th" hreflang="th" data-language-choice="th">ไทย</a>}
         {column.language && <a href={alternate ?? routes.home[other]} lang={other} hreflang={other} data-language-choice={other}>{isEn ? 'Português' : 'English'}</a>}
       </div>
     ))}
@@ -42,5 +44,6 @@ const columns = [
 
 <style>
   .info-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; padding-bottom: 1.25rem; color: #a9bfc2; font-size: 0.8rem; }
+  @media (min-width: 701px) { .info-links { justify-content: flex-end; } }
   .info-links a:hover { color: var(--lime); }
 </style>

@@ -9,7 +9,7 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
-  lang?: Locale;
+  lang?: Locale | 'th';
   path?: string;
   updatedISO?: string;
   schema?: Record<string, unknown>[];
@@ -31,7 +31,7 @@ const alternates = localizedRoutes(path);
 const alternate = alternates?.[isEn ? 'pt-BR' : 'en'];
 const graph = [
   { '@type': 'Organization', '@id': `${site.url}/#organization`, name: site.name, url: `${site.url}/`, logo: { '@type': 'ImageObject', url: `${site.url}/favicon.svg` } },
-  { '@type': 'WebSite', '@id': `${site.url}/#website`, url: `${site.url}/`, name: site.name, inLanguage: ['pt-BR', 'en'], publisher: { '@id': `${site.url}/#organization` } },
+  { '@type': 'WebSite', '@id': `${site.url}/#website`, url: `${site.url}/`, name: site.name, inLanguage: ['pt-BR', 'en', 'th'], publisher: { '@id': `${site.url}/#organization` } },
   { '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: lang, isPartOf: { '@id': `${site.url}/#website` }, dateModified: updatedISO },
   { '@type': 'VideoGame', '@id': `${site.url}/#game`, name: 'Vox Seas', url: site.robloxUrl, gamePlatform: 'Roblox', genre: ['RPG', 'Adventure'] },
   ...schema,
@@ -54,7 +54,7 @@ const graph = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content={isEn ? 'en_US' : 'pt_BR'} />
+    <meta property="og:locale" content={lang === 'th' ? 'th_TH' : isEn ? 'en_US' : 'pt_BR'} />
     <meta property="og:image" content={`${site.url}/og-vox-seas.svg`} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -76,10 +76,10 @@ const graph = [
     )}
   </head>
   <body class={bodyClass}>
-    <a class="skip-link" href="#main-content">{isEn ? 'Skip to content' : 'Pular para o conteúdo'}</a>
-    <Header lang={lang} alternate={alternate} />
-    <LanguageSuggestion lang={lang} alternate={alternate} />
+    <a class="skip-link" href="#main-content">{lang === 'th' ? 'ข้ามไปยังเนื้อหา' : isEn ? 'Skip to content' : 'Pular para o conteúdo'}</a>
+    {lang === 'th' ? <slot name="header" /> : <Header lang={lang} alternate={alternate} />}
+    <LanguageSuggestion lang={lang} />
     <main id="main-content"><slot /></main>
-    <Footer lang={lang} alternate={alternate} />
+    {lang === 'th' ? <slot name="footer" /> : <Footer lang={lang} alternate={alternate} />}
   </body>
 </html>

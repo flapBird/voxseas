@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import SearchDialog from './SearchDialog.astro';
-import { routes, type Locale } from '../data/guides';
+import { routes, thaiPageFor, type Locale } from '../data/guides';
 import { site } from '../data/site';
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 
 const { lang = 'pt-BR', alternate } = Astro.props;
 const currentPath = Astro.url.pathname;
+const thai = thaiPageFor(currentPath);
 const showPlayLink = currentPath !== routes.codes[lang];
 const isEn = lang === 'en';
 const homeHref = routes.home[lang];
@@ -53,9 +54,15 @@ const menuLabel = isEn ? 'Site menu' : 'Menu do site';
       <a class="icon-button search-trigger" href={guidesHref} data-open-search aria-label={searchLabel} title={searchLabel}>
         <Icon name="search" size={20} />
       </a>
-      <a class="language-link" href={languageHref} lang={other} hreflang={other} aria-label={languageLabel} data-language-choice={other}>
+      {thai ? <details class="language-picker">
+        <summary class="language-link"><Icon name="globe" size={16} />{isEn ? 'EN' : 'PT'} ▾</summary>
+        <div>
+          <a href={languageHref} lang={other} hreflang={other} data-language-choice={other}>{languageName}</a>
+          <a href={thai.path} lang="th" hreflang="th" data-language-choice="th">ไทย</a>
+        </div>
+      </details> : (<a class="language-link" href={languageHref} lang={other} hreflang={other} aria-label={languageLabel} data-language-choice={other}>
         <Icon name="globe" size={16} /><span class="language-name">{languageName}</span><span class="language-code" aria-hidden="true">{isEn ? 'PT' : 'EN'}</span>
-      </a>
+      </a>)}
       {showPlayLink && <a class="button button-small header-play" href={site.robloxUrl} target="_blank" rel="noopener noreferrer">{isEn ? 'Play on Roblox' : 'Jogar no Roblox'}<Icon name="external" size={15} /></a>}
       <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={menuLabel} hidden><Icon name="menu" size={22} /></button>
     </div>
@@ -88,3 +95,10 @@ const menuLabel = isEn ? 'Site menu' : 'Menu do site';
   });
   matchMedia('(max-width: 1050px)').addEventListener('change', () => setMenu(false));
 </script>
+
+<style>
+  .language-picker { position: relative; }
+  .language-picker summary { cursor: pointer; list-style: none; }
+  .language-picker div { position: absolute; right: 0; top: 100%; padding: 0.5rem; min-width: 9rem; border-radius: 8px; background: var(--ink-soft); color: white; }
+  .language-picker div a { display: block; padding: 0.4rem 0.65rem; }
+</style>

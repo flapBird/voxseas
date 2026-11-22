@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { languageLinks, routes } from '../data/guides';
+import { languageLinks, routes, thaiPages } from '../data/guides';
 import { site } from '../data/site';
 
 import { infoPages } from '../data/info-pages';
@@ -14,6 +14,7 @@ export const GET: APIRoute = async () => {
   const [guides, englishGuides] = await Promise.all([getCollection('guides'), getCollection('en')]);
   const paths = [
     ...[routes.home, routes.directory, routes.codes].flatMap((pair) => Object.values(pair)),
+    ...thaiPages.map(page => page.path),
     ...infoPages.flatMap(page => Object.values(page.paths)),
     ...guides.map(({ id }) => `/${id}/`),
     ...englishGuides.map(({ id }) => `/en/${id}/`),

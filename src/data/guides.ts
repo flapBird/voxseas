@@ -19,6 +19,18 @@ export const routes = {
   trello: { 'pt-BR': '/trello/', en: '/en/trello/' },
 };
 
+export const thaiPages = [
+  { route: 'home', path: '/th/', title: 'หน้าหลัก' },
+  { route: 'codes', path: '/th/codes/', title: 'โค้ดเกม' },
+  { route: 'tiers', path: '/th/tier-list/', title: 'อันดับผลไม้' },
+  { route: 'map', path: '/th/map/', title: 'แผนที่และเกาะ' },
+  { route: 'fruits', path: '/th/fruits/', title: 'สารานุกรมผลไม้' },
+] as const;
+
+export function thaiPageFor(path: string) {
+  return thaiPages.find(page => page.path === path || Object.values(routes[page.route]).includes(path));
+}
+
 const entityParents = ['fruits', 'map', 'bosses', 'races'] as const;
 
 export function entityRoute(path: string) {
@@ -31,6 +43,8 @@ export function entityRoute(path: string) {
 }
 
 export function localizedRoutes(path: string) {
+  const thai = thaiPageFor(path);
+  if (thai) return { ...routes[thai.route], th: thai.path };
   const guide = [...Object.values(routes), ...infoPages.map(page => page.paths)].find((pair) => pair['pt-BR'] === path || pair.en === path);
   if (guide) return guide;
 
@@ -49,6 +63,7 @@ export function languageLinks(path: string, origin: string) {
   return [
     { lang: 'pt-BR', url: portuguese },
     { lang: 'en', url: new URL(pair.en, origin).href },
+    ...('th' in pair && typeof pair.th === 'string' ? [{ lang: 'th', url: new URL(pair.th, origin).href }] : []),
     { lang: 'x-default', url: portuguese },
   ];
 }

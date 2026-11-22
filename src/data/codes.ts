@@ -20,7 +20,7 @@ export function formatReviewStamp(iso: string, lang: Locale, withTime = false) {
   }).format(new Date(iso));
 }
 
-export function formatCodesReview(lang: Locale, includeDay = true) {
+export function formatCodesReview(lang: Locale | 'th', includeDay = true) {
   return new Intl.DateTimeFormat(lang, {
     day: includeDay ? 'numeric' : undefined,
     month: 'long',
@@ -30,15 +30,15 @@ export function formatCodesReview(lang: Locale, includeDay = true) {
 }
 
 export const codes = [
-  { code: '175KLIKES', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token' }, source: 'reported' },
-  { code: 'THX200K', reward: { 'pt-BR': '2× XP por 30 minutos', en: 'Double XP for 30 minutes' }, source: 'reported' },
-  { code: 'Patch2Reset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token' }, source: 'reported' },
-  { code: 'Release2026', reward: { 'pt-BR': '2× XP por 1 hora', en: 'Double XP for 1 hour' }, compactReward: { 'pt-BR': '2× XP', en: '2× XP' }, source: 'trello' },
-  { code: 'PatchReset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token' }, compactReward: { 'pt-BR': 'Reset', en: 'Stat reset' }, source: 'trello' },
+  { code: '175KLIKES', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'reported' },
+  { code: 'THX200K', reward: { 'pt-BR': '2× XP por 30 minutos', en: 'Double XP for 30 minutes', th: 'ค่าประสบการณ์ 2 เท่า นาน 30 นาที' }, source: 'reported' },
+  { code: 'Patch2Reset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'reported' },
+  { code: 'Release2026', reward: { 'pt-BR': '2× XP por 1 hora', en: 'Double XP for 1 hour', th: 'ค่าประสบการณ์ 2 เท่า นาน 1 ชั่วโมง' }, compactReward: { 'pt-BR': '2× XP', en: '2× XP', th: 'ค่าประสบการณ์ 2 เท่า' }, source: 'trello' },
+  { code: 'PatchReset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, compactReward: { 'pt-BR': 'Reset', en: 'Stat reset', th: 'รีเซ็ตค่าสถานะ' }, source: 'trello' },
 ] as const;
 
 export const pendingCodes = [
-  { code: 'PatchGold', reward: { 'pt-BR': '20.000 de ouro', en: '20,000 Gold' }, compactReward: { 'pt-BR': 'Ouro', en: 'Gold' }, source: 'trello' },
+  { code: 'PatchGold', reward: { 'pt-BR': '20.000 de ouro', en: '20,000 Gold', th: 'ทอง 20,000 เหรียญ' }, compactReward: { 'pt-BR': 'Ouro', en: 'Gold', th: 'ทอง' }, source: 'trello' },
 ] as const;
 
 export const archivedCodes = ['BugFix4', 'BugFix3', 'BugFix2', 'BugFix1', 'Release'];
