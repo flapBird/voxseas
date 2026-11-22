@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { infoPages } from '../data/info-pages';
+
+const path = Astro.url.pathname.replace(/\/?$/, '/');
+const lang = path.startsWith('/en/') ? 'en' : 'pt-BR';
+const page = infoPages.find(page => page.paths[lang] === path);
+if (!page) throw new Error(`Missing site information for ${path}`);
+const title = page.titles[lang];
+---
+<BaseLayout title={`${title} | Vox Seas Brasil`} description={Astro.props.frontmatter.description} lang={lang} path={path} updatedISO="2026-11-22">
+  <article class="shell prose info-page">
+    <h1>{title}</h1>
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  .info-page { max-width: 780px; margin-block: 3rem; }
+  h1 { margin-bottom: 1rem; }
+</style>

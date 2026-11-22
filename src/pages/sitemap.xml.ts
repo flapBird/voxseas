@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import { languageLinks, routes } from '../data/guides';
 import { site } from '../data/site';
 
+import { infoPages } from '../data/info-pages';
+
 function urlEntry(path: string) {
   const links = languageLinks(path, site.url).map(({ lang, url }) => `<xhtml:link rel="alternate" hreflang="${lang}" href="${url}"/>`).join('');
   return `<url><loc>${new URL(path, site.url).href}</loc>${links}</url>`;
@@ -12,6 +14,7 @@ export const GET: APIRoute = async () => {
   const [guides, englishGuides] = await Promise.all([getCollection('guides'), getCollection('en')]);
   const paths = [
     ...[routes.home, routes.directory, routes.codes].flatMap((pair) => Object.values(pair)),
+    ...infoPages.flatMap(page => Object.values(page.paths)),
     ...guides.map(({ id }) => `/${id}/`),
     ...englishGuides.map(({ id }) => `/en/${id}/`),
   ].sort();

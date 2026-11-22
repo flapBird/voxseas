@@ -1,3 +1,5 @@
+import { infoPages } from './info-pages';
+
 export type Locale = 'pt-BR' | 'en';
 
 export const routes = {
@@ -29,7 +31,7 @@ export function entityRoute(path: string) {
 }
 
 export function localizedRoutes(path: string) {
-  const guide = Object.values(routes).find((pair) => pair['pt-BR'] === path || pair.en === path);
+  const guide = [...Object.values(routes), ...infoPages.map(page => page.paths)].find((pair) => pair['pt-BR'] === path || pair.en === path);
   if (guide) return guide;
 
   const entity = entityRoute(path);
