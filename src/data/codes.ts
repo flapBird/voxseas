@@ -2,6 +2,10 @@ import type { Locale } from './guides';
 
 export const codeReviews = [
   {
+    checkedAt: '2026-11-23T03:15-03:00',
+    note: { 'pt-BR': 'Nenhum código novo confirmado. O próximo está previsto para quando o jogo atingir 200 mil curtidas.', en: 'No new codes confirmed. The next code is due when the game reaches 200,000 likes.' },
+  },
+  {
     checkedAt: '2026-11-22T03:31-03:00',
     note: { 'pt-BR': 'Nenhum código novo confirmado. PatchGold continua em verificação após relatos de expiração.', en: 'No new codes confirmed. PatchGold remains under review after expiry reports.' },
   },
