@@ -3,7 +3,7 @@ layout: ../../layouts/ThaiLayout.astro
 title: แผนที่ Vox Seas รวมเกาะและตำแหน่ง NPC
 description: วิธีเปิดแผนที่ หาเกาะ Harbor Island จุดสุ่ม Vox Gacha และ NPC ฝึกวิชาที่ Skull Island, Rustfall และ Shark Park
 quickAnswer: เปิด WORLD ใน Navigator’s Map แล้วดูตำแหน่ง YOU หากต้องการสุ่มผลไม้ ให้ไปที่ Harbor Island หรือเรือ Wandering Bastille
-updatedISO: '2026-11-22'
+updatedISO: '2026-11-23'
 ---
 
 สวมใส่ **Navigator’s Map** แล้วเปิด **WORLD** สัญลักษณ์ **YOU** สีเขียวคือตำแหน่งของคุณ เทียบทิศบนเข็มทิศกับเกาะปลายทางก่อนออกเรือ หากกำลังทำภารกิจเนื้อเรื่อง ให้ตามเครื่องหมายภารกิจด้วย
@@ -22,10 +22,16 @@ updatedISO: '2026-11-22'
 | Frost Island | มีหมู่บ้าน ประภาคาร ปราสาทของ Ice King และ Royal Forge |
 | Port Island | คู่มือเวอร์ชันเก่าระบุว่ามี Gun Dealer |
 
+## เส้นทางช่วงท้ายและการเดินทางกลับ
+
+หลัง Rustfall เกาะ Prison อยู่ในช่วงเลเวล 230–255 และ Valoria อยู่ที่ 255–285 จากนั้นมี Windhaven (290–325), Vulcan Island และ Ashforge Bastion (325–355), Marine Ford (355–400) และ [Nerúvia (400–500)](https://trello.com/c/7TGdjFtM) ตัวเลข 500 เป็นระดับปลายช่วงของเกาะ ส่วนเพดานเลเวลตัวละครยังไม่มีระบุในการ์ดนี้
+
+ถ้าเคยไปเกาะแล้ว ให้หา **Mirror Keeper** ใกล้นกแก้วที่จุดเกิด เลือกเกาะปลายทางและตรวจค่าเดินทางเป็น Gold การเดินทางไปสู้บอสผ่าน Boss Board จะไม่ปลดล็อกเกาะหรือเปลี่ยนจุดเกิด [บันทึกวันที่ 18 พฤศจิกายน](https://trello.com/c/q0rcGnIp)
+
 ## เกาะสำหรับฝึกวิชา
 
 - **Skull Island** — มองหากองไฟบนที่สูงแล้วคุยกับ Askard เพื่อเริ่มฝึก Vox ที่บ่อน้ำกลางเกาะ
-- **Rustfall** — คุยกับ Ansel ที่ลานฝึกเพื่อเริ่มบททดสอบ Electro
+- **Rustfall** — เป็นเกาะฝึกวิชา [Raijin Kenpo](https://trello.com/c/nllb8LE0) ตามข้อมูลใน Trello
 - **Shark Park** — Nalu อยู่บนชายหาดฝั่งตรงข้ามท่าเรือและสอน Ryusui Ken ส่วน Old Kaito อยู่บนท่าเรือ
 - **Heavenstep Mountain** — เปิดธงทั้งเจ็ดจุดระหว่างขึ้นเขา แล้วไปหาครูฝึกบนยอดเขา
 

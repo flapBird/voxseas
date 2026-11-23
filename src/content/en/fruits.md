@@ -4,16 +4,16 @@ shortTitle: 'Fruits'
 description: 'Look up fruit rarities and abilities in the Vox Seas Fruitdex and learn how to obtain, equip and level up fruit powers.'
 eyebrow: 'FRUITDEX'
 icon: 'fruit'
-updated: 'November 20, 2026'
-updatedISO: '2026-11-20'
-quickAnswer: 'Look up 16 fruits documented for Dawn of Legends and two Legacy entries. You can earn a fruit through Hango’s story, check the shop or visit the Vox Gacha.'
+updated: 'November 23, 2026'
+updatedISO: '2026-11-23'
+quickAnswer: 'You can earn a fruit through Hango’s story, check the shop or visit the Vox Gacha.'
 related:
   - /en/tier-list/
   - /en/fruit-gacha/
   - /en/bosses/
 faqs:
   - question: 'How many fruits are in Vox Seas?'
-    answer: 'The official Trello documents 16 Dawn of Legends fruits, including Elastic and Vulcanic. This directory also keeps Poison and Kilo as Legacy entries.'
+    answer: 'The Vox Fruits list on Trello has 15 fruit cards as of November 23. This guide lists Elastic separately. The card count does not establish the total number available in the game.'
   - question: 'How do I equip a fruit?'
     answer: 'Select the fruit in your inventory or use Equip on its card. Read the replacement notice before confirming a temporary fruit purchase.'
   - question: 'What is the Fruitdex?'
@@ -46,6 +46,10 @@ Use fruit abilities against enemies to develop mastery. Group enemies before usi
 
 Open the **Fruitdex** from the sidebar to track discoveries and mastery. Use **Claim** on an unlocked entry to collect the reward shown there. The documented Thorn entry shows 250 Gold.
 
+## Removing an equipped fruit
+
+Visit the **Fruit Remover** on the ground floor of the Harbor Island hotel. Removal costs **10,000 Gold** and preserves mastery. The [November 17 notes](https://trello.com/c/q0rcGnIp) say numbered fruits return to your inventory and fruits bought with Robux can be equipped again.
+
 ## How Logia protection works
 
 In the **November 15, 2026** balance update, basic attacks and ordinary abilities can pass through a player with Logia protection when both conditions apply.
@@ -53,4 +57,4 @@ In the **November 15, 2026** balance update, basic attacks and ordinary abilitie
 - Your level is at least **10 above** the enemy’s.
 - The enemy has no **Vox Armor**.
 
-Bosses, opponents with Vox Armor and enemies close to your level can still require a different approach. For role comparisons, see the [Legacy fruit tier list](/en/tier-list/).
+The [November 18 update](https://trello.com/c/q0rcGnIp) gives enemies at level 325 and above Vox Armor. Bosses, opponents with Vox Armor and enemies close to your level can still require a different approach. For role comparisons, see the [Legacy fruit tier list](/en/tier-list/).

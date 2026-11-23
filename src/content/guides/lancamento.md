@@ -4,15 +4,16 @@ shortTitle: 'Lançamento e retorno'
 description: 'Entenda o lançamento de Vox Seas, seu retorno em novembro de 2026 e por que guias da versão Legacy precisam ser conferidos.'
 eyebrow: 'HISTÓRICO DO JOGO'
 icon: 'calendar'
-updated: '16 de novembro de 2026'
-quickAnswer: 'A listagem pública aponta 31 de janeiro de 2025 como lançamento inicial. O retorno em 14 de novembro de 2026 e o balanceamento de 15 de novembro tornam importante diferenciar guias atuais de conteúdo Legacy.'
+updated: '23 de novembro de 2026'
+updatedISO: '2026-11-23'
+quickAnswer: 'A experiência foi criada no Roblox em 31 de janeiro de 2025. Em novembro de 2026, o jogo voltou a abrir e o evento Mini-Update 0.5 começou no dia 21.'
 related:
   - /tier-list/
   - /frutas/
   - /codigos/
 faqs:
-  - question: 'Quando Vox Seas foi lançado?'
-    answer: 'A listagem pública consultada registra 31 de janeiro de 2025 como data de lançamento inicial no Roblox.'
+  - question: 'Quando a experiência de Vox Seas foi criada no Roblox?'
+    answer: 'A data de criação registrada pelo Roblox é 31 de janeiro de 2025. O registro não informa a data da primeira abertura ao público.'
   - question: 'Quando Vox Seas voltou em 2026?'
     answer: 'O retorno público acompanhado para este guia ocorreu em 14 de novembro de 2026, seguido por uma atualização de balanceamento em 15 de novembro.'
   - question: 'O que significa Legacy nos guias?'
@@ -23,10 +24,13 @@ faqs:
 
 | Data | Evento | Por que importa |
 |---|---|---|
-| 31 de janeiro de 2025 | Lançamento inicial listado | Primeira versão pública do RPG no Roblox |
+| 31 de janeiro de 2025 | Criação da experiência | Data do campo created no [registro do Roblox](https://games.roblox.com/v1/games?universeIds=7174773198) |
 | 14 de novembro de 2026 | Retorno ao público | Jogadores voltam a entrar e procurar guias |
 | 15 de novembro de 2026 | Atualização de balanceamento | Mecânicas antigas precisam de nova revisão |
-| 16 de novembro de 2026 | Revisão deste guia | Dados atuais e Legacy passam a ser identificados |
+| 16 de novembro de 2026 | Boss Board | Acesso a partir do nível 325 |
+| 17 de novembro de 2026 | Abyssal Beast | Surgimento automático no mar e marcador no mapa |
+| 18 de novembro de 2026 | Mirror Keepers | Viagens com ouro entre ilhas já descobertas, segundo o [registro oficial](https://trello.com/c/q0rcGnIp) |
+| 21 de novembro de 2026 | Início do evento Mini-Update 0.5 | O [anúncio do desenvolvedor](https://www.roblox.com/events/3826405391720383248) destaca novas missões, uma fruta e uma nova forma de ganhar ouro |
 
 Não preenchemos períodos de indisponibilidade com datas que não foram confirmadas. A linha do tempo registra apenas os marcos usados como referência editorial.
 
@@ -44,7 +48,7 @@ O principal cuidado para quem consulta guias é a **versão**. Conteúdos public
 
 A [tier list](/tier-list/) deste site mantém a etiqueta Legacy porque o ranking de Poison, Orbit, Eclipse e demais frutas pertence àquela referência. Não o apresentamos como um teste da versão atual.
 
-O [Fruitdex](/frutas/) usa os nomes do Trello de Dawn of Legends. Elastic consta no catálogo atual, a fruta de magma aparece como Vulcanic e os registros de Poison e Kilo estão marcados como Legacy.
+O [Fruitdex](/frutas/) usa os nomes do Trello de Dawn of Legends. A fruta de magma aparece como Vulcanic. Elastic tem raridade a confirmar. Poison e Kilo aparecem no arquivo Legacy.
 
 ## Exemplo de mecânica atualizada: Logia
 
@@ -61,4 +65,4 @@ Depois de cada update, revise nesta ordem:
 3. **Progressão:** nível das missões, recompensas e requisitos de salas.
 4. **Itens:** estoque, preços e novas entradas no Fruitdex.
 
-Os canais oficiais acessíveis pela página do jogo são a fonte mais importante. O [guia de Discord](/discord/) mostra como procurar links legítimos, enquanto a página sobre [Trello](/trello/) explica o que fazer quando um quadro público oficial não está confirmado.
+Os canais oficiais acessíveis pela página do jogo são a fonte mais importante. O [guia de Discord](/discord/) mostra como procurar links legítimos, enquanto a página sobre [Trello](/trello/) identifica as listas do quadro oficial.

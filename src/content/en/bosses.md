@@ -4,8 +4,9 @@ shortTitle: 'Bosses'
 description: 'Check levels, keys, party size and rewards for Rovan, Veyrn and other bosses in Vox Seas.'
 eyebrow: 'BOSS GUIDE'
 icon: 'skull'
-updated: 'November 16, 2026'
-quickAnswer: 'Rovan and Veyrn rooms support 1 to 8 players. On Normal, everyone needs level 100 and the host supplies the Normal Key. The room consumes the host’s entry item.'
+updated: 'November 23, 2026'
+updatedISO: '2026-11-23'
+quickAnswer: 'The documented Normal setup for Rovan and Veyrn shows 1 to 8 players at level 100 or higher. Check the key at the Room Keeper. The Boss Board unlocks at level 325.'
 related:
   - /en/weapons/
   - /en/tier-list/
@@ -21,7 +22,7 @@ faqs:
 
 ## How Boss Rooms work
 
-The [Rovan](/en/bosses/rovan/) and [Veyrn](/en/bosses/veyrn/) challenge rooms accept **1 to 8 players**. To open a Normal room, each player needs **level 100** and the host needs a **Normal Key**.
+The [Rovan](/en/bosses/rovan/) and [Veyrn](/en/bosses/veyrn/) challenge rooms accept **1 to 8 players**. The documented Normal screen required **level 100** for each player and a **Normal Key** from the host. Trello also lists keys specific to [Rovan](https://trello.com/c/oUkHiZGm) and [Veyrn](https://trello.com/c/5JQ2Fqdr). Check the entry item shown by the Room Keeper for your chosen difficulty.
 
 Meet at the **Room Keeper** and follow these steps.
 
@@ -32,6 +33,14 @@ Meet at the **Room Keeper** and follow these steps.
 5. Set the party size and confirm.
 
 The host’s entry item is consumed. Players defeated during the encounter wait until it ends, so prepare before entering.
+
+## Boss Board and Wanted targets
+
+The **Boss Board** unlocks at level **325**. Fruit and fighting-style Wanted quests start at 325. Sword Wanted quests require 450. Teleporting to a target accepts its quest. An arena visit preserves your respawn point and leaves island shops and NPCs unavailable. [Official update log](https://trello.com/c/q0rcGnIp).
+
+## Finding the Abyssal Beast
+
+Watch the world map for the event marker. The first spawn is scheduled 30 minutes after server launch. The next timer starts when the beast is defeated or despawns. Each timer needs 30 minutes with at least one **level 325 or higher** player on the server. Possible spawn areas include Nerúvia and Kraken’s Rest. [November 17 and 18 notes](https://trello.com/c/q0rcGnIp).
 
 ## Rovan rewards
 

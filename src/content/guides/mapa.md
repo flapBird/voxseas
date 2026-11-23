@@ -1,11 +1,11 @@
 ---
-title: 'Vox Seas Mapa: Todas as Ilhas, NPCs e Destinos'
+title: 'Vox Seas Mapa: Ilhas por Nível, NPCs e Teletransporte'
 shortTitle: 'Mapa e ilhas'
-description: 'Explore o mapa de Vox Seas com 13 destinos, NPCs, lojas e treinamentos. Encontre Solmar, Harbor Island, Frost Island e Wandering Bastille.'
+description: 'Explore o mapa de Vox Seas de Solmar a Nerúvia (níveis 400–500). Consulte as faixas das ilhas e veja como voltar com o Mirror Keeper.'
 eyebrow: 'NAVEGAÇÃO E ILHAS'
 icon: 'map'
-updated: '21 de novembro de 2026'
-updatedISO: '2026-11-21'
+updated: '23 de novembro de 2026'
+updatedISO: '2026-11-23'
 quickAnswer: 'Abra WORLD com o Navigator’s Map e use o marcador verde YOU para se localizar. Solmar é o ponto inicial; Harbor Island e Wandering Bastille têm Vox Gacha; Skull Island, Rustfall e Shark Park são destinos de treinamento.'
 related:
   - /como-girar-fruta/
@@ -48,11 +48,19 @@ Em Circus Town, o Arms Dealer vende Dual Katana e Cutlass. Em Solmar Island, o v
 
 Os dois destinos oferecem Vox Gacha. [Harbor Island](/mapa/harbor-island/) também tem um Weapons Dealer, Old Explorer e venda de peixes. Wandering Bastille é um navio-restaurante com spawn e NPCs no deck. O [tutorial de frutas](/como-girar-fruta/) explica o caminho e o cooldown.
 
+## Para onde ir depois de Rustfall?
+
+Depois de Rustfall, o Trello indica **Prison (230–255)** e **Valoria (255–285)**. Mais adiante vêm Windhaven (290–325), Vulcan Island e Ashforge Bastion (ambas 325–355), Marine Ford (355–400) e [Nerúvia (400–500)](https://trello.com/c/7TGdjFtM). O nível 500 é o fim da faixa publicada para Nerúvia. O cartão da ilha não informa o limite de nível do personagem.
+
+## Como voltar a uma ilha descoberta
+
+Procure o **Mirror Keeper** perto do papagaio de respawn. Escolha uma ilha que você já visitou e confira o preço em ouro antes de viajar. Na primeira visita, vá de barco para desbloquear o destino. Uma visita pelo Boss Board não libera a ilha para viagens futuras. [Atualização de 18 de novembro](https://trello.com/c/q0rcGnIp).
+
 ## Destinos de treinamento
 
 **Skull Island:** procure Askard perto da fogueira no ponto alto para iniciar o treinamento de Vox. O poço central faz parte das instruções seguintes.
 
-**Rustfall:** Ansel, o Storm Keeper, conduz o desafio ligado a Electro no campo de treinamento.
+**Rustfall:** O cartão de [Raijin Kenpo](https://trello.com/c/nllb8LE0) indica Rustfall como o local desse estilo de luta.
 
 **Shark Park:** Nalu fica na praia em frente ao cais e está ligada ao treinamento de Ryusui Ken. Old Kaito permanece no cais.
 

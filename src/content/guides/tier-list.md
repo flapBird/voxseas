@@ -1,11 +1,11 @@
 ---
-title: 'Vox Seas Tier List: Melhores Frutas para PvE e PvP'
+title: 'Vox Seas Tier List Legacy: Frutas para PvE e PvP'
 shortTitle: 'Tier List'
 description: 'Veja a tier list de frutas de Vox Seas, compare Poison, Orbit, Eclipse, Mirror e Blaze e entenda o que ainda vale na versão Legacy.'
 eyebrow: 'RANKING DE FRUTAS'
 icon: 'sparkles'
-updated: '21 de novembro de 2026'
-updatedISO: '2026-11-21'
+updated: '23 de novembro de 2026'
+updatedISO: '2026-11-23'
 quickAnswer: 'Na versão Legacy, Poison, Orbit e Eclipse ocupam o tier S; Volcanic e Mirror ficam no A. Para a versão atual, trate esse ranking como referência histórica até que cada habilidade seja testada novamente.'
 related:
   - /frutas/

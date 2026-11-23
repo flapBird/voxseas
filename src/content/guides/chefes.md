@@ -4,8 +4,9 @@ shortTitle: 'Chefes'
 description: 'Entenda as Boss Rooms de Vox Seas, requisitos de nível, chaves, grupos e recompensas de Rovan, Veyrn e outros chefes.'
 eyebrow: 'GUIA DE CHEFES'
 icon: 'skull'
-updated: '16 de novembro de 2026'
-quickAnswer: 'As salas de Rovan e Veyrn aceitam de 1 a 8 jogadores. No Normal, todos precisam de nível 100 e o anfitrião fornece a Normal Key; somente o item de entrada do anfitrião é consumido.'
+updated: '23 de novembro de 2026'
+updatedISO: '2026-11-23'
+quickAnswer: 'Na tela Normal documentada para Rovan e Veyrn, o grupo tem de 1 a 8 jogadores de nível 100 ou superior. Confira a chave no Room Keeper. O Boss Board abre no nível 325.'
 related:
   - /armas/
   - /tier-list/
@@ -21,7 +22,7 @@ faqs:
 
 ## Como funcionam as Boss Rooms
 
-As salas de desafio de [Rovan](/chefes/rovan/) e [Veyrn](/chefes/veyrn/) aceitam grupos de **1 a 8 jogadores**. Para abrir uma sala no Normal, todos os participantes precisam estar no **nível 100** e o anfitrião deve ter a **Normal Key**.
+As salas de desafio de [Rovan](/chefes/rovan/) e [Veyrn](/chefes/veyrn/) aceitam grupos de **1 a 8 jogadores**. Na tela Normal documentada, o requisito era **nível 100** para todos e uma **Normal Key** do anfitrião. O Trello também lista chaves específicas de [Rovan](https://trello.com/c/oUkHiZGm) e [Veyrn](https://trello.com/c/5JQ2Fqdr). Confira o item pedido pelo Room Keeper na dificuldade escolhida.
 
 Reúna o grupo perto do **Room Keeper** e siga este caminho:
 
@@ -32,6 +33,14 @@ Reúna o grupo perto do **Room Keeper** e siga este caminho:
 5. Configure a quantidade de jogadores e confirme.
 
 Somente o anfitrião consome o item de entrada. Um jogador derrotado dentro da sala precisa esperar o confronto terminar; por isso, entrar sem preparação reduz a força do grupo inteiro.
+
+## Boss Board e inimigos Wanted
+
+O **Boss Board** abre no nível **325**. Missões Wanted de fruta ou estilo de luta começam no 325. As de espada exigem 450. Ao se teleportar para a arena, você aceita a missão do alvo. Essa visita mantém seu respawn e deixa lojas e NPCs da ilha indisponíveis. [Registro oficial de atualizações](https://trello.com/c/q0rcGnIp).
+
+## Como encontrar a Abyssal Beast
+
+Procure o marcador no mapa-múndi. O primeiro surgimento está previsto para 30 minutos após a abertura do servidor. Depois, o intervalo é de 30 minutos a partir da derrota ou do desaparecimento da fera. O contador só avança enquanto há pelo menos um jogador de nível **325 ou superior** no servidor. Nerúvia e Kraken’s Rest estão entre os locais possíveis. [Notas de 17 e 18 de novembro](https://trello.com/c/q0rcGnIp).
 
 ## Recompensas de Rovan
 

@@ -1,11 +1,11 @@
 ---
-title: 'Frutas de Vox Seas: como conseguir, onde girar e lista completa'
+title: 'Frutas de Vox Seas: como conseguir, onde girar e raridades'
 shortTitle: 'Frutas'
 description: 'Veja como conseguir a fruta de Hango, onde encontrar o Vox Gacha e como comprar frutas na loja. Consulte a lista de frutas por raridade e poder.'
-eyebrow: 'FRUITDEX COMPLETO'
+eyebrow: 'FRUITDEX'
 icon: 'fruit'
-updated: '21 de novembro de 2026'
-updatedISO: '2026-11-21'
+updated: '23 de novembro de 2026'
+updatedISO: '2026-11-23'
 quickAnswer: 'Ganhe uma fruta na missão de Hango ou compre uma com ouro em Shop → Temp Fruits. Para girar, fale com o Vox Gacha em Harbor Island ou no restaurante de Wandering Bastille.'
 quickAnswerLink:
   href: /como-girar-fruta/
@@ -16,7 +16,7 @@ related:
   - /chefes/
 faqs:
   - question: 'Quantas frutas existem em Vox Seas?'
-    answer: 'O Trello oficial documenta 16 frutas para Dawn of Legends, incluindo Elastic e Vulcanic. Poison e Kilo aparecem no arquivo Legacy deste diretório.'
+    answer: 'A lista Vox Fruits do Trello reúne 15 fichas de frutas em 23 de novembro. Elastic aparece separadamente neste guia. A contagem das fichas não estabelece o total disponível no jogo.'
   - question: 'Como equipar uma fruta em Vox Seas?'
     answer: 'Depois de adquirir a fruta, selecione-a no inventário ou na opção Equip do card correspondente. Ao comprar outra fruta temporária, leia o aviso de substituição antes de confirmar.'
   - question: 'O que é Fruitdex?'
@@ -49,6 +49,10 @@ Ataque inimigos com a fruta para desenvolver sua maestria. Em grupos, reúna os 
 
 Abra o **Fruitdex** pela barra lateral para acompanhar descobertas e maestria. Use **Claim** em uma entrada desbloqueada para recolher a recompensa exibida. Uma captura de Thorn mostra 250 de ouro.
 
+## Como remover a fruta equipada
+
+O **Fruit Remover** fica no térreo do hotel em Harbor Island. A remoção custa **10.000 de ouro** e preserva a maestria. Segundo as [notas de 17 de novembro](https://trello.com/c/q0rcGnIp), frutas numeradas voltam ao inventário e frutas compradas com Robux podem ser equipadas novamente.
+
 ## Como funciona a proteção Logia
 
 Na atualização de balanceamento de **15 de novembro de 2026**, uma fruta com proteção Logia permite que ataques básicos e habilidades comuns de inimigos passem por você quando duas condições são atendidas:
@@ -56,4 +60,4 @@ Na atualização de balanceamento de **15 de novembro de 2026**, uma fruta com p
 - você está pelo menos **10 níveis acima** do inimigo;
 - o inimigo **não usa Vox Armor**.
 
-Isso não representa invencibilidade geral. Chefes, oponentes com Vox Armor ou inimigos próximos do seu nível exigem outra estratégia. Para escolher um poder pelo desempenho, consulte também a [tier list com versão identificada](/tier-list/).
+A partir da [atualização de 18 de novembro](https://trello.com/c/q0rcGnIp), inimigos de nível 325 ou superior têm Vox Armor. Chefes, oponentes com Vox Armor ou inimigos próximos do seu nível exigem outra estratégia. Para escolher um poder pelo desempenho, consulte também a [tier list com versão identificada](/tier-list/).

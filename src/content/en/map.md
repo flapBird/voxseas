@@ -1,11 +1,11 @@
 ---
 title: 'Vox Seas Map – Islands, NPCs and Destinations'
 shortTitle: 'Map and islands'
-description: 'Find 13 Vox Seas destinations, key NPCs, shops and training spots, from Solmar Island to Wandering Bastille.'
+description: 'Find island level ranges from Solmar to Nerúvia (400–500), training spots and Mirror Keeper return routes.'
 eyebrow: 'SAILING AND ISLANDS'
 icon: 'map'
-updated: 'November 21, 2026'
-updatedISO: '2026-11-21'
+updated: 'November 23, 2026'
+updatedISO: '2026-11-23'
 quickAnswer: 'Equip the Navigator’s Map and open WORLD to find the green YOU marker. Start on Solmar, look for Vox Gacha on Harbor Island or Wandering Bastille, and visit Skull Island, Rustfall or Shark Park for training.'
 related:
   - /en/fruit-gacha/
@@ -48,10 +48,18 @@ The Arms Dealer in Circus Town sells the Dual Katana and Cutlass. Visit the deal
 
 Both locations have Vox Gacha. [Harbor Island](/en/map/harbor-island/) also has a Weapons Dealer, the Old Explorer and a place to sell fish. Wandering Bastille is a restaurant ship with a spawn point and NPCs on deck. See directions and cooldown details in the [fruit rolling guide](/en/fruit-gacha/).
 
+## Where to go after Rustfall
+
+The island cards list **Prison (230–255)** and **Valoria (255–285)** after Rustfall. Later destinations are Windhaven (290–325), Vulcan Island and Ashforge Bastion (both 325–355), Marine Ford (355–400) and [Nerúvia (400–500)](https://trello.com/c/7TGdjFtM). Level 500 is the upper end of Nerúvia’s published island range. The card gives no character level cap.
+
+## Returning to a discovered island
+
+Find the **Mirror Keeper** near the spawn parrot. Choose an island you have already visited and check the fare in Gold. Sail there on your first visit to unlock the destination. Visiting an arena through the Boss Board does not unlock its island for return travel. [November 18 update](https://trello.com/c/q0rcGnIp).
+
 ## Training locations
 
 - **Skull Island** has Askard by the campfire on high ground. Follow his Vox training instructions to the central well.
-- **Rustfall** has Ansel, the Storm Keeper, who runs the Electro challenge at the training grounds.
+- **Rustfall** is the location listed on the [Raijin Kenpo fighting style card](https://trello.com/c/nllb8LE0).
 - **Shark Park** has Nalu on the beach opposite the dock for Ryusui Ken training. Old Kaito stays on the dock.
 - **Heavenstep Mountain** has seven checkpoint flags to activate on the way to the instructor at the summit.
 

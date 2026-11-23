@@ -4,15 +4,16 @@ shortTitle: 'Launch and relaunch'
 description: 'Follow the Vox Seas launch and November 2026 relaunch, and learn which mechanics and rankings are labeled Legacy.'
 eyebrow: 'GAME HISTORY'
 icon: 'calendar'
-updated: 'November 16, 2026'
-quickAnswer: 'The public listing gives January 31, 2025 for the initial launch. Public access returned on November 14, 2026 and a balance update followed on November 15. Check version labels when using older guides.'
+updated: 'November 23, 2026'
+updatedISO: '2026-11-23'
+quickAnswer: 'Roblox records January 31, 2025 as the creation date. Public access returned in November 2026, and the Mini-Update 0.5 event began on November 21.'
 related:
   - /en/tier-list/
   - /en/fruits/
   - /en/codes/
 faqs:
-  - question: 'When did Vox Seas first launch?'
-    answer: 'The public listing reviewed for this guide gives January 31, 2025.'
+  - question: 'When was the Vox Seas experience created on Roblox?'
+    answer: 'Roblox records January 31, 2025 as the creation date. That record does not date the first public launch.'
   - question: 'When did Vox Seas return in 2026?'
     answer: 'Public access returned on November 14, 2026, followed by a balance update on November 15.'
   - question: 'What does Legacy mean in a Vox Seas guide?'
@@ -23,10 +24,13 @@ faqs:
 
 | Date | Event |
 |---|---|
-| January 31, 2025 | Initial release date in the public listing |
+| January 31, 2025 | Experience created according to the [Roblox record](https://games.roblox.com/v1/games?universeIds=7174773198) |
 | November 14, 2026 | Public access returns |
 | November 15, 2026 | Balance update |
-| November 16, 2026 | Guide data reviewed and labeled by game version |
+| November 16, 2026 | Boss Board unlocks at level 325 |
+| November 17, 2026 | Abyssal Beast gains automatic sea spawns and a world map marker |
+| November 18, 2026 | Mirror Keepers offer travel to discovered islands for Gold. [Official update notes](https://trello.com/c/q0rcGnIp) |
+| November 21, 2026 | Mini-Update 0.5 event begins. The [developer announcement](https://www.roblox.com/events/3826405391720383248) highlights new quests, a fruit and a new way to earn Gold. |
 
 ## What is Vox Seas?
 
@@ -36,7 +40,7 @@ New players can follow the [beginner route](/en/beginner/) and look up destinati
 
 ## What changed with the relaunch?
 
-Older guides can use different names, prices or balance values. Our [fruit tier list](/en/tier-list/) labels historical rankings as Legacy. The [Fruitdex](/en/fruits/) follows the Dawn of Legends Trello, which includes Elastic and calls the magma fruit Vulcanic. Poison and Kilo remain in the Legacy archive.
+Older guides can use different names, prices or balance values. Our [fruit tier list](/en/tier-list/) labels historical rankings as Legacy. The [Fruitdex](/en/fruits/) follows the Dawn of Legends Trello, which calls the magma fruit Vulcanic. Elastic’s current rarity still needs confirmation. Poison and Kilo remain in the Legacy archive.
 
 ## Logia in the November balance update
 

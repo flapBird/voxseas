@@ -1,11 +1,11 @@
 ---
-title: 'Vox Seas Tier List: Best Fruits for PvE and PvP'
+title: 'Vox Seas Legacy Tier List: Fruits for PvE and PvP'
 shortTitle: 'Tier List'
 description: 'Compare Vox Seas fruits by role, with a clearly labeled Legacy tier list for PvE, PvP, farming and mobility.'
 eyebrow: 'FRUIT RANKINGS'
 icon: 'sparkles'
-updated: 'November 21, 2026'
-updatedISO: '2026-11-21'
+updated: 'November 23, 2026'
+updatedISO: '2026-11-23'
 quickAnswer: 'Poison, Orbit and Eclipse form the Legacy S tier, followed by Volcanic and Mirror in A. These rankings belong to the older version and should not be treated as freshly tested rankings for the current update.'
 related:
   - /en/fruits/
