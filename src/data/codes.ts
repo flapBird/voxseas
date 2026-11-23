@@ -2,6 +2,10 @@ import type { Locale } from './guides';
 
 export const codeReviews = [
   {
+    checkedAt: '2026-11-23T09:20-03:00',
+    note: { 'pt-BR': 'THX200K, Patch2Reset e PatchReset passaram para a lista de códigos a confirmar após relatos de expiração. PatchGold segue em verificação.', en: 'Moved THX200K, Patch2Reset and PatchReset to the pending list after expiry reports. PatchGold is still under review.' },
+  },
+  {
     checkedAt: '2026-11-23T03:15-03:00',
     note: { 'pt-BR': 'Nenhum código novo confirmado. O próximo está previsto para quando o jogo atingir 200 mil curtidas.', en: 'No new codes confirmed. The next code is due when the game reaches 200,000 likes.' },
   },
@@ -35,13 +39,13 @@ export function formatCodesReview(lang: Locale | 'th', includeDay = true) {
 
 export const codes = [
   { code: '175KLIKES', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'reported' },
-  { code: 'THX200K', reward: { 'pt-BR': '2× XP por 30 minutos', en: 'Double XP for 30 minutes', th: 'ค่าประสบการณ์ 2 เท่า นาน 30 นาที' }, source: 'reported' },
-  { code: 'Patch2Reset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'reported' },
   { code: 'Release2026', reward: { 'pt-BR': '2× XP por 1 hora', en: 'Double XP for 1 hour', th: 'ค่าประสบการณ์ 2 เท่า นาน 1 ชั่วโมง' }, compactReward: { 'pt-BR': '2× XP', en: '2× XP', th: 'ค่าประสบการณ์ 2 เท่า' }, source: 'trello' },
-  { code: 'PatchReset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, compactReward: { 'pt-BR': 'Reset', en: 'Stat reset', th: 'รีเซ็ตค่าสถานะ' }, source: 'trello' },
 ] as const;
 
 export const pendingCodes = [
+  { code: 'THX200K', reward: { 'pt-BR': '2× XP por 30 minutos', en: 'Double XP for 30 minutes', th: 'ค่าประสบการณ์ 2 เท่า นาน 30 นาที' }, source: 'reported' },
+  { code: 'Patch2Reset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'reported' },
+  { code: 'PatchReset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, compactReward: { 'pt-BR': 'Reset', en: 'Stat reset', th: 'รีเซ็ตค่าสถานะ' }, source: 'trello' },
   { code: 'PatchGold', reward: { 'pt-BR': '20.000 de ouro', en: '20,000 Gold', th: 'ทอง 20,000 เหรียญ' }, compactReward: { 'pt-BR': 'Ouro', en: 'Gold', th: 'ทอง' }, source: 'trello' },
 ] as const;
 
