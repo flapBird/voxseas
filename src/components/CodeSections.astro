@@ -1,6 +1,6 @@
 ---
 import CodeList from './CodeList.astro';
-import { archivedCodes, codeReviews, codesReviewedISO, formatReviewStamp, pendingCodes } from '../data/codes';
+import { confirmedExpiredCodes, historicalExpiryReports, codeReviews, codesReviewedISO, formatReviewStamp, pendingCodes } from '../data/codes';
 import type { Locale } from '../data/guides';
 import { entryId } from '../lib/search-text';
 
@@ -12,13 +12,13 @@ const isEn = lang === 'en';
   <div class="codes-panel-heading">
     <h2>{isEn ? 'Codes to try' : 'Códigos para resgatar'}</h2>
     <time datetime={codesReviewedISO}>
-      {isEn ? 'Checked on' : 'Verificado em'} {formatReviewStamp(codesReviewedISO, lang, true)} BRT
+      {isEn ? 'Public sources checked on' : 'Fontes públicas verificadas em'} {formatReviewStamp(codesReviewedISO, lang, true)} BRT
     </time>
   </div>
   <CodeList lang={lang} />
-  <p class="code-disclaimer">{isEn ? 'Status checked against public reports.' : 'Status conferido em fontes públicas.'}</p>
+  <p class="code-disclaimer">{isEn ? 'Expiry is confirmed when the developer announces it or the game shows “Expired” for that code.' : 'A expiração é confirmada quando o desenvolvedor a anuncia ou quando o jogo exibe “Expired” para aquele código.'}</p>
   {pendingCodes.length > 0 && <>
-    <h3>{isEn ? 'Awaiting confirmation' : 'Aguardando confirmação'}</h3>
+    <h3>{isEn ? 'Possibly expired' : 'Possivelmente expirados'}</h3>
     <CodeList lang={lang} pending />
   </>}
 </section>
@@ -26,7 +26,13 @@ const isEn = lang === 'en';
 <ul>
   {codeReviews.map(({ checkedAt, note }) => <li><time datetime={checkedAt}>{formatReviewStamp(checkedAt, lang)}</time> — {note[lang]}</li>)}
 </ul>
-<h2 id={isEn ? 'archived-codes' : 'codigos-antigos'}>{isEn ? 'Expired codes' : 'Códigos expirados'}</h2>
+<h2 id={isEn ? 'archived-codes' : 'codigos-antigos'}>{isEn ? 'Older codes' : 'Códigos antigos'}</h2>
 <ul>
-  {archivedCodes.map((code) => <li id={entryId('code', code)}><code>{code}</code> — {isEn ? 'Expired' : 'Expirado'}</li>)}
+  {historicalExpiryReports.map((code) => <li id={entryId('code', code)}><code>{code}</code> — {isEn ? 'Possibly expired' : 'Possivelmente expirado'}</li>)}
 </ul>
+{confirmedExpiredCodes.length > 0 && <>
+<h3>{isEn ? 'Confirmed expired' : 'Expiração confirmada'}</h3>
+<ul>
+  {confirmedExpiredCodes.map((code) => <li id={entryId('code', code)}><code>{code}</code> — {isEn ? 'Expired' : 'Expirado'}</li>)}
+</ul>
+</>}

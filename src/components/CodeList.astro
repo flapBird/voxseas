@@ -14,7 +14,7 @@ const visibleCodes = pending ? pendingCodes : codes.slice(0, limit);
 <div class:list={['code-list', { 'code-list-compact': compact }]}>
   {visibleCodes.map((item) => (
     <article class="code-item" id={entryId('code', item.code)}>
-      <div class="code-main"><code>{item.code}</code><p>{compact && item.source === 'trello' ? item.compactReward[lang] : item.reward[lang]}</p></div>
+      <div class="code-main"><code>{item.code}</code><p>{compact && 'compactReward' in item ? item.compactReward[lang] : item.reward[lang]}</p>{'note' in item && <p>{item.note[lang]}</p>}</div>
       <button class="copy-button" type="button" data-copy={item.code} aria-label={`${isTh ? 'คัดลอกโค้ด' : isEn ? 'Copy code' : 'Copiar código'} ${item.code}`} hidden>
         <Icon class="copy-default" name="copy" size={17} /><Icon class="copy-success" name="check" size={17} /><span data-copy-label>{isTh ? 'คัดลอก' : isEn ? 'Copy' : 'Copiar'}</span>
       </button>

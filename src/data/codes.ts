@@ -38,15 +38,16 @@ export function formatCodesReview(lang: Locale | 'th', includeDay = true) {
 }
 
 export const codes = [
-  { code: '175KLIKES', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'reported' },
+  { code: '175KLIKES', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'trello' },
   { code: 'Release2026', reward: { 'pt-BR': '2× XP por 1 hora', en: 'Double XP for 1 hour', th: 'ค่าประสบการณ์ 2 เท่า นาน 1 ชั่วโมง' }, compactReward: { 'pt-BR': '2× XP', en: '2× XP', th: 'ค่าประสบการณ์ 2 เท่า' }, source: 'trello' },
 ] as const;
 
 export const pendingCodes = [
-  { code: 'THX200K', reward: { 'pt-BR': '2× XP por 30 minutos', en: 'Double XP for 30 minutes', th: 'ค่าประสบการณ์ 2 เท่า นาน 30 นาที' }, source: 'reported' },
-  { code: 'Patch2Reset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'reported' },
-  { code: 'PatchReset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, compactReward: { 'pt-BR': 'Reset', en: 'Stat reset', th: 'รีเซ็ตค่าสถานะ' }, source: 'trello' },
+  { code: 'THX200K', reward: { 'pt-BR': '2× XP por 30 minutos', en: 'Double XP for 30 minutes', th: 'ค่าประสบการณ์ 2 เท่า นาน 30 นาที' }, source: 'trello' },
+  { code: 'Patch2Reset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, source: 'trello' },
+  { code: 'PatchReset', reward: { 'pt-BR': '1 token de reset de atributos', en: '1 Stat Reset Token', th: 'โทเคนรีเซ็ตค่าสถานะ 1 ชิ้น' }, compactReward: { 'pt-BR': 'Reset', en: 'Stat reset', th: 'รีเซ็ตค่าสถานะ' }, note: { 'pt-BR': 'No Trello oficial, a grafia é PatchRtese.', en: 'The official Trello spells this PatchRtese.', th: 'ใน Trello ทางการสะกดว่า PatchRtese' }, source: 'reported' },
   { code: 'PatchGold', reward: { 'pt-BR': '20.000 de ouro', en: '20,000 Gold', th: 'ทอง 20,000 เหรียญ' }, compactReward: { 'pt-BR': 'Ouro', en: 'Gold', th: 'ทอง' }, source: 'trello' },
 ] as const;
 
-export const archivedCodes = ['BugFix4', 'BugFix3', 'BugFix2', 'BugFix1', 'Release'];
+export const confirmedExpiredCodes: string[] = [];
+export const historicalExpiryReports = ['BugFix4', 'BugFix3', 'BugFix2', 'BugFix1', 'Release'];
