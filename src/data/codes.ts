@@ -2,6 +2,10 @@ import type { Locale } from './guides';
 
 export const codeReviews = [
   {
+    checkedAt: '2026-11-24T03:49-03:00',
+    note: { 'pt-BR': 'Nenhum código novo confirmado. As recompensas e os relatos de expiração seguem sem alteração.', en: 'No new codes confirmed. Rewards and expiry reports are unchanged.' },
+  },
+  {
     checkedAt: '2026-11-23T09:20-03:00',
     note: { 'pt-BR': 'THX200K, Patch2Reset e PatchReset passaram para a lista de códigos a confirmar após relatos de expiração. PatchGold segue em verificação.', en: 'Moved THX200K, Patch2Reset and PatchReset to the pending list after expiry reports. PatchGold is still under review.' },
   },
