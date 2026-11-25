@@ -2,6 +2,10 @@ import type { Locale } from './guides';
 
 export const codeReviews = [
   {
+    checkedAt: '2026-11-25T04:14-03:00',
+    note: { 'pt-BR': 'Nenhum código novo confirmado. O Trello oficial continua anunciando o próximo código para 200 mil curtidas.', en: 'No new code confirmed. The official Trello still lists 200,000 likes as the next code milestone.' },
+  },
+  {
     checkedAt: '2026-11-24T03:49-03:00',
     note: { 'pt-BR': 'Nenhum código novo confirmado. As recompensas e os relatos de expiração seguem sem alteração.', en: 'No new codes confirmed. Rewards and expiry reports are unchanged.' },
   },
