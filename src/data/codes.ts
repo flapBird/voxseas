@@ -2,6 +2,10 @@ import type { Locale } from './guides';
 
 export const codeReviews = [
   {
+    checkedAt: '2026-11-26T08:15-03:00',
+    note: { 'pt-BR': 'Nenhum código novo no Trello oficial. Os relatos sobre Release2026, PatchGold e PatchReset continuam divergentes.', en: 'No new codes on the official Trello. Reports still disagree on whether Release2026, PatchGold and PatchReset work.' },
+  },
+  {
     checkedAt: '2026-11-25T10:18-03:00',
     note: { 'pt-BR': 'Release2026 passou para “Possivelmente expirados”. O Roblox Den relata expiração. O Trello oficial ainda lista 1 hora de XP em dobro.', en: 'Moved Release2026 to “Possibly expired” after an expiry report from Roblox Den. The official Trello still lists one hour of double XP.' },
   },
