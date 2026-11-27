@@ -2,6 +2,10 @@ import type { Locale } from './guides';
 
 export const codeReviews = [
   {
+    checkedAt: '2026-11-27T05:19-03:00',
+    note: { 'pt-BR': 'Nenhum código novo no Trello oficial. Na página do jogo, a meta para o próximo código continua em 200 mil curtidas.', en: 'No new codes on the official Trello. The game page still lists 200,000 likes as the target for the next code.' },
+  },
+  {
     checkedAt: '2026-11-26T08:15-03:00',
     note: { 'pt-BR': 'Nenhum código novo no Trello oficial. Os relatos sobre Release2026, PatchGold e PatchReset continuam divergentes.', en: 'No new codes on the official Trello. Reports still disagree on whether Release2026, PatchGold and PatchReset work.' },
   },
